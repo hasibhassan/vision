@@ -4,7 +4,7 @@ const db = new AWS.DynamoDB.DocumentClient()
 async function createData(id, data) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Item: { id, value: data },
+    Item: { id },
   }
   try {
     await db.put(params).promise()
@@ -16,9 +16,9 @@ async function createData(id, data) {
 export default async (event, context) => {
   try {
     const contextId = context.awsRequestId
-    const eventData = event.body
-    await createData(contextId, eventData)
-    return `item ${contextId} successfully created with value ${eventData}`
+    const { body } = event
+    await createData(contextId)
+    return `item ${contextId} successfully created with value ${body}`
   } catch (err) {
     return { error: err }
   }
