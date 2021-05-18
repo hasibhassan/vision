@@ -15,10 +15,10 @@ async function createData(id, data) {
 
 export default async (event, context) => {
   try {
-    const id = context.awsRequestId
-    const data = event.body
-    await createData(id, data)
-    return id
+    const contextId = context.awsRequestId
+    const eventData = event.body
+    await createData(contextId, eventData)
+    return `item ${id} successfully created!`
   } catch (err) {
     return { error: err }
   }
