@@ -16,7 +16,7 @@ async function update(id, data) {
 export default async (event) => {
   try {
     const id = event.pathParameters.id
-    const data = event.body
+    const data = JSON.parse(event.body)
     await update(id, data)
   } catch (err) {
     return { error: err }
