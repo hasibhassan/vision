@@ -16,11 +16,11 @@ async function createData(id, data) {
 export default async (event, context) => {
   try {
     const contextId = context.awsRequestId
-    console.log(contextId)
-    const { body } = event
-    console.log(body)
+    console.log('context id is:', contextId)
+    const { data } = event.body
+    console.log('the data is ...', data)
     await createData(contextId)
-    return `item ${contextId} successfully created with value ${body}`
+    return `item ${contextId} successfully created with value ${data}`
   } catch (err) {
     return { error: err }
   }
