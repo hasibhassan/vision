@@ -1,5 +1,5 @@
 Resources:
-  SimpleCrudTable: // TODO
+  visionTable:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:

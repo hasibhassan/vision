@@ -5,4 +5,4 @@ create:
         method: POST
         path: /
   environment:
-    TABLE_NAME: !Ref SimpleCrudTable // TODO
+    TABLE_NAME: !Ref visionTable

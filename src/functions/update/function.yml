@@ -5,4 +5,4 @@ update:
         method: POST
         path: /{id}
   environment:
-    TABLE_NAME: !Ref SimpleCrudTable // TODO
+    TABLE_NAME: !Ref visionTable

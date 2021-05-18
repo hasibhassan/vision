@@ -1,13 +1,13 @@
-service: simple-crud // TODO
+service: vision
 
 provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   iam:
-    role: ${opt:aws_role_arn} // TODO
+    role: ${opt:aws_role_arn}
   stackTags:
-    slsApp: simpleCrud // TODO
+    slsApp: vision
 
 plugins:
   - serverless-webpack
