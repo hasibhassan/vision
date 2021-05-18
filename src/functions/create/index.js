@@ -18,7 +18,7 @@ export default async (event, context) => {
     const contextId = context.awsRequestId
     const eventData = event.body
     await createData(contextId, eventData)
-    return `item ${id} successfully created!`
+    return `item ${contextId} successfully created!`
   } catch (err) {
     return { error: err }
   }
