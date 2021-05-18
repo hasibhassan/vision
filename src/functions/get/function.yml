@@ -1,0 +1,8 @@
+get:
+  handler: src/functions/get/index.default
+  events:
+    - httpApi:
+        method: PUT
+        path: /{id}
+  environment:
+    TABLE_NAME: !Ref SimpleCrudTable // TODO

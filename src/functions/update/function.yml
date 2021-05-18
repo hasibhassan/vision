@@ -1,0 +1,8 @@
+update:
+  handler: src/functions/update/index.default
+  events:
+    - httpApi:
+        method: POST
+        path: /{id}
+  environment:
+    TABLE_NAME: !Ref SimpleCrudTable // TODO

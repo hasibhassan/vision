@@ -1,0 +1,8 @@
+delete:
+  handler: src/functions/delete/index.default
+  events:
+    - httpApi:
+        method: DELETE
+        path: /{id}
+  environment:
+    TABLE_NAME: !Ref SimpleCrudTable // TODO

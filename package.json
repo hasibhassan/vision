@@ -1,0 +1,17 @@
+{
+  "name": "simple-crud", // TODO
+  "description": "",
+  "version": "0.1.0",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "aws-sdk": "2.804",
+    "babel-loader": "^8.2.2",
+    "serverless": "^2.30.3",
+    "serverless-prune-plugin": "^1.4.4",
+    "serverless-webpack": "^5.4.0",
+    "webpack": "^5.26.3",
+    "webpack-node-externals": "^2.5.2"
+  }
+}

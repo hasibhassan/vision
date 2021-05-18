@@ -1,0 +1,8 @@
+node_modules
+coverage
+.env
+.webpack
+.serverless
+.env*
+*.swp
+.DS_Store
