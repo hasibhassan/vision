@@ -17,7 +17,7 @@ export default async (event, context) => {
   try {
     const contextId = context.awsRequestId
     console.log('context id is:', contextId)
-    const data = JSON.parse(event.body)
+    const { data } = JSON.parse(event.body)
     console.log('the data is ...', data)
     await createData(contextId, data)
     return `item ${contextId} successfully created with value ${data}`
