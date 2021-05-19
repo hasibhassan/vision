@@ -8,7 +8,7 @@ async function updateItem(id, data) {
     ReturnValues: 'ALL_NEW',
   }
   try {
-    const updatedItem = await db.put(params).promise()
+    const updatedItem = await db.update(params).promise()
     return updatedItem
   } catch (err) {
     return err
