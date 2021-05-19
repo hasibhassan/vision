@@ -4,7 +4,8 @@ const db = new AWS.DynamoDB.DocumentClient()
 async function updateItem(id, data) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Item: { id, data },
+    Key: { id },
+    ExpressionAttributeValues: { ':data': data },
     ReturnValues: 'ALL_NEW',
   }
   try {
