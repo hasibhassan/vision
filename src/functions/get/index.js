@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function read(id) {
+async function getItem(id) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { id },
@@ -16,7 +16,7 @@ async function read(id) {
 
 export default async (event) => {
   try {
-    const result = await read(event.pathParameters.id)
+    const result = await getItem(event.pathParameters.id)
     return result.Item.data
   } catch (err) {
     return { error: err }
