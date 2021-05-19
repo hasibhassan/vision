@@ -6,7 +6,7 @@ async function updateItem(id, data) {
     TableName: process.env.TABLE_NAME,
     Key: { id },
     UpdateExpression: 'set data = :data',
-    ExpressionAttributeValues: { ':data': data },
+    ExpressionAttributeValues: { ':newdata': data },
     ReturnValues: 'ALL_NEW',
   }
   try {
