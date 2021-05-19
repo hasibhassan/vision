@@ -7,7 +7,7 @@ async function updateItem(id, data) {
     Key: { id },
     UpdateExpression: 'set data = :data',
     ExpressionAttributeValues: { ':newdata': data },
-    ReturnValues: 'ALL_NEW',
+    ReturnValues: 'UPDATED_NEW',
   }
   try {
     const updatedItem = await db.update(params).promise()
