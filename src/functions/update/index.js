@@ -5,6 +5,7 @@ async function updateItem(id, data) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { id },
+    UpdateExpression: 'set data = :data',
     ExpressionAttributeValues: { ':data': data },
     ReturnValues: 'ALL_NEW',
   }
