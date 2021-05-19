@@ -5,7 +5,7 @@ async function createItem(id, data) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: { id, data },
-    ReturnValues: 'ALL_NEW',
+    ReturnValues: 'ALL_OLD',
   }
   try {
     const newItems = await db.put(params).promise()
