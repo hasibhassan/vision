@@ -29,7 +29,7 @@ export default async (event) => {
         ExpressionAttributeValues: { ':d': requestJSON.data },
       })
       .promise()
-    return `item with id: ${id} updated with data: ${requestJSON.data}`
+    return `item with id: ${event.pathParameters.id} updated with data: ${requestJSON.data}`
   } catch (err) {
     return { error: err }
   }
