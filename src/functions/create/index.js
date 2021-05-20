@@ -16,10 +16,11 @@ async function createItem(id, data) {
 
 export default async (event, context) => {
   try {
-    const { awsRequestId } = context
-    const { data } = event.body
-    await createItem(awsRequestId, data)
-    return `the returned values are: ${data} ID: ${awsRequestId}`
+    const id = context.awsRequestId
+    let bodyData = JSON.parse(event.body)
+    bodyData = bodyData.message
+    await createItem(id, bodyData)
+    return `the returned values are: ${bodyData} ID: ${id}`
   } catch (err) {
     return { error: err }
   }
