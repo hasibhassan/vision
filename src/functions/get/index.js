@@ -18,7 +18,9 @@ export default async (event) => {
 
   try {
     let result = await getItem(id)
+    console.log(`log is: ${result}`)
     result = JSON.stringify(result)
+    console.log(`log after stringifying it is: ${result}`)
     return result
   } catch (err) {
     return { error: err }
