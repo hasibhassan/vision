@@ -8,8 +8,7 @@ async function deleteItem(id) {
     ReturnValues: 'ALL_OLD',
   }
   try {
-    const deletedItem = await db.delete(params).promise()
-    return deletedItem
+    await db.delete(params).promise()
   } catch (err) {
     return err
   }

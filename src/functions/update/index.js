@@ -10,8 +10,7 @@ async function updateItem(key, data) {
     ReturnValues: 'UPDATED_NEW',
   }
   try {
-    const updatedItem = await db.update(params).promise()
-    return updatedItem
+    await db.update(params).promise()
   } catch (err) {
     return err
   }

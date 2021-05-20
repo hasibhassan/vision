@@ -8,8 +8,7 @@ async function createItem(id, data) {
     ReturnValues: 'ALL_OLD',
   }
   try {
-    const newItems = await db.put(params).promise()
-    return newItems
+    await db.put(params).promise()
   } catch (err) {
     return err
   }

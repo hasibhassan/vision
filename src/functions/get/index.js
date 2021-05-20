@@ -7,8 +7,7 @@ async function getItem(id) {
     Key: { id },
   }
   try {
-    const data = await db.get(params).promise()
-    return data
+    await db.get(params).promise()
   } catch (err) {
     return err
   }
