@@ -17,7 +17,7 @@ async function createItem(id, data) {
 export default async (event, context) => {
   try {
     const contextId = context.awsRequestId
-    const { data } = event.body
+    const { data } = JSON.parse(event.body)
     await createItem(contextId, data)
     return `the returned values are: ${data} ID: ${contextId}`
   } catch (err) {
