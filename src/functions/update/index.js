@@ -20,13 +20,15 @@ export default async (event) => {
   const requestJSON = JSON.parse(event.body)
 
   try {
-    await db.update({
-      TableName: process.env.TABLE_NAME,
-      Key: { id: event.pathParameters.id },
-      UpdateExpression: 'set #d = :d',
-      ExpressionAtributeNames: { '#d': 'data' },
-      ExpressionAttributeValues: { ':d': requestJSON.data },
-    })
+    await db
+      .update({
+        TableName: process.env.TABLE_NAME,
+        Key: { id: event.pathParameters.id },
+        UpdateExpression: 'set #d = :d',
+        ExpressionAtributeNames: { '#d': 'data' },
+        ExpressionAttributeValues: { ':d': requestJSON.data },
+      })
+      .promise()
     return `item with id: ${id} updated with data: ${requestJSON.data}`
   } catch (err) {
     return { error: err }
