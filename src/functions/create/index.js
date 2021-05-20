@@ -15,7 +15,7 @@ async function createItem(id, data) {
 
 export default async (event) => {
   let id
-  const requestJSON = JSON.parse(event.body)
+  // const requestJSON = JSON.parse(event.body)
 
   if (!requestJSON.id) {
     id = event.requestContext.requestId
@@ -23,7 +23,7 @@ export default async (event) => {
     id = requestJSON.id
   }
 
-  const { data } = requestJSON
+  const { data } = event.body
 
   try {
     await createItem(id, data)
