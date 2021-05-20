@@ -15,7 +15,7 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 export default async (event) => {
   try {
-    let body = await db
+    let result = await db
       .get({
         TableName: process.env.TABLE_NAME,
         Key: {
@@ -23,7 +23,7 @@ export default async (event) => {
         },
       })
       .promise()
-    return body
+    return result
   } catch (err) {
     return { error: err }
   }
