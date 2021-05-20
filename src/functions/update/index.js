@@ -22,7 +22,7 @@ export default async (event) => {
     let bodyData = JSON.parse(event.body)
     bodyData = bodyData.message
     await updateItem(id, bodyData)
-    return `${id} updated with ${bodyData}`
+    return `${id} updated with ${bodyData.toString()}`
   } catch (err) {
     return { error: err }
   }
