@@ -16,7 +16,7 @@ async function deleteItem(id) {
 export default async (event) => {
   try {
     await deleteItem(event.pathParameters.id)
-    return `deleted item with id: ${event.pathParameters.id}!`
+    return `item with id: ${event.pathParameters.id} deleted!`
   } catch (err) {
     return { error: err }
   }
