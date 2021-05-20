@@ -13,12 +13,11 @@ async function getItem(id) {
   }
 }
 
-export default async (event) => {
+export default (event) => {
   try {
-    const { id } = event.pathParameters
+    // const { id } = event.pathParameters
     // let result = await getItem(id)
-    let event = JSON.stringify(event)
-    return `${event}`
+    return `${JSON.stringify(event)}`
   } catch (err) {
     return { error: err }
   }
