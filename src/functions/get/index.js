@@ -14,8 +14,10 @@ async function getItem(id) {
 }
 
 export default async (event) => {
+  const id = event.pathParameters.id
+
   try {
-    const result = await getItem(event.pathParameters.id)
+    const result = await getItem(id)
     return result
   } catch (err) {
     return { error: err }

@@ -15,13 +15,19 @@ async function createItem(id, data) {
 
 export default async (event) => {
   let id
-  let requestJSON = JSON.parse(event.body)
+  const requestJSON = JSON.parse(event.body)
+
   if (!requestJSON.id) {
     id = event.requestContext.requestId
+  } else {
+    id = requestJSON.id
   }
+
+  const { data } = requestJSON
+
   try {
-    await createItem(id, requestJSON.data)
-    return `item: ${id} created with data: ${requestJSON.data}!`
+    await createItem(id, data)
+    return `item: ${id} created with data: ${data}!`
   } catch (err) {
     return { error: err }
   }
