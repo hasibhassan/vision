@@ -16,6 +16,7 @@ async function createItem(id, data) {
 
 export default async (event) => {
   try {
+    console.log(`the console. log statement si: ${event.routeKey}`)
     const id = event.requestContext.requestId
     let { _id, bodyData } = event.headers
     console.log(`console log si: ${bodyData}`)
