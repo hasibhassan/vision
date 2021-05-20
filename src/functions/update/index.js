@@ -18,8 +18,8 @@ async function updateItem(key, data) {
 
 export default async (event) => {
   try {
-    const { id } = JSON.parse(event.pathParameters)
-    const { data } = JSON.parse(event.body)
+    const id = event.pathParameters.id
+    const data = event.body.data
     await updateItem(id, data)
     return `${id} updated with ${data}`
   } catch (err) {
