@@ -19,7 +19,7 @@ export default async (event) => {
     await db
       .put({
         TableName: process.env.TABLE_NAME,
-        Item: { id: requestJSON.id, data: requestJSON.data },
+        Item: { id: requestJSON.id, value: requestJSON.data },
       })
       .promise()
     return `item: ${requestJSON.id} created!`

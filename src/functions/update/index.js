@@ -21,9 +21,9 @@ export default async (event) => {
     await db
       .update({
         TableName: process.env.TABLE_NAME,
-        Key: { id: requestJSON.id },
-        UpdateExpression: 'set data = :d',
-        ExpressionAttributeValues: { ':d': requestJSON.data },
+        Key: { id: event.pathParameters.id },
+        UpdateExpression: 'set value = :v',
+        ExpressionAttributeValues: { ':v': requestJSON.data },
       })
       .promise()
     return `${requestJSON.id} updated value is: ${requestJSON.data}`
