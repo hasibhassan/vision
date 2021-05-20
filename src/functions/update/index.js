@@ -22,7 +22,7 @@ export default async (event) => {
     await db
       .update({
         TableName: process.env.TABLE_NAME,
-        Key: { id: event.pathParameters.id },
+        Key: { id: requestJSON.id },
         UpdateExpression: 'set #d = :d',
         ExpressionAttributeNames: { '#d': 'data' },
         ExpressionAttributeValues: { ':d': requestJSON.data },

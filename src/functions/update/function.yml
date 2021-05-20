@@ -3,6 +3,6 @@ update:
   events:
     - httpApi:
         method: PUT
-        path: /items/update/{id}
+        path: /items/update
   environment:
     TABLE_NAME: !Ref visionTable
