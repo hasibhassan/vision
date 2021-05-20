@@ -19,13 +19,12 @@ async function updateItem(id, updatedData) {
 export default async (event) => {
   const requestJSON = JSON.parse(event.body)
   const id = event.pathParameters.id
-  const { data } = requestJSON
 
   try {
-    console.log(id)
-    console.log(data)
-    await updateItem(id, data)
-    return `item with id: ${id} updated with data: ${data}`
+    console.log(`id is: ${id}`)
+    console.log(`data is :${data}`)
+    await updateItem(id, requestJSON.data)
+    return `item with id: ${id} updated with data: ${requestJSON.data}`
   } catch (err) {
     return { error: err }
   }
