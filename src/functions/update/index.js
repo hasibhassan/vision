@@ -21,6 +21,8 @@ export default async (event) => {
   const { data } = JSON.parse(event.body)
 
   try {
+    console.log(id)
+    console.log(data)
     await updateItem(id, data)
     return `item with id: ${id} updated with data: ${data}`
   } catch (err) {
