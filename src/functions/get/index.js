@@ -17,7 +17,6 @@ export default async (event) => {
   try {
     const { id } = event.pathParameters
     let result = await getItem(id)
-    result = JSON.parse(result)
     return `${result.Item.data} ID: ${id}`
   } catch (err) {
     return { error: err }

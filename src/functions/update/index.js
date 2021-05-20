@@ -20,8 +20,8 @@ export default async (event) => {
     const id = event.pathParameters
     let bodyData = JSON.parse(event.body)
     bodyData = bodyData.message
-    // await updateItem(id, bodyData)
-    return `hello worldg`
+    await updateItem(id, bodyData)
+    return `hello world`
   } catch (err) {
     return { error: err }
   }
