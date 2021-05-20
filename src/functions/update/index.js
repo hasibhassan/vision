@@ -17,7 +17,7 @@ async function updateItem(id, data) {
 
 export default async (event) => {
   try {
-    const id = event.pathParameters.id
+    const { id } = event.pathParameters
     let bodyData = JSON.parse(event.body)
     bodyData = bodyData.message
     await updateItem(id, bodyData)

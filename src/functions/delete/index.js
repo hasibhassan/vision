@@ -5,7 +5,6 @@ async function deleteItem(id) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { id },
-    ReturnValues: 'ALL_OLD',
   }
   try {
     await db.delete(params).promise()

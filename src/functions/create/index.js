@@ -20,7 +20,7 @@ export default async (event, context) => {
     let bodyData = JSON.parse(event.body)
     bodyData = bodyData.message
     await createItem(id, bodyData)
-    return `the returned values are: ${bodyData} ID: ${id}`
+    return `the returned values are(this isnt workingggg): ${bodyData} ID: ${id}`
   } catch (err) {
     return { error: err }
   }
