@@ -14,11 +14,15 @@ const db = new AWS.DynamoDB.DocumentClient()
 // }
 
 export default async (event) => {
-  const id = event.pathParameters.id
-
   try {
-    let body = await getItem(id)
-    console.log(`log is: ${result}`)
+    let body = await db
+      .get({
+        TableName: process.env.TABLE_NAME,
+        Key: {
+          id: event.pathParameters.id,
+        },
+      })
+      .promise()
     return body
   } catch (err) {
     return { error: err }
