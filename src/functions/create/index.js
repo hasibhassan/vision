@@ -23,11 +23,9 @@ export default async (event) => {
     id = requestJSON.id
   }
 
-  const { data } = requestJSON
-
   try {
-    await createItem(id, data)
-    return `item: ${id} created with data: ${data}!`
+    await createItem(id, requestJSON.data)
+    return `item: ${id} created with data: ${requestJSON.data}!`
   } catch (err) {
     return { error: err }
   }
