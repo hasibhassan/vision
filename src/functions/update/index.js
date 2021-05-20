@@ -17,9 +17,9 @@ async function updateItem(id, updatedData) {
 }
 
 export default async (event) => {
-  // const requestJSON = JSON.parse(event.body)
+  const requestJSON = JSON.parse(event.body)
   const id = event.pathParameters.id
-  const { data } = event.body
+  const { data } = requestJSON
 
   try {
     console.log(`id is: ${id}`)
