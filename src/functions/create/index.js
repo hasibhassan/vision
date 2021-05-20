@@ -18,7 +18,7 @@ export default async (event) => {
   try {
     const id = event.requestContext.requestId
     let { _id, bodyData } = event.headers
-    console.log(bodyData)
+    console.log(`console log si: ${bodyData}`)
     bodyData = JSON.parse(bodyData)
     console.log(bodyData)
     await createItem(id, bodyData)

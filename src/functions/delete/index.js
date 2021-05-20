@@ -17,7 +17,7 @@ export default async (event) => {
   try {
     const { id } = event.headers
     await deleteItem(id)
-    return `deleted ${id}`
+    return `deleted ze itemm ${id}`
   } catch (err) {
     return { error: err }
   }

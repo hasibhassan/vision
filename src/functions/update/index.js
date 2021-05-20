@@ -18,7 +18,7 @@ async function updateItem(id, data) {
 export default async (event) => {
   try {
     const { id, bodyData } = event.headers
-    console.log(id, bodyData)
+    console.log(`console log si: ${id} ${bodyData}`)
     await updateItem(id, bodyData)
     return `item i ${id} updated with ${bodyData}`
   } catch (err) {
