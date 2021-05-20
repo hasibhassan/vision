@@ -13,7 +13,7 @@ async function getItem(id) {
   }
 }
 
-export default (event) => {
+export default async (event) => {
   try {
     const { id } = event.headers
     let result = await getItem(id)
