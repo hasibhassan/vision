@@ -17,7 +17,7 @@ export default async (event) => {
   try {
     const { id } = event.headers
     let result = await getItem(id)
-    console.log(result)
+    console.log(`console log si: ${result}`)
     return result
   } catch (err) {
     return { error: err }
