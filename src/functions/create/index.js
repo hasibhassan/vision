@@ -1,29 +1,28 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function createItem(id, data) {
-  const params = {
-    TableName: process.env.TABLE_NAME,
-    Item: { id, data },
-    ReturnValues: 'ALL_OLD',
-  }
-  try {
-    await db.put(params).promise()
-  } catch (err) {
-    return err
-  }
-}
+// async function createItem(id, data) {
+//   const params = {
+//     TableName: process.env.TABLE_NAME,
+//     Item: { id, data },
+//   }
+//   try {
+//     await db.put(params).promise()
+//   } catch (err) {
+//     return err
+//   }
+// }
 
 export default async (event) => {
+  let requestJSON = JSON.parse(event.body)
   try {
-    console.log(`the console. log statement si: ${event.routeKey}`)
-    const id = event.requestContext.requestId
-    let { _id, bodyData } = event.headers
-    console.log(`console log si: ${bodyData}`)
-    bodyData = JSON.parse(bodyData)
-    console.log(bodyData)
-    await createItem(id, bodyData)
-    return `the returned values are(this isnt working): ${bodyData} ID: ${id}`
+    await db
+      .put({
+        TableName: process.env.TABLE_NAME,
+        Item: { id: requestJSON.id, data: requestJSON.data },
+      })
+      .promise()
+    return `item: ${requestJSON.id} created!`
   } catch (err) {
     return { error: err }
   }

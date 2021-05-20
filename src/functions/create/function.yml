@@ -2,7 +2,7 @@ create:
   handler: src/functions/create/index.default
   events:
     - httpApi:
-        method: POST
-        path: /
+        method: PUT
+        path: /items
   environment:
     TABLE_NAME: !Ref visionTable
