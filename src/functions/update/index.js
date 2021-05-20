@@ -18,12 +18,11 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 export default async (event) => {
   const requestJSON = JSON.parse(event.body)
-  const id = event.pathParameters.id
 
   try {
     await db.update({
       TableName: process.env.TABLE_NAME,
-      Key: { id },
+      Key: { id: event.pathParameters.id },
       UpdateExpression: 'set #d = :d',
       ExpressionAtributeNames: { '#d': data },
       ExpressionAttributeValues: { ':d': requestJSON.data },
