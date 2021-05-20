@@ -15,10 +15,10 @@ async function getItem(id) {
 
 export default (event) => {
   try {
-    // const { id } = event.pathParameters
-    // let result = await getItem(id)
-    const value = JSON.stringify(event)
-    return value
+    const { id } = event.headers
+    let result = await getItem(id)
+    console.log(result)
+    return result
   } catch (err) {
     return { error: err }
   }

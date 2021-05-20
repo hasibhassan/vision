@@ -14,11 +14,10 @@ async function createItem(id, data) {
   }
 }
 
-export default async (event, context) => {
+export default async (event) => {
   try {
-    const id = context.awsRequestId
-    let bodyData = JSON.parse(event.body)
-    bodyData = bodyData.message
+    const id = event.requestContext.requestId
+    let {, bodyData }= event.headers
     await createItem(id, bodyData)
     return `the returned values are(this isnt workingggg): ${bodyData} ID: ${id}`
   } catch (err) {
