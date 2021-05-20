@@ -3,6 +3,6 @@ create:
   events:
     - httpApi:
         method: PUT
-        path: /items
+        path: /
   environment:
     TABLE_NAME: !Ref visionTable

@@ -3,6 +3,6 @@ delete:
   events:
     - httpApi:
         method: DELETE
-        path: /items/{id}
+        path: /{id}
   environment:
     TABLE_NAME: !Ref visionTable
