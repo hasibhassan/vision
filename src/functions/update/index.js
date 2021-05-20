@@ -24,7 +24,7 @@ export default async (event) => {
       TableName: process.env.TABLE_NAME,
       Key: { id: event.pathParameters.id },
       UpdateExpression: 'set #d = :d',
-      ExpressionAtributeNames: { '#d': data },
+      ExpressionAtributeNames: { '#d': 'data' },
       ExpressionAttributeValues: { ':d': requestJSON.data },
     })
     return `item with id: ${id} updated with data: ${requestJSON.data}`
