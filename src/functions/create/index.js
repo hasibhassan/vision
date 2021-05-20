@@ -17,7 +17,7 @@ async function createItem(id, data) {
 export default async (event) => {
   try {
     const id = event.requestContext.requestId
-    let {, bodyData }= event.headers
+    const { _id, bodyData } = event.headers
     await createItem(id, bodyData)
     return `the returned values are(this isnt workingggg): ${bodyData} ID: ${id}`
   } catch (err) {
