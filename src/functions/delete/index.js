@@ -16,7 +16,7 @@ async function deleteItem(id) {
 
 export default async (event) => {
   try {
-    const id = event.pathParameters.id
+    const { id } = event.pathParameters
     await deleteItem(id)
     return `deleted ${id}`
   } catch (err) {
