@@ -16,7 +16,8 @@ async function createItem(id, data) {
 export default async (event) => {
   console.log(event.body)
   let id
-  console.log(event.pathParamters)
+  console.log(event.requestContext.requestId)
+  console.log(event.body.data)
   // if (!event.body.id) {
   id = event.requestContext.requestId
   // } else {
