@@ -7,7 +7,8 @@ async function getItem(id) {
     Key: { id },
   }
   try {
-    await db.get(params).promise()
+    const item = await db.get(params).promise()
+    return item
   } catch (err) {
     return err
   }
@@ -15,9 +16,8 @@ async function getItem(id) {
 
 export default async (event) => {
   try {
-    const { id } = event.pathParameters
-    const result = await getItem(id)
-    return result.Item.data
+    let result = await getItem(event.pathParameters.id)
+    return result
   } catch (err) {
     return { error: err }
   }

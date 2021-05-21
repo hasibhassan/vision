@@ -5,7 +5,6 @@ async function createItem(id, data) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: { id, data },
-    ReturnValues: 'ALL_OLD',
   }
   try {
     await db.put(params).promise()
@@ -14,12 +13,20 @@ async function createItem(id, data) {
   }
 }
 
-export default async (event, context) => {
+export default async (event) => {
+  let id
+  const requestJSON = JSON.parse(event.body)
+
+  if (!requestJSON.id) {
+    id = event.requestContext.requestId
+  } else {
+    id = requestJSON.id
+  }
+
   try {
-    const { awsRequestId } = context
-    const { data } = event.body
-    await createItem(awsRequestId, data)
-    return `the returned values are: ${data} ID: ${awsRequestId}`
+    await createItem(id, requestJSON.data)
+    console.log(requestJSON)
+    return `item: ${id} created with data: ${requestJSON.data}!`
   } catch (err) {
     return { error: err }
   }

@@ -2,7 +2,7 @@ update:
   handler: src/functions/update/index.default
   events:
     - httpApi:
-        method: POST
-        path: /{id}
+        method: PUT
+        path: /update/{id}
   environment:
     TABLE_NAME: !Ref visionTable
