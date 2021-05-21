@@ -17,8 +17,10 @@ async function updateItem(key, updatedData) {
 }
 
 export default async (event) => {
+  const data = JSON.parse(event.body).data
   try {
-    await updateItem(event.pathParameters.id, event.body.data)
+    console.log(data)
+    await updateItem(event.pathParameters.id, data)
     return 'updated successfully'
   } catch (err) {
     return { error: err }
