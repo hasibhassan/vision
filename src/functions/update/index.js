@@ -17,6 +17,7 @@ const db = new AWS.DynamoDB.DocumentClient()
 // }
 
 export default async (event) => {
+  console.log(`event is ${event}`)
   const requestJSON = JSON.parse(event.body)
 
   try {
