@@ -21,7 +21,7 @@ export default async (event) => {
     TableName: process.env.TABLE_NAME,
     Key: { id: event.pathParameters.id },
     UpdateExpression: 'set #d = :d',
-    ExpressionAttributeNames: { '#d': data },
+    ExpressionAttributeNames: { '#d': 'data' },
     ExpressionAttributeValues: { ':d': event.body.data },
   }
   try {
