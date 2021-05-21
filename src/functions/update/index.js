@@ -21,6 +21,7 @@ export default async (event) => {
     let updatedData = event.body || event
 
     console.log(`event is ${event.body.data}`)
+    console.log(`request id is ${event.pathParameters.id}`)
 
     await db
       .update({
@@ -36,7 +37,7 @@ export default async (event) => {
 
     console.log(updatedData)
 
-    return `item with id: ${event.pathParameters.id} updated with data: ${updatedData}`
+    return `updated successfully`
   } catch (err) {
     return { error: err }
   }
