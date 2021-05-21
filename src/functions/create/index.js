@@ -15,10 +15,6 @@ async function createItem(id, data) {
 
 export default async (event) => {
   let id
-  console.log(event.body)
-  console.log(event.requestContext)
-  console.log(event.requestContext.requestId)
-
   const requestJSON = JSON.parse(event.body)
 
   if (!requestJSON.id) {
