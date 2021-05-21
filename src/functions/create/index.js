@@ -14,6 +14,7 @@ async function createItem(id, data) {
 }
 
 export default async (event) => {
+  console.log(`my friggin event body is:... ${event.body}`)
   let id
 
   if (!event.body.id) {
