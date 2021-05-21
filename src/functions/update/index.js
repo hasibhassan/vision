@@ -26,7 +26,7 @@ export default async (event) => {
         Key: { id: event.pathParameters.id },
         UpdateExpression: 'set #d = :d',
         ExpressionAtributeNames: { '#d': data },
-        ExpressionAttributeValues: { ':d': requestJSON.data },
+        ExpressionAttributeValues: { ':d': requestJSON.mynewvalue },
       })
       .promise()
     return `item with id: ${event.pathParameters.id} updated with data: ${requestJSON.data}`
