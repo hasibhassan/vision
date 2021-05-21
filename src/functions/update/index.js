@@ -18,6 +18,8 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 export default async (event) => {
   console.log(`event is ${event.body.data}`)
+  let updatedData = event.body.data.toString()
+  console.log(updatedData)
 
   try {
     await db
@@ -26,10 +28,10 @@ export default async (event) => {
         Key: { id: event.pathParameters.id },
         UpdateExpression: 'set #d = :d',
         ExpressionAtributeNames: { '#d': data },
-        ExpressionAttributeValues: { ':d': event.body.data },
+        ExpressionAttributeValues: { ':d': updatedData },
       })
       .promise()
-    return `item with id: ${event.pathParameters.id} updated with data: ${event.body.data}`
+    return `item with id: ${event.pathParameters.id} updated with data: ${updatedData}`
   } catch (err) {
     return { error: err }
   }
