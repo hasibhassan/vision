@@ -17,16 +17,18 @@ export default async (event) => {
   console.log(event.body)
   let id
   console.log(event.requestContext)
-  console.log(event.body.data)
+  console.log(event.requestContext.requestId)
+
   // if (!event.body.id) {
   id = event.requestContext.requestId
   // } else {
   //   id = event.body.id
   // }
-
+  const requestJSON = JSON.parse(event.body)
   try {
-    await createItem(id, event.body.data)
-    return `item: ${id} created with data: ${event.body.data}!`
+    await createItem(id, requestJSON.data)
+    console.log(requestJSON)
+    return `item: ${id} created with data: ${requestJSON.data}!`
   } catch (err) {
     return { error: err }
   }
