@@ -7,7 +7,7 @@ async function updateItem(key, updatedData) {
     Key: { id: key },
     UpdateExpression: 'set #d = :d',
     ExpressionAttributeNames: { '#d': data },
-    ExpressionAttributeValues: { ':d': updatedData },
+    ExpressionAttributeValues: { ':d': `${updatedData}` },
   }
   try {
     await db.update(params).promise()
