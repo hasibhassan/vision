@@ -28,7 +28,7 @@ export default async (event) => {
   }
 
   try {
-    await createItem(requestJSON.id, requestJSON.data)
+    await createItem(id, requestJSON.data)
     console.log(requestJSON)
     return `item: ${id} created with data: ${requestJSON.data}!`
   } catch (err) {
