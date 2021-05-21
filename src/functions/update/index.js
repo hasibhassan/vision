@@ -19,9 +19,7 @@ async function updateItem(key, updatedData) {
 export default async (event) => {
   try {
     await updateItem(event.pathParameters.id, event.body.data)
-    console.log(event.pathParameters.id)
-    console.log(event.body)
-    return `updated successfully`
+    return 'updated successfully'
   } catch (err) {
     return { error: err }
   }
