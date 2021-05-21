@@ -18,7 +18,12 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 export default async (event) => {
   console.log(`event is ${event.body.data}`)
-  let updatedData = event.body.data.toString()
+  let updatedData
+  if (event.body) {
+    updatedData = event.body.data
+  } else {
+    updatedData = JSON.parse(JSON.stringify(event.body))
+  }
   console.log(updatedData)
 
   try {
