@@ -27,7 +27,8 @@ export default async (event) => {
         ExpressionAttributeValues: { ':d': event.body.data },
       })
       .promise()
-    console.log(event)
+    console.log(event.pathParameters.id)
+    console.log(event.body)
     return `updated successfully`
   } catch (err) {
     return { error: err }
