@@ -14,14 +14,14 @@ async function createItem(id, data) {
 }
 
 export default async (event) => {
-  console.log(`my friggin event body is:... ${event.body}`)
+  console.log(`my friggin event body is:... ${event.body || event}`)
   let id
 
-  if (!event.body.id) {
-    id = event.requestContext.requestId
-  } else {
-    id = event.body.id
-  }
+  // if (!event.body.id) {
+  id = event.requestContext.requestId
+  // } else {
+  //   id = event.body.id
+  // }
 
   try {
     await createItem(id, event.body.data)
