@@ -6,7 +6,7 @@ const db = new AWS.DynamoDB.DocumentClient()
 //     TableName: process.env.TABLE_NAME,
 //     Key: { id: key },
 //     UpdateExpression: 'set #d = :d',
-//     ExpressionAttributeNames: { '#d': data },
+//     ExpressionAttributeNames: { '#d': 'data' },
 //     ExpressionAttributeValues: { ':d': `${updatedData}` },
 //   }
 //   try {
