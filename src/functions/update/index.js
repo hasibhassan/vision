@@ -17,7 +17,7 @@ async function updateItem(key, updatedData) {
 }
 
 export default async (event) => {
-  const data = JSON.parse(event.body).data
+  const data = JSON.parse(JSON.stringify(event.body)).data
   try {
     console.log(data)
     await updateItem(event.pathParameters.id, data)
