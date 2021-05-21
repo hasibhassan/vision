@@ -17,6 +17,8 @@ const db = new AWS.DynamoDB.DocumentClient()
 // }
 
 export default async (event) => {
+  console.log(event.pathParameters)
+  console.log(event.body)
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { id: event.pathParameters.id },
