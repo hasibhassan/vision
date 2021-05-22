@@ -34,3 +34,4 @@ package:
 resources:
   - ${file(src/resources/dynamodb.yml)}
   # - ${file(src/resources/sqs.yml)}
+  # - ${file(src/resources/kinesis.yml)}
