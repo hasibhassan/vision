@@ -25,8 +25,8 @@ export default async (event) => {
 
   try {
     await createItem(id, requestJSON.data)
-    console.log(requestJSON)
-    return `item: ${id} created with data: ${requestJSON.data}!`
+    const response = { id, data: requestJSON.data }
+    return JSON.stringify(response)
   } catch (err) {
     return { error: err }
   }
