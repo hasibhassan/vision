@@ -13,13 +13,13 @@ provider:
       visionApiAuthorizer:
         type: jwt
         identitySource: $request.header.Authorization
-        issuerUrl: 
+        issuerUrl:
           Fn::Join:
-          - ''
-          - - 'https://cognito-idp.'
-            - 'us-east-1'
-            - '.amazonaws.com/'
-            - Ref: visionUserPool
+            - ''
+            - - 'https://cognito-idp.'
+              - 'us-east-1'
+              - '.amazonaws.com/'
+              - Ref: visionUserPool
         audience: !Ref visionUserPoolClient
   environment:
     DOMAIN_SUFFIX: djklagqewryuias14sd678
@@ -47,10 +47,4 @@ package:
   individually: true
 
 resources:
-  Resources:
-    HttpApi:
-      DependsOn: visionUserPool
-  - ${file(src/resources/cognito.yml)}
-  - ${file(src/resources/dynamodb.yml)}
-    # - ${file(src/resources/sqs.yml)}
-    # - ${file(src/resources/kinesis.yml)}
+  - ${file(src/resources/resources.yml)}
