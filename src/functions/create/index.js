@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function createItem(id, data) {
+async function createUser(PK, SK, TYPE) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Item: { id, data },
+    Item: { PK: `USER#${PK}`, SK: `METADATA#${SK}`, TYPE },
   }
   try {
     await db.put(params).promise()
@@ -24,7 +24,7 @@ export default async (event) => {
   }
 
   try {
-    await createItem(id, requestJSON.data)
+    await createUser(id, requestJSON.data)
     const response = { id, data: requestJSON.data }
     return JSON.stringify(response)
   } catch (err) {
