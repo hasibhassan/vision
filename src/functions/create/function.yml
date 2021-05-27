@@ -4,5 +4,6 @@ create:
     - httpApi:
         method: PUT
         path: /
+        authorizer: visionApiAuthorizer
   environment:
     TABLE_NAME: !Ref visionTable

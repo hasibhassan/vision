@@ -1,0 +1,34 @@
+visionUserPool:
+  Type: AWS::Cognito::UserPool
+  Properties:
+    UsernameAttributes:
+      - email
+    AutoVerifiedAttributes:
+      - email
+visionUserPoolClient:
+  Type: AWS::Cognito::UserPoolClient
+  Properties:
+    UserPoolId: !Ref visionUserPool
+    AllowedOAuthFlows:
+      - implicit
+    AllowedOAuthFlowsUserPoolClient: true
+    AllowedOAuthScopes:
+      - phone
+      - email
+      - openid
+      - profile
+      - aws.cognito.signin.user.admin
+    CallbackURLs:
+      - https://localhost:3000
+    ExplicitAuthFlows:
+      - ALLOW_USER_PASSWORD_AUTH
+      - ALLOW_REFRESH_TOKEN_AUTH
+      - ALLOW_USER_SRP_AUTH
+    GenerateSecret: false
+    SupportedIdentityProviders:
+      - COGNITO
+visionUserPoolDomain:
+  Type: AWS::Cognito::UserPoolDomain
+  Properties:
+    UserPoolId: !Ref visionUserPool
+    Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}

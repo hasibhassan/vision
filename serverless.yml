@@ -8,6 +8,21 @@ provider:
     role: ${env:IAM_ROLE}
   stackTags:
     slsApp: vision
+  httpApi:
+    authorizers:
+      visionApiAuthorizer:
+        type: jwt
+        identitySource: $request.header.Authorization
+        issuerUrl: 
+          Fn::Join:
+          - ''
+          - - 'https://cognito-idp.'
+            - 'us-east-1'
+            - '.amazonaws.com/'
+            - Ref: visionUserPool
+        audience: !Ref visionUserPoolClient
+  environment:
+    DOMAIN_SUFFIX: djklagqewryuias14sd678
 
 plugins:
   - serverless-webpack
@@ -32,6 +47,10 @@ package:
   individually: true
 
 resources:
-  - ${file(src/resources/dynamodb.yml)}
-  # - ${file(src/resources/sqs.yml)}
-  # - ${file(src/resources/kinesis.yml)}
+  Resources:
+    HttpApi:
+      DependsOn: visionUserPool
+    - ${file(src/resources/cognito.yml)}
+    - ${file(src/resources/dynamodb.yml)}
+    # - ${file(src/resources/sqs.yml)}
+    # - ${file(src/resources/kinesis.yml)}

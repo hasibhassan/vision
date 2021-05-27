@@ -4,5 +4,6 @@ delete:
     - httpApi:
         method: DELETE
         path: /{id}
+        authorizer: visionApiAuthorizer
   environment:
     TABLE_NAME: !Ref visionTable

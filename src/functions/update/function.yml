@@ -4,5 +4,6 @@ update:
     - httpApi:
         method: PUT
         path: /update/{id}
+        authorizer: visionApiAuthorizer
   environment:
     TABLE_NAME: !Ref visionTable

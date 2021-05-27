@@ -1,4 +1,3 @@
-Resources:
-  visionQueue:
-    Type: AWS::SQS::Queue
-    Properties: {}
+visionQueue:
+  Type: AWS::SQS::Queue
+  Properties: {}

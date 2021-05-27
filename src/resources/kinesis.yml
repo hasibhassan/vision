@@ -1,5 +1,4 @@
-Resources:
-  visionStream:
-    Type: AWS::Kinesis::Stream
-    Properties:
-      ShardCount: 0
+visionStream:
+  Type: AWS::Kinesis::Stream
+  Properties:
+    ShardCount: 0
