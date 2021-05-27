@@ -50,7 +50,7 @@ resources:
   Resources:
     HttpApi:
       DependsOn: visionUserPool
-    - ${file(src/resources/cognito.yml)}
-    - ${file(src/resources/dynamodb.yml)}
+  - ${file(src/resources/cognito.yml)}
+  - ${file(src/resources/dynamodb.yml)}
     # - ${file(src/resources/sqs.yml)}
     # - ${file(src/resources/kinesis.yml)}
