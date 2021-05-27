@@ -11,7 +11,6 @@ provider:
   httpApi:
     authorizers:
       visionApiAuthorizer:
-        type: jwt
         identitySource: $request.header.Authorization
         issuerUrl:
           Fn::Join:
