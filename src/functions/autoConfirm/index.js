@@ -1,4 +1,6 @@
 export default async (event, context, callback) => {
+  // Log the event
+  console.log(event)
   // Confirm the user
   event.response.autoConfirmUser = true
 

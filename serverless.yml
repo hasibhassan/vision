@@ -32,6 +32,7 @@ functions:
   delete: ${file(src/functions/delete/function.yml):delete}
   get: ${file(src/functions/get/function.yml):get}
   update: ${file(src/functions/update/function.yml):update}
+  autoConfirm: ${file(src/functions/autoConfirm/function.yml):autoConfirm}
 
 custom:
   webpack:
