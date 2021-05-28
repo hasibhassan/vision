@@ -2,6 +2,6 @@ autoConfirm:
   handler: src/functions/autoConfirm/index.default
   events:
     - cognitoUserPool:
-        pool: CognitoUserPoolvisionUserPool
+        pool: CognitoUserPoolVisionUserPool
         trigger: PreSignUp
         existing: true

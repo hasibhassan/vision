@@ -1,4 +1,4 @@
-CognitoUserPoolvisionUserPool:
+CognitoUserPoolVisionUserPool:
   Type: AWS::Cognito::UserPool
   Properties:
     UsernameAttributes:
@@ -8,7 +8,7 @@ CognitoUserPoolvisionUserPool:
 CognitoUserPoolClient:
   Type: AWS::Cognito::UserPoolClient
   Properties:
-    UserPoolId: !Ref CognitoUserPoolvisionUserPool
+    UserPoolId: !Ref CognitoUserPoolVisionUserPool
     AllowedOAuthFlows:
       - implicit
     AllowedOAuthFlowsUserPoolClient: true
@@ -27,8 +27,8 @@ CognitoUserPoolClient:
     GenerateSecret: false
     SupportedIdentityProviders:
       - COGNITO
-CognitoUserPoolvisionUserPoolDomain:
+CognitoUserPoolVisionUserPoolDomain:
   Type: AWS::Cognito::UserPoolDomain
   Properties:
-    UserPoolId: !Ref CognitoUserPoolvisionUserPool
+    UserPoolId: !Ref CognitoUserPoolVisionUserPool
     Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}
