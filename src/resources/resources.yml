@@ -30,6 +30,7 @@ Resources:
       GenerateSecret: false
       SupportedIdentityProviders:
         - COGNITO
+      IdTokenValidity: 24
   CognitoUserPoolDomain:
     Type: AWS::Cognito::UserPoolDomain
     Properties:
