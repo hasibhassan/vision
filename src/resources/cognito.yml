@@ -1,14 +1,14 @@
-visionUserPool:
+CognitoUserPoolvisionUserPool:
   Type: AWS::Cognito::UserPool
   Properties:
     UsernameAttributes:
       - email
     AutoVerifiedAttributes:
       - email
-visionUserPoolClient:
+CognitoUserPoolClient:
   Type: AWS::Cognito::UserPoolClient
   Properties:
-    UserPoolId: !Ref visionUserPool
+    UserPoolId: !Ref CognitoUserPoolvisionUserPool
     AllowedOAuthFlows:
       - implicit
     AllowedOAuthFlowsUserPoolClient: true
@@ -27,8 +27,8 @@ visionUserPoolClient:
     GenerateSecret: false
     SupportedIdentityProviders:
       - COGNITO
-visionUserPoolDomain:
+CognitoUserPoolvisionUserPoolDomain:
   Type: AWS::Cognito::UserPoolDomain
   Properties:
-    UserPoolId: !Ref visionUserPool
+    UserPoolId: !Ref CognitoUserPoolvisionUserPool
     Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}

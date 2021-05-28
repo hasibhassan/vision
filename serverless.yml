@@ -18,8 +18,8 @@ provider:
             - - 'https://cognito-idp.'
               - 'us-east-1'
               - '.amazonaws.com/'
-              - Ref: visionUserPool
-        audience: !Ref visionUserPoolClient
+              - Ref: CognitoUserPoolvisionUserPool
+        audience: !Ref CognitoUserPoolClient
   environment:
     DOMAIN_SUFFIX: djklagqewryuias14sd678
 

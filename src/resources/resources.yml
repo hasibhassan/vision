@@ -1,17 +1,17 @@
 Resources:
   HttpApi:
-    DependsOn: visionUserPool
-  visionUserPool:
+    DependsOn: CognitoUserPoolvisionUserPool
+  CognitoUserPoolvisionUserPool:
     Type: AWS::Cognito::UserPool
     Properties:
       UsernameAttributes:
         - email
       AutoVerifiedAttributes:
         - email
-  visionUserPoolClient:
+  CognitoUserPoolClient:
     Type: AWS::Cognito::UserPoolClient
     Properties:
-      UserPoolId: !Ref visionUserPool
+      UserPoolId: !Ref CognitoUserPoolvisionUserPool
       AllowedOAuthFlows:
         - implicit
       AllowedOAuthFlowsUserPoolClient: true
@@ -30,10 +30,10 @@ Resources:
       GenerateSecret: false
       SupportedIdentityProviders:
         - COGNITO
-  visionUserPoolDomain:
+CognitoUserPoolDomain:
     Type: AWS::Cognito::UserPoolDomain
     Properties:
-      UserPoolId: !Ref visionUserPool
+      UserPoolId: !Ref CognitoUserPoolvisionUserPool
       Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}
   visionTable:
     Type: AWS::DynamoDB::Table
