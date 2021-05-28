@@ -30,7 +30,7 @@ Resources:
       GenerateSecret: false
       SupportedIdentityProviders:
         - COGNITO
-CognitoUserPoolDomain:
+  CognitoUserPoolDomain:
     Type: AWS::Cognito::UserPoolDomain
     Properties:
       UserPoolId: !Ref CognitoUserPoolvisionUserPool
