@@ -1,8 +1,6 @@
 export default async (event, context, callback) => {
   // Log the event
   console.log(event)
-  // Confirm the user
-  event.response.autoConfirmUser = true
 
   // Set the email as verified if it is in the request
   if (event.request.userAttributes.hasOwnProperty('email')) {
