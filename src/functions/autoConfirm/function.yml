@@ -4,4 +4,3 @@ autoConfirm:
     - cognitoUserPool:
         pool: VisionUserPool
         trigger: PreSignUp
-        existing: true
