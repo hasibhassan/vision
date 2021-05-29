@@ -33,6 +33,7 @@ functions:
   get: ${file(src/functions/get/function.yml):get}
   update: ${file(src/functions/update/function.yml):update}
   autoConfirm: ${file(src/functions/autoConfirm/function.yml):autoConfirm}
+  postConfirm: ${file(src/functions/postConfirm/function.yml):postConfirm}
 
 custom:
   webpack:

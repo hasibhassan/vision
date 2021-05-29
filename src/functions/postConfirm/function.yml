@@ -1,0 +1,8 @@
+postConfirm:
+  handler: src/functions/postConfirm/index.default
+  events:
+    - cognitoUserPool:
+        pool: VisionUserPool
+        trigger: PostConfirmation
+  environment:
+    TABLE_NAME: !Ref visionTable

@@ -8,6 +8,8 @@ Resources:
         - email
       AutoVerifiedAttributes:
         - email
+      UsernameConfiguration:
+        CaseSensitive: false
   CognitoUserPoolClient:
     Type: AWS::Cognito::UserPoolClient
     Properties:
