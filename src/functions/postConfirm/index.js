@@ -26,6 +26,7 @@ export default async (event) => {
   const date = new Date()
   try {
     await addUserToDB(event, date)
+    return event
   } catch (err) {
     return { error: err }
   }
