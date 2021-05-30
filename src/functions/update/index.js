@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function updateItem(id, updatedData) {
+async function updateItem(PK, SK, updatedData) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Key: { id },
+    Key: { PK, SK },
     UpdateExpression: 'set #d = :d',
     ExpressionAttributeNames: { '#d': 'data' },
     ExpressionAttributeValues: { ':d': updatedData },

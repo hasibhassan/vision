@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function deleteItem(id) {
+async function deleteItem(PK, SK) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Key: { id },
+    Key: { PK, SK },
   }
   try {
     await db.delete(params).promise()

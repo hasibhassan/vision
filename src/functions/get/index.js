@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function getItem(id) {
+async function getItem(PK, SK) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Key: { id },
+    Key: { PK, SK },
   }
   try {
     const item = await db.get(params).promise()
