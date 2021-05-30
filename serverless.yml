@@ -9,6 +9,7 @@ provider:
   stackTags:
     slsApp: vision
   httpApi:
+    cors: true
     authorizers:
       visionApiAuthorizer:
         identitySource: $request.header.Authorization

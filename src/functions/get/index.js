@@ -18,9 +18,7 @@ async function getItem(id) {
 export default async (event) => {
   try {
     let result = await getItem(event.pathParameters.id)
-    console.log(event.pathParameters.id)
     result = JSON.stringify(result)
-    console.log(result)
     return result
   } catch (err) {
     return { error: err }
