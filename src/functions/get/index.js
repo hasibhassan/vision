@@ -2,6 +2,7 @@ import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
 async function getItem(id) {
+  id = `USER#${id}`
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: { PK: id, SK: id },
