@@ -86,7 +86,7 @@ Resources:
                 Resource:
                   'Fn::Join':
                     - ''
-                    - - 'arn:aws:s3:::visionappbucket/'
+                    - - 'arn:aws:s3:::*/'
                       - '${cognito-identity.amazonaws.com:sub'
                       - '}/*'
 
