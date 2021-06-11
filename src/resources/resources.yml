@@ -3,10 +3,6 @@ Resources:
   HttpApi:
     DependsOn: CognitoUserPoolVisionUserPool
 
-  # S3 Bucket
-  visionappbucket:
-    Type: AWS::S3::Bucket
-
   # User Pool
   CognitoUserPoolVisionUserPool:
     Type: AWS::Cognito::UserPool
