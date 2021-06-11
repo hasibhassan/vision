@@ -87,7 +87,12 @@ Resources:
               - Effect: 'Allow'
                 Action:
                   - 's3:*'
-                Resource: 'arn:aws:s3:::visionappbucket/private/${cognito-identity.amazonaws.com:sub}/*'
+                Resource:
+                  'Fn::Join':
+                    - ''
+                    - - 'arn:aws:s3:::visionappbucket/private/'
+                      - '${cognito-identity.amazonaws.com:sub'
+                      - '}/*'
 
   # Assigns the roles to the Identity Pool
   IdentityPoolRoleMapping:
