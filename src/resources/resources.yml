@@ -1,6 +1,13 @@
 Resources:
+  # API Gateway HTTP API with JWT Authorizer
   HttpApi:
     DependsOn: CognitoUserPoolVisionUserPool
+
+  # S3 Bucket
+  visionappbucket:
+    Type: AWS::S3::Bucket
+
+  # User Pool
   CognitoUserPoolVisionUserPool:
     Type: AWS::Cognito::UserPool
     Properties:
@@ -38,6 +45,59 @@ Resources:
     Properties:
       UserPoolId: !Ref CognitoUserPoolVisionUserPool
       Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}
+
+  # Identity Pool
+  IdentityPool:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      AllowUnauthenticatedIdentities: false
+      CognitoIdentityProviders:
+        - ClientId: !Ref CognitoUserPoolClient
+          ProviderName: !GetAtt CognitoUserPoolVisionUserPool.ProviderName
+
+  # Create a role for authorized acces to AWS resources. Control what your user can access. This example only allows Lambda invokation
+  # Only allows users in the previously created Identity Pool
+  CognitoAuthorizedRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Federated: 'cognito-identity.amazonaws.com'
+            Action:
+              - 'sts:AssumeRoleWithWebIdentity'
+            Condition:
+              StringEquals:
+                'cognito-identity.amazonaws.com:aud': !Ref IdentityPool
+              'ForAnyValue:StringLike':
+                'cognito-identity.amazonaws.com:amr': authenticated
+      Policies:
+        - PolicyName: 'CognitoVisionIdentityPoolAuthorizedPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: 'Allow'
+                Action:
+                  - 'mobileanalytics:PutEvents'
+                  - 'cognito-sync:*'
+                  - 'cognito-identity:*'
+                Resource: '*'
+              - Effect: 'Allow'
+                Action:
+                  - 's3:*'
+                Resource: 'arn:aws:s3:::visionappbucket/private/${cognito-identity.amazonaws.com:sub}/*'
+
+  # Assigns the roles to the Identity Pool
+  IdentityPoolRoleMapping:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref IdentityPool
+      Roles:
+        authenticated: !GetAtt CognitoAuthorizedRole.Arn
+
+  # DynamoDB Table
   visionTable:
     Type: AWS::DynamoDB::Table
     Properties:
