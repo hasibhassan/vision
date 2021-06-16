@@ -40,7 +40,7 @@ Resources:
     Type: AWS::Cognito::UserPoolDomain
     Properties:
       UserPoolId: !Ref CognitoUserPoolVisionUserPool
-      Domain: vision-user-pool-domain-dev-${self:provider.environment.DOMAIN_SUFFIX}
+      Domain: vision-user-pool-domain-dev1-one-${self:provider.environment.DOMAIN_SUFFIX}
 
   # Identity Pool
   IdentityPool:
