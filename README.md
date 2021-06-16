@@ -6,5 +6,5 @@ Hook it up to build on every push using CI/CD use least privileged IAM policy. U
 
 ```bash
 npm install serverless
-npm ci
+npm ci # this or npm i
 ```
