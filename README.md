@@ -5,6 +5,6 @@
 Hook it up to build on every push using CI/CD use least privileged IAM policy. Use the AWS Credentials workflow in Github Actions marketplace.
 
 ```bash
-npm install serverless
-npm ci # this or npm i
+npm ci
+npm install serverless # this or npm i -g serverless
 ```
