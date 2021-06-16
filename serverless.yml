@@ -3,7 +3,6 @@ service: vision
 provider:
   name: aws
   runtime: nodejs14.x
-  cfnRole: ${env:IAM_CFN_ROLE}
   lambdaHashingVersion: 20201221
   stackTags:
     serverless: framework

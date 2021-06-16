@@ -26,4 +26,4 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
-      - run: ./node_modules/.bin/serverless remove
+      - run: ./node_modules/.bin/serverless deploy
