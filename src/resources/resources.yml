@@ -87,7 +87,8 @@ Resources:
                   'Fn::Join':
                     - ''
                     - - 'arn:aws:s3:::visionappbucket/'
-                      - '${cognito-identity.amazonaws.com:sub}/*'
+                      - '${cognito-identity.amazonaws.com:sub'
+                      - '}/*'
 
   CognitoUnAuthorizedRole:
     Type: 'AWS::IAM::Role'
