@@ -6,6 +6,8 @@ provider:
     role: arn:aws:iam::#{AWS::AccountId}:role/SlsFrmWrk_Amplify_Dev_Role
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
+  logs:
+    httpApi: true
   stackTags:
     serverless: framework
   httpApi:
