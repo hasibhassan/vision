@@ -13,5 +13,8 @@
     "serverless-webpack": "^5.4.0",
     "webpack": "^5.26.3",
     "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "serverless-cloudformation-sub-variables": "^0.2.1"
   }
 }
