@@ -7,7 +7,18 @@ provider:
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   logs:
-    httpApi: true
+    httpApi:
+      format: '{
+  "requestId": "$context.requestId",
+  "ip": "$context.identity.sourceIp",
+  "requestTime": "$context.requestTime",
+  "httpMethod": "$context.httpMethod",
+  "routeKey": "$context.routeKey",
+  "status": "$context.status",
+  "protocol": "$context.protocol",
+  "responseLength": "$context.responseLength",
+  "integrationError": "$context.integrationErrorMessage"
+}'
   stackTags:
     serverless: framework
   httpApi:

@@ -13,8 +13,7 @@ async function addUserToDB(event, date) {
   }
 
   try {
-    const data = await db.put(params).promise()
-    console.log('this is the data', data)
+    await db.put(params).promise()
     return data
   } catch (err) {
     return { error: err }
@@ -24,8 +23,7 @@ async function addUserToDB(event, date) {
 export default async (event) => {
   const date = new Date()
   try {
-    const user = await addUserToDB(event, date)
-    console.log('user is', user)
+    await addUserToDB(event, date)
     return event
   } catch (err) {
     return { error: err }
