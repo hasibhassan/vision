@@ -23,8 +23,12 @@ async function addUserToDB(event, date) {
 }
 
 export default async (event) => {
+  console.log(
+    `event.request.userAttributes is :${event.request.userAttributes}at least it got to in the handler.`
+  )
   const date = new Date()
   try {
+    console.log(`now its in the try block in the handler.`)
     await addUserToDB(event, date)
     return event
   } catch (err) {
