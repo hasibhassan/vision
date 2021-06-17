@@ -16,8 +16,9 @@ async function addUserToDB(event, date) {
 
   try {
     console.log('adding user to db now... lets see what happens')
-    await db.put(params).promise()
-    console.log('Successfully added user to DB')
+    const data = await db.put(params).promise()
+    console.log(`Successfully added data ${data} to DB`)
+    return data
   } catch (err) {
     return { error: err }
   }
@@ -34,8 +35,8 @@ export default async (event) => {
   // const date = new Date()
   try {
     console.log(`now its in the try block in the handler.`)
-    await addUserToDB(event)
-    console.log('done adding user to dynamoDB')
+    const user = await addUserToDB(event)
+    console.log(`done adding user: ${user} to dynamoDB`)
     return event
   } catch (err) {
     return { error: err }
