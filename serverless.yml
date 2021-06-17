@@ -2,19 +2,10 @@ service: vision
 
 provider:
   name: aws
+  deploymentBucket:
+    name: ${self:service}Bucket
   iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - dynamodb:DescribeTable
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-          Resource: 'arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/#{visionTable}'
+    role: ${env:IAM_CFN_ROLE}
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   stackTags:
