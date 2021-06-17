@@ -5,10 +5,12 @@ async function addUserToDB(event, date) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: {
-      PK: `USER#${JSON.stringify(event.request.userAttributes.sub)}`,
-      SK: `USER#${JSON.stringify(event.request.userAttributes.sub)}`,
-      EMAIL: `EMAIL#${JSON.stringify(event.request.userAttributes.email)}`,
-      CREATEDAT: date.toISOString(),
+      PK: event.request.userAttributes.sub,
+      // `USER#${event.request.userAttributes.sub}`,
+      SK: event.request.userAttributes.sub,
+      // `USER#${event.request.userAttributes.sub}`,
+      // EMAIL: `EMAIL#${event.request.userAttributes.email}`,
+      // CREATEDAT: date.toISOString(),
     },
   }
 
@@ -29,10 +31,10 @@ export default async (event) => {
       event.request.userAttributes.email
     )} at least it got to in the handler.`
   )
-  const date = new Date()
+  // const date = new Date()
   try {
     console.log(`now its in the try block in the handler.`)
-    await addUserToDB(event, date)
+    await addUserToDB(event)
     console.log('done adding user to dynamoDB')
     return event
   } catch (err) {
