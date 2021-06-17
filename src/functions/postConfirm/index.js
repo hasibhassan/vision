@@ -17,7 +17,7 @@ async function addUserToDB(event, date) {
   try {
     console.log('adding user to db now... lets see what happens')
     const data = await db.put(params).promise()
-    console.log(`Successfully added data ${data} to DB`)
+    console.log(`Successfully added data ${JSON.stringify(data)} to DB`)
     return data
   } catch (err) {
     return { error: err }
@@ -36,9 +36,32 @@ export default async (event) => {
   try {
     console.log(`now its in the try block in the handler.`)
     const user = await addUserToDB(event)
-    console.log(`done adding user: ${user} to dynamoDB`)
+    console.log(`done adding user: ${JSON.stringify(user)} to dynamoDB`)
     return event
   } catch (err) {
     return { error: err }
   }
 }
+
+// async function createItem(itemData) {
+//   var params = {
+//     TableName: 'ProductTable',
+//     Item: itemData,
+//   }
+//   try {
+//     await docClient.put(params).promise()
+//   } catch (err) {
+//     return err
+//   }
+// }
+
+// // usage
+// exports.handler = async (event, context) => {
+//   try {
+//     const { data } = event.body
+//     await createItem(data)
+//     return { body: 'successfully created item' }
+//   } catch (err) {
+//     return { error: err }
+//   }
+// }
