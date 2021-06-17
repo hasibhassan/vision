@@ -3,7 +3,7 @@ service: vision
 provider:
   name: aws
   iam:
-    role: ${env:IAM_CFN_ROLE}
+    role: arn:aws:iam::#{AWS::AccountId}:role/SlsFrmWrk_Amplify_Dev_Role
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   stackTags:
