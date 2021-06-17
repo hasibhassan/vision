@@ -2,8 +2,6 @@ service: vision
 
 provider:
   name: aws
-  deploymentBucket:
-    name: ${self:service}Bucket
   iam:
     role: ${env:IAM_CFN_ROLE}
   runtime: nodejs14.x
