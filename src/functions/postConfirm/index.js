@@ -1,18 +1,19 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function addUserToDB(eventJson, date) {
+async function addUserToDB(event, date) {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: {
-      PK: `USER#${eventJson.request.userAttributes.sub}`,
-      SK: `USER#${eventJson.request.userAttributes.sub}`,
-      EMAIL: `EMAIL#${eventJson.request.userAttributes.email}`,
+      PK: `USER#${JSON.stringify(event.request.userAttributes.sub)}`,
+      SK: `USER#${JSON.stringify(event.request.userAttributes.sub)}`,
+      EMAIL: `EMAIL#${JSON.stringify(event.request.userAttributes.email)}`,
       CREATEDAT: date.toISOString(),
     },
   }
 
   try {
+    console.log('adding user to db now... lets see what happens')
     await db.put(params).promise()
     console.log('Successfully added user to DB')
   } catch (err) {
