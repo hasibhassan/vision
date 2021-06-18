@@ -2,7 +2,7 @@ get:
   handler: src/functions/get/index.default
   events:
     - httpApi:
-        method: PUT
+        method: GET
         path: /{id}
         authorizer: visionApiAuthorizer
   environment:
