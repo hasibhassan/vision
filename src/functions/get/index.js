@@ -9,6 +9,8 @@ async function getItem(id) {
   }
   try {
     const item = await db.get(params).promise()
+    console.log('item is', item)
+    console.log('item stringified is', JSON.stringify(item))
     return item
   } catch (err) {
     return err
@@ -19,6 +21,7 @@ export default async (event) => {
   try {
     let result = await getItem(event.pathParameters.id)
     result = JSON.stringify(result)
+    console.log('result stringified is', result)
     return result
   } catch (err) {
     return { error: err }
