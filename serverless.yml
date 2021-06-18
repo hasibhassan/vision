@@ -2,10 +2,11 @@ service: vision
 
 provider:
   name: aws
+  stackTags:
+    serverless: framework
+  runtime: nodejs14.x
   iam:
     role: arn:aws:iam::#{AWS::AccountId}:role/SlsFrmWrk_Amplify_Dev_Role
-  runtime: nodejs14.x
-  lambdaHashingVersion: 20201221
   logs:
     httpApi:
       format: '{
@@ -19,8 +20,7 @@ provider:
   "responseLength": "$context.responseLength",
   "integrationError": "$context.integrationErrorMessage"
 }'
-  stackTags:
-    serverless: framework
+
   httpApi:
     cors: true
     authorizers:
