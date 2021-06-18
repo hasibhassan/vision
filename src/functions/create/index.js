@@ -1,10 +1,10 @@
 import AWS from 'aws-sdk'
 const db = new AWS.DynamoDB.DocumentClient()
 
-async function createUser(PK, SK, TYPE) {
+async function createUser(PK, ...rest) {
   const params = {
     TableName: process.env.TABLE_NAME,
-    Item: { PK: `USER#${PK}`, SK: `METADATA#${SK}`, TYPE },
+    Item: { PK: `USER#${PK}`, SK: `USER#${PK}`, ...rest },
   }
   try {
     await db.put(params).promise()
