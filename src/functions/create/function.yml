@@ -1,9 +1,0 @@
-create:
-  handler: src/functions/create/index.default
-  events:
-    - httpApi:
-        method: PUT
-        path: /
-        authorizer: visionApiAuthorizer
-  environment:
-    TABLE_NAME: !Ref visionTable

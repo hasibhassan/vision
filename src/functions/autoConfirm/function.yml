@@ -1,6 +1,0 @@
-autoConfirm:
-  handler: src/functions/autoConfirm/index.default
-  events:
-    - cognitoUserPool:
-        pool: VisionUserPool
-        trigger: PreSignUp

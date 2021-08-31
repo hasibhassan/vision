@@ -1,3 +1,0 @@
-visionQueue:
-  Type: AWS::SQS::Queue
-  Properties: {}

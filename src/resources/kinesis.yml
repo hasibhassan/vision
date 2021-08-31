@@ -1,4 +1,0 @@
-visionStream:
-  Type: AWS::Kinesis::Stream
-  Properties:
-    ShardCount: 0

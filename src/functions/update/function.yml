@@ -1,9 +1,0 @@
-update:
-  handler: src/functions/update/index.default
-  events:
-    - httpApi:
-        method: PUT
-        path: /update/{id}
-        authorizer: visionApiAuthorizer
-  environment:
-    TABLE_NAME: !Ref visionTable

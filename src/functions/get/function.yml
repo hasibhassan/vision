@@ -1,9 +1,0 @@
-get:
-  handler: src/functions/get/index.default
-  events:
-    - httpApi:
-        method: GET
-        path: /{id}
-        authorizer: visionApiAuthorizer
-  environment:
-    TABLE_NAME: !Ref visionTable
