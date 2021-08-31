@@ -1,0 +1,93 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-width: 1px;
+  border-color: transparent;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #fff;
+  background-color: rgba(19, 102, 160, 1);
+}
+
+.button:hover {
+  background-color: rgb(14, 73, 114);
+}
+
+.button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 0px rgb(238, 227, 220), 0 0 0 4px rgba(25, 131, 205, 1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* change padding, font-size, line-height */
+
+.smBtn {
+  composes: button;
+  padding: 0.5rem 0.75rem;
+  line-height: 1rem;
+}
+
+.lgBtn {
+  composes: button;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.xlBtn {
+  composes: button;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.smBtnIcon {
+  margin-left: -0.125rem;
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.btnIcon {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.lgBtnIcon {
+  margin-left: -0.25rem;
+  margin-right: 0.75rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.rightSmBtnIcon {
+  margin-left: 0.5rem;
+  margin-right: -0.125rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+.rightBtnIcon {
+  margin-left: 0.5rem;
+  margin-right: -0.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.rightLgBtnIcon {
+  margin-left: 0.75rem;
+  margin-right: -0.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.roundedBtn {
+  composes: button;
+  border-radius: 9999px;
+}

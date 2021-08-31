@@ -1,0 +1,38 @@
+.footerContainer {
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: 80rem; */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: rgb(238, 227, 220);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.stackTwo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 1.5rem;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .footerContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
