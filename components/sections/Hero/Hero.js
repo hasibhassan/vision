@@ -6,12 +6,11 @@ export default function Hero() {
     <div className={styles.container}>
       <div className={styles.containerTwo}>
         <h1 className={styles.heading}>
-          See new <p className={styles.gradientText}>NFTs</p> as they drop, all
-          in one centralized place.
+          See <p className={styles.gradientText}>blockchains</p> in a different
+          way.
         </h1>
         <p className={styles.description}>
-          Vision lets users discover their new favorite NFT by showing listings
-          from multiple marketplaces in one single place.
+          Vision lets users see what's going on in blockchains
         </p>
         <div className={styles.CTAButtonStack}>
           <HeroButton label="Get Started" />
