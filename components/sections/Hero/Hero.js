@@ -10,7 +10,7 @@ export default function Hero() {
           way.
         </h1>
         <p className={styles.description}>
-          Vision lets users see what's going on in blockchains
+          Vision lets users see what's going on in blockchains.
         </p>
         <div className={styles.CTAButtonStack}>
           <HeroButton label="Get Started" />
