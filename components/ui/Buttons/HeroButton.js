@@ -2,7 +2,7 @@ import styles from './Button.module.css'
 import { ArrowRightIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 
-export default function Button({ label }) {
+export default function HeroButton({ label }) {
   return (
     <div>
       <Link href="/signup">
