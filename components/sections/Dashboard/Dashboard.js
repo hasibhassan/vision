@@ -108,7 +108,7 @@ export default function Dashboard() {
               <div className={styles.desktopLogoContainer}>
                 <img
                   className={styles.desktopLogo}
-                  src="logo.svg"
+                  src="logoWhite.svg"
                   alt="Vision"
                 />
               </div>
@@ -149,7 +149,7 @@ export default function Dashboard() {
         <div className={styles.mobileTopContainerTwo}>
           <div className={styles.mobileTopBar}>
             <div>
-              <img className={styles.logo} src="logo.svg" alt="Vision" />
+              <img className={styles.logo} src="logoWhite.svg" alt="Vision" />
             </div>
             <div>
               <button
