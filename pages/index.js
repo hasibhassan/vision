@@ -1,5 +1,5 @@
-import LandingPage from '@layouts/LandingPage'
+import HomePage from '@layouts/HomePage'
 
 export default function Home() {
-  return <LandingPage />
+  return <HomePage />
 }

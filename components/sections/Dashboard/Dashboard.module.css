@@ -1,8 +1,9 @@
-.dashboardContainer {
+.rootContainer {
   height: 100vh;
-  background-color: white;
-  overflow: hidden;
   display: flex;
+  background-color: rgb(249, 250, 251);
+  /* changed bg to this gray-50 color */
+  overflow: hidden;
 }
 
 .dialog {
@@ -11,8 +12,8 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-  z-index: 40;
   display: flex;
+  z-index: 40;
 }
 
 .dialogOverlay {
@@ -21,19 +22,447 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
+  background-color: rgba(75, 85, 99, 0.75);
+  /* TODO: fill in bg-gray-600. make sure to add .75 opacity at end of rgba function */
+}
+
+.transitionInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  max-width: 20rem;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  /* TODO: add bg-white */
+}
+
+.transitionInner:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.closeSidebarContainer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: -3rem;
+  padding-top: 1rem;
+}
+
+.closeButton {
+  margin-left: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+}
+
+.closeButton:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: inset 0 0 0 0px #fff, inset 0 0 0 2px rgba(25, 131, 205, 1),
+    0 0 #0000;
+  /* TODO update color: ring-white*/
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.closeIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: rgb(255, 255, 255);
+  /* TODO update color: text-white*/
+}
+
+.sidebarNavContainer {
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+}
+
+.logoContainer {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.logo {
+  height: 2rem;
+  width: auto;
+}
+
+.navContainer {
+  margin-top: 1.25rem;
+}
+
+.navLinks {
+  padding-left: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.navLinks > * + * {
+  margin-right: 0.25rem;
+}
+
+.navLink {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  font-size: 1rem /* 16px */;
+  line-height: 1.5rem /* 24px */;
+  font-weight: 500;
+  color: rgb(75, 85, 99);
+  /* TODO fix color : text-gray-600 */
+}
+
+.navLink:hover {
+  background-color: rgb(249, 250, 251);
+  color: rgb(17, 24, 39);
+  /* TODO fix colors : bg-gray-50, text-gray-900 */
+}
+
+.navLinkIcon {
+  margin-right: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  color: rgb(156, 163, 175);
+  /* TODO fix color : text-gray-400 */
+}
+
+.navLinkIcon:hover {
+  color: rgb(107, 114, 128);
+  /* TODO fix color : text-gray-500 */
+}
+
+.mobileProfileContainer {
+  display: flex;
+  flex-shrink: 0;
+  border-top-width: 1px;
+  border-color: rgb(229, 231, 235);
+  /* TODO fix color : border-gray-200 */
+  padding: 1rem;
+}
+
+.mobileProfileLink {
+  flex-shrink: 0;
+  display: block;
+}
+
+.mobileProfilePicContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mobileProfilePic {
+  display: inline-block;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+}
+
+.mobileUsernameContainer {
+  border-radius: 9999px;
+}
+
+.mobileUsernameOne {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: rgb(55, 65, 81);
+  /* TODO fix color : text-gray-700 */
+}
+
+.mobileUsernameOne:hover {
+  color: rgb(17, 24, 39);
+  /* TODO fix color : text-gray-900 */
+}
+
+.mobileUsernameTwo {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: rgb(107, 114, 128);
+  /* TODO fix color : text-gray-500 */
+}
+
+.mobileUsernameTwo:hover {
+  color: rgb(55, 65, 81);
+  /* TODO fix color : text-gray-700 */
+}
+
+.sidebarShrinkMenuButton {
+  flex-shrink: 0;
+  width: 3.5rem;
+}
+
+.desktopSidebarContainer {
+  display: none;
+}
+
+.desktopSidebarContainerTwo {
+  display: flex;
+  flex-direction: column;
+  width: 5rem;
+}
+
+.desktopSidebarContainerThree {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  min-height: 0px;
+  overflow-y: auto;
+  background-color: rgb(19, 102, 160);
+}
+
+.desktopItemsContainer {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+}
+
+.desktopLogoContainer {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgb(14, 73, 114);
+}
+
+.desktopLogo {
+  height: 2rem;
+  width: auto;
+}
+
+.desktopNavContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.desktopNavContainer > * + * {
+  margin-top: 0.75rem;
+}
+
+.desktopNavLink {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: rgb(199, 210, 254);
+  /* TODO fix color : text-indigo-200 */
+}
+
+.desktopNavLink:hover {
+  background-color: rgb(14, 73, 114);
+}
+
+.desktopNavLinkTwo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 9999rem;
+  color: rgb(199, 210, 254);
+  /* TODO fix color : text-indigo-200 */
+}
+
+.desktopNavLinkTwo:hover {
+  background-color: rgb(14, 73, 114);
+}
+
+.desktopLogoImg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.desktopProfileInfoContainer {
+  display: flex;
+  flex-shrink: 0;
+  padding-bottom: 1.25rem;
+}
+
+.desktopAvatarLink {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.desktopProfilePic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+}
+
+.mobileTopContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  min-width: 0px;
+  overflow: hidden;
+}
+
+.mobileTopBar {
+  background-color: rgb(14, 73, 114);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuIconButton {
+  display: inline-flex;
+  margin-right: -0.75rem;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(19, 102, 160);
+  border-radius: 0.375rem;
+  color: rgb(255, 255, 255);
+  /* TODO fix color : text-white */
+}
+
+.menuIconButton:hover {
+  background-color: rgb(14, 73, 114);
+}
+
+.menuIconButton:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: inset 0 0 0 0px #fff, inset 0 0 0 2px rgba(25, 131, 205, 1),
+    0 0 #0000;
+}
+
+.mainContainer {
+  display: flex;
+  flex: 1 1 0%;
+  overflow: hidden;
+}
+
+.mainContainerTwo {
+  display: flex;
+  flex: 1 1 0%;
+}
+
+.mainSection {
+  display: flex;
+  flex: 1 1 0%;
+  min-width: 0px;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
-}
-
-@media (min-width: 768px) {
-  .dialog {
-    display: none;
+  .mobileTopBar {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
+@media (min-width: 768px) {
+}
+
 @media (min-width: 1024px) {
+  .dialog {
+    display: none;
+  }
+
+  .desktopSidebarContainer {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .mobileTopContainerTwo {
+    display: none;
+  }
+
+  .mobileTopBar {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .mainSection {
+    order: 9999;
+  }
 }
 
 @media (min-width: 1280px) {
+  .mainContainerTwo {
+    overflow: hidden;
+  }
+}
+
+.eRoot {
+  transition-property: opacity;
+  transition-timing-function: linear;
+  transition-duration: 300ms;
+}
+
+.efRoot {
+  opacity: 0;
+}
+
+.etRoot {
+  opacity: 1;
+}
+
+.eOuter {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1)
+    scaleY(1);
+}
+
+.efOuter {
+  transform: translateX(-100%) translateY(0) rotate(0) skewX(0) skewY(0)
+    scaleX(1) scaleY(1);
+}
+
+.etOuter {
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1)
+    scaleY(1);
+}
+
+.eInner {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.efInner {
+  opacity: 0;
+}
+
+.etInner {
+  opacity: 1;
+}
+
+.transformTemplate {
+  transform: translateX(0) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1)
+    scaleY(1);
 }

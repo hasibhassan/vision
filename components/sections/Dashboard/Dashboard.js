@@ -1,57 +1,198 @@
+import { Fragment, useState } from 'react'
 import styles from './Dashboard.module.css'
-import React, { Fragment, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
-import {
-  BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
-  HomeIcon,
-  InboxIcon,
-  MenuAlt2Icon,
-  UsersIcon,
-  XIcon,
-} from '@heroicons/react/outline'
-import { SearchIcon } from '@heroicons/react/solid'
+import { Dialog, Transition } from '@headlessui/react'
+import { BiHome, BiUserCircle, BiMenu, BiBookmarks } from 'react-icons/bi'
+import { AiOutlineClose, AiOutlineInbox, AiOutlineFire } from 'react-icons/ai'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: InboxIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
+  { name: 'Home', href: '#', icon: BiHome },
+  { name: 'Trending', href: '#', icon: AiOutlineFire },
+  { name: 'Bookmarks', href: '#', icon: BiBookmarks },
+  { name: 'Messages', href: '#', icon: AiOutlineInbox },
 ]
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Dashboard() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className={styles.dashboardContainer}>
-      <Transition.Root show={sidebarOpen} as={Fragment}>
-        <Dialog as="div" className={styles.dialog} onClose={setSidebarOpen}>
+    <div className={styles.rootContainer}>
+      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+        <Dialog as="div" className={styles.dialog} onClose={setMobileMenuOpen}>
           <Transition.Child
             as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter={styles.eRoot}
+            enterFrom={styles.efRoot}
+            enterTo={styles.etRoot}
+            leave={styles.eRoot}
+            leaveFrom={styles.etRoot}
+            leaveTo={styles.efRoot}
           >
             <Dialog.Overlay className={styles.dialogOverlay} />
           </Transition.Child>
+          <Transition.Child
+            as={Fragment}
+            enter={styles.eOuter}
+            enterFrom={styles.efOuter}
+            enterTo={styles.etOuter}
+            leave={styles.eOuter}
+            leaveFrom={styles.etOuter}
+            leaveTo={styles.efOuter}
+          >
+            <div className={styles.transitionInner}>
+              <Transition.Child
+                as={Fragment}
+                enter={styles.eInner}
+                enterFrom={styles.efInner}
+                enterTo={styles.etInner}
+                leave={styles.eInner}
+                leaveFrom={styles.etInner}
+                leaveTo={styles.efInner}
+              >
+                <div className={styles.closeSidebarContainer}>
+                  <button
+                    type="button"
+                    className={styles.closeButton}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <span className={styles.srOnly}>Close sidebar</span>
+                    <AiOutlineClose
+                      className={styles.closeIcon}
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+              </Transition.Child>
+              <div className={styles.sidebarNavContainer}>
+                <div className={styles.logoContainer}>
+                  <img className={styles.logo} src="logo.svg" alt="Vision" />
+                </div>
+                <nav aria-label="Sidebar" className={styles.navContainer}>
+                  <div className={styles.navLinks}>
+                    {navigation.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={styles.navLink}
+                      >
+                        <item.icon
+                          className={styles.navLinkIcon}
+                          aria-hidden="true"
+                        />
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                </nav>
+              </div>
+              <div className={styles.mobileProfileContainer}>
+                <a key={'Profile'} href={'#'} className={styles.navLink}>
+                  <BiUserCircle
+                    className={styles.navLinkIcon}
+                    aria-hidden="true"
+                  />
+                  Sign In / Sign Up
+                </a>
+                {/* <a href="#">
+                  <div className={styles.mobileProfilePicContainer}>
+                    <div>
+                      <img
+                        className={styles.mobileProfilePic}
+                        src={user.imageUrl}
+                        alt=""
+                      />
+                    </div>
+                    <div className={styles.mobileUsernameContainer}>
+                      <p className={styles.mobileUsernameOne}>{user.name}</p>
+                      <p className={styles.mobileUsernameTwo}>
+                        Account Settings
+                      </p>
+                    </div>
+                  </div>
+                </a> */}
+              </div>
+            </div>
+          </Transition.Child>
+          <div className={styles.sidebarShrinkMenuButton} aria-hidden="true">
+            {/* Force sidebar to shrink to fit close icon */}
+          </div>
         </Dialog>
       </Transition.Root>
+      {/* Static sidebar for desktop */}
+      <div className={styles.desktopSidebarContainer}>
+        <div className={styles.desktopSidebarContainerTwo}>
+          <div className={styles.desktopSidebarContainerThree}>
+            <div className={styles.desktopItemsContainer}>
+              <div className={styles.desktopLogoContainer}>
+                <img
+                  className={styles.desktopLogo}
+                  src="logo.svg"
+                  alt="Vision"
+                />
+              </div>
+              <nav className={styles.desktopNavContainer}>
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={styles.desktopNavLink}
+                  >
+                    <item.icon
+                      className={styles.desktopLogoImg}
+                      aria-hidden="true"
+                    />
+                    <span className={styles.srOnly}>{item.name}</span>
+                  </a>
+                ))}
+              </nav>
+            </div>
+            <div className={styles.desktopNavContainer}>
+              <a
+                key={'Profile'}
+                href={'#'}
+                className={styles.desktopNavLinkTwo}
+              >
+                <BiUserCircle
+                  className={styles.desktopLogoImg}
+                  aria-hidden="true"
+                />
+                <span className={styles.srOnly}>Profile</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.mobileTopContainer}>
+        {/* Mobile top navigation */}
+        <div className={styles.mobileTopContainerTwo}>
+          <div className={styles.mobileTopBar}>
+            <div>
+              <img className={styles.logo} src="logo.svg" alt="Vision" />
+            </div>
+            <div>
+              <button
+                type="button"
+                className={styles.menuIconButton}
+                onClick={() => setMobileMenuOpen(true)}
+              >
+                <span className={styles.srOnly}>Open Sidebar</span>
+                <BiMenu className={styles.desktopLogoImg} aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <main className={styles.mainContainer}>
+          <div className={styles.mainContainerTwo}>
+            <section
+              aria-labelledby="primary-heading"
+              className={styles.mainSection}
+            >
+              <h1 id="primary-heading" className={styles.srOnly}></h1>
+              {/* Main content */}
+              <p>My content here</p>
+            </section>
+          </div>
+        </main>
+      </div>
     </div>
   )
 }
