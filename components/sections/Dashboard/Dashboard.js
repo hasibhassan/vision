@@ -92,23 +92,6 @@ export default function Dashboard() {
                   />
                   Sign In / Sign Up
                 </a>
-                {/* <a href="#">
-                  <div className={styles.mobileProfilePicContainer}>
-                    <div>
-                      <img
-                        className={styles.mobileProfilePic}
-                        src={user.imageUrl}
-                        alt=""
-                      />
-                    </div>
-                    <div className={styles.mobileUsernameContainer}>
-                      <p className={styles.mobileUsernameOne}>{user.name}</p>
-                      <p className={styles.mobileUsernameTwo}>
-                        Account Settings
-                      </p>
-                    </div>
-                  </div>
-                </a> */}
               </div>
             </div>
           </Transition.Child>
