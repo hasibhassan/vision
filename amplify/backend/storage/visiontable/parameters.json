@@ -1,0 +1,5 @@
+{
+    "tableName": "visiontable",
+    "partitionKeyName": "user",
+    "partitionKeyType": "S"
+}

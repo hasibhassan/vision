@@ -10,6 +10,17 @@
       "StackName": "amplify-vision-prod-223837",
       "StackId": "arn:aws:cloudformation:us-east-1:662210299133:stack/amplify-vision-prod-223837/6349f510-2d69-11ec-9232-120baac28e1f",
       "AmplifyAppId": "d2ad3ugmq3rllx"
+    },
+    "categories": {
+      "auth": {
+        "cognito6f367cf4": {}
+      },
+      "function": {
+        "userlambdafunc": {
+          "deploymentBucketName": "amplify-vision-prod-223837-deployment",
+          "s3Key": "amplify-builds/userlambdafunc-4b4a4675675359756130-build.zip"
+        }
+      }
     }
   }
 }
