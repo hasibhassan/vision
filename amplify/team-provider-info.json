@@ -1,0 +1,15 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vision-prod-223837-authRole",
+      "UnauthRoleArn": "arn:aws:iam::662210299133:role/amplify-vision-prod-223837-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::662210299133:role/amplify-vision-prod-223837-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vision-prod-223837-deployment",
+      "UnauthRoleName": "amplify-vision-prod-223837-unauthRole",
+      "StackName": "amplify-vision-prod-223837",
+      "StackId": "arn:aws:cloudformation:us-east-1:662210299133:stack/amplify-vision-prod-223837/6349f510-2d69-11ec-9232-120baac28e1f",
+      "AmplifyAppId": "d2ad3ugmq3rllx"
+    }
+  }
+}
