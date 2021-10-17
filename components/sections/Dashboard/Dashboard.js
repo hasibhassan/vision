@@ -6,9 +6,9 @@ import { AiOutlineClose, AiOutlineFire } from 'react-icons/ai'
 import { RiLiveLine } from 'react-icons/ri'
 
 const navigation = [
-  { name: 'Home', href: '#', icon: BiHome },
-  { name: 'Trending', href: '#', icon: AiOutlineFire },
-  { name: 'Bookmarks', href: '#', icon: BiBookmarks },
+  { name: 'Home', href: '/', icon: BiHome },
+  { name: 'Trending', href: '/news', icon: AiOutlineFire },
+  { name: 'Saved', href: '/profile', icon: BiBookmarks },
   { name: 'Live Price Chart', href: '/live', icon: RiLiveLine },
 ]
 
