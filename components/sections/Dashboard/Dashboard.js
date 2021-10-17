@@ -2,16 +2,17 @@ import { Fragment, useState } from 'react'
 import styles from './Dashboard.module.css'
 import { Dialog, Transition } from '@headlessui/react'
 import { BiHome, BiUserCircle, BiMenu, BiBookmarks } from 'react-icons/bi'
-import { AiOutlineClose, AiOutlineInbox, AiOutlineFire } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineFire } from 'react-icons/ai'
+import { RiLiveLine } from 'react-icons/ri'
 
 const navigation = [
   { name: 'Home', href: '#', icon: BiHome },
   { name: 'Trending', href: '#', icon: AiOutlineFire },
   { name: 'Bookmarks', href: '#', icon: BiBookmarks },
-  { name: 'Messages', href: '#', icon: AiOutlineInbox },
+  { name: 'Live Price Chart', href: '/live', icon: RiLiveLine },
 ]
 
-export default function Dashboard() {
+export default function Dashboard({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -171,7 +172,7 @@ export default function Dashboard() {
             >
               <h1 id="primary-heading" className={styles.srOnly}></h1>
               {/* Main content */}
-              <p>My content here</p>
+              {children}
             </section>
           </div>
         </main>
