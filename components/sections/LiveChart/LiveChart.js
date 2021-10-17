@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2'
+import styles from './LiveChart.module.css'
 
 export default function LiveChart({ price, data }) {
   const opts = {
@@ -13,5 +14,12 @@ export default function LiveChart({ price, data }) {
     return <h2>please select a currency pair</h2>
   }
 
-  return <Line data={data} options={opts} />
+  return (
+    <div className={styles.dashboard}>
+      <h2>{`$${price}`}</h2>
+      <div className={styles.chartContainer}>
+        <Line data={data} options={opts} />
+      </div>
+    </div>
+  )
 }
