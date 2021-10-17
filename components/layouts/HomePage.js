@@ -1,5 +1,9 @@
 import Dashboard from '@sections/Dashboard/Dashboard'
 
 export default function HomePage() {
-  return <Dashboard />
+  return (
+    <Dashboard>
+      <p>Add content here</p>
+    </Dashboard>
+  )
 }

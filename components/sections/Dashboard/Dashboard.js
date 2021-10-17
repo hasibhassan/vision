@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Messages', href: '#', icon: AiOutlineInbox },
 ]
 
-export default function Dashboard() {
+export default function Dashboard({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -171,7 +171,7 @@ export default function Dashboard() {
             >
               <h1 id="primary-heading" className={styles.srOnly}></h1>
               {/* Main content */}
-              <p>My content here</p>
+              {children}
             </section>
           </div>
         </main>
