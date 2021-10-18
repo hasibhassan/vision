@@ -3,7 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(238, 227, 220, 1);
+  background-color: rgb(249, 250, 251);
+  /* changed bg to this gray-50 color */
   padding: 3rem 1rem;
 }
 

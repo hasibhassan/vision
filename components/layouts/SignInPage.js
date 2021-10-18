@@ -1,14 +1,10 @@
-import Container from '@sections/Containers/Container'
-import Navbar from '@sections/Navbar/Navbar'
+import Dashboard from '@sections/Dashboard/Dashboard'
 import SignIn from '@sections/SignIn/SignIn'
-import Footer from '@sections/Footer/Footer'
 
 export default function SignInPage() {
   return (
-    <Container>
-      <Navbar />
+    <Dashboard>
       <SignIn />
-      <Footer />
-    </Container>
+    </Dashboard>
   )
 }

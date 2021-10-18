@@ -86,7 +86,7 @@ export default function Dashboard({ children }) {
                 </nav>
               </div>
               <div className={styles.mobileProfileContainer}>
-                <a key={'Profile'} href={'#'} className={styles.navLink}>
+                <a key={'Profile'} href={'/login'} className={styles.navLink}>
                   <BiUserCircle
                     className={styles.navLinkIcon}
                     aria-hidden="true"
@@ -132,7 +132,7 @@ export default function Dashboard({ children }) {
             <div className={styles.desktopNavContainer}>
               <a
                 key={'Profile'}
-                href={'#'}
+                href={'/login'}
                 className={styles.desktopNavLinkTwo}
               >
                 <BiUserCircle
