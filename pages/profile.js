@@ -1,11 +1,7 @@
-import Dashboard from '@sections/Dashboard/Dashboard'
+import ProfilePage from '@layouts/ProfilePage'
 
 // TODO #8 add profile page layout
 export default function profile() {
-  return (
-    // saved stories go here
-    <Dashboard>
-      <p>profile content here</p>
-    </Dashboard>
-  )
+  // saved stories go here
+  return <ProfilePage />
 }
