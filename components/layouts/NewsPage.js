@@ -1,5 +1,6 @@
 import { useMediaQuery } from 'react-responsive'
 import Dashboard from '@sections/Dashboard/Dashboard'
+import Card from '@ui/Cards/Card'
 
 export default function NewsPage() {
   const isMobile = useMediaQuery({
@@ -10,7 +11,7 @@ export default function NewsPage() {
   })
   return (
     <Dashboard>
-      {isMobile && <p>Mobile content here</p>}
+      {isMobile && <Card />}
       {isDesktop && <p>Desktop content here</p>}
     </Dashboard>
   )
