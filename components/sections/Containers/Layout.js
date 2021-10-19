@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import styles from './Dashboard.module.css'
+import styles from './Layout.module.css'
 import { Dialog, Transition } from '@headlessui/react'
 import { BiHome, BiUserCircle, BiMenu, BiBookmarks } from 'react-icons/bi'
 import { AiOutlineClose, AiOutlineFire } from 'react-icons/ai'
@@ -12,7 +12,7 @@ const navigation = [
   { name: 'Live Price Chart', href: '/live', icon: RiLiveLine },
 ]
 
-export default function Dashboard({ children }) {
+export default function Layout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -86,12 +86,12 @@ export default function Dashboard({ children }) {
                 </nav>
               </div>
               <div className={styles.mobileProfileContainer}>
-                <a key={'Profile'} href={'/login'} className={styles.navLink}>
+                <a key={'Profile'} href={'/profile'} className={styles.navLink}>
                   <BiUserCircle
                     className={styles.navLinkIcon}
                     aria-hidden="true"
                   />
-                  Sign In / Sign Up
+                  Profile
                 </a>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function Dashboard({ children }) {
             <div className={styles.desktopNavContainer}>
               <a
                 key={'Profile'}
-                href={'/login'}
+                href={'/profile'}
                 className={styles.desktopNavLinkTwo}
               >
                 <BiUserCircle

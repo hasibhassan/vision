@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import Dashboard from '@sections/Dashboard/Dashboard'
 import NewsCards from '@ui/Cards/NewsCards'
 
 export default function NewsPage() {
@@ -27,7 +26,7 @@ export default function NewsPage() {
   }, [])
 
   return (
-    <Dashboard>
+    <div>
       {isMobile && <NewsCards dataArray={dataArray} />}
       {isDesktop &&
         dataArray.map((el) => (
@@ -35,6 +34,6 @@ export default function NewsPage() {
             <li>{el.title}</li>
           </ul>
         ))}
-    </Dashboard>
+    </div>
   )
 }
