@@ -1,4 +1,3 @@
-import Dashboard from '@sections/Dashboard/Dashboard'
 import { useMediaQuery } from 'react-responsive'
 
 export default function HomePage() {
@@ -9,9 +8,9 @@ export default function HomePage() {
     minWidth: 1024,
   })
   return (
-    <Dashboard>
+    <div>
       {isMobile && <p>Mobile content here</p>}
       {isDesktop && <p>Desktop content here</p>}
-    </Dashboard>
+    </div>
   )
 }

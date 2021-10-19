@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import Dashboard from '@sections/Dashboard/Dashboard'
 import LiveChart from '@sections/LiveChart/LiveChart'
 import { liveChartFormatter } from '@utils/liveChartFormatter'
 import styles from '@sections/LiveChart/LiveChart.module.css'
@@ -101,21 +100,19 @@ export default function LiveChartPage() {
     setpair(e.target.value)
   }
   return (
-    <Dashboard>
-      <div className={styles.dashboard}>
-        {
-          <select name="currency" value={pair} onChange={handleSelect}>
-            {currencies.map((cur, idx) => {
-              return (
-                <option key={idx} value={cur.id}>
-                  {cur.display_name}
-                </option>
-              )
-            })}
-          </select>
-        }
-        <LiveChart price={price} data={pastData} />
-      </div>
-    </Dashboard>
+    <div className={styles.dashboard}>
+      {
+        <select name="currency" value={pair} onChange={handleSelect}>
+          {currencies.map((cur, idx) => {
+            return (
+              <option key={idx} value={cur.id}>
+                {cur.display_name}
+              </option>
+            )
+          })}
+        </select>
+      }
+      <LiveChart price={price} data={pastData} />
+    </div>
   )
 }
