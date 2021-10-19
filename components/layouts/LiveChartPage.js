@@ -23,7 +23,6 @@ export default function LiveChartPage() {
       await fetch(url + '/products')
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           pairs = data
         })
 
