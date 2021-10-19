@@ -1,7 +1,7 @@
-import Dashboard from '@sections/Dashboard/Dashboard'
 import { useMediaQuery } from 'react-responsive'
+import withAuth from '@sections/HOC/withAuth'
 
-export default function ProfilePage() {
+const ProfilePage = () => {
   const isMobile = useMediaQuery({
     maxWidth: 1024,
   })
@@ -9,9 +9,11 @@ export default function ProfilePage() {
     minWidth: 1024,
   })
   return (
-    <Dashboard>
-      {isMobile && <p>Mobile content here</p>}
-      {isDesktop && <p>Desktop content here</p>}
-    </Dashboard>
+    <div>
+      {isMobile && <p>Mobile profile content here</p>}
+      {isDesktop && <p>Desktop profile content here</p>}
+    </div>
   )
 }
+
+export default withAuth(ProfilePage, '/login')
