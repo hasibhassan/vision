@@ -1,4 +1,5 @@
 export const initialState = {
+  // TODO #16 fix reducer and context
   number: 0,
 }
 
