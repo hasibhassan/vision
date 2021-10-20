@@ -32,7 +32,11 @@
     "cypress": "^8.4.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.2.5",
+    "msw": "^0.35.0",
     "react-test-renderer": "^17.0.2",
     "start-server-and-test": "^1.14.0"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
