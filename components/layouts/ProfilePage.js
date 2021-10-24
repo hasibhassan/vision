@@ -16,4 +16,4 @@ const ProfilePage = () => {
   )
 }
 
-export default withAuth(ProfilePage, '/login')
+export default withAuth(ProfilePage)
