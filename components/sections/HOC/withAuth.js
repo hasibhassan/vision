@@ -15,7 +15,7 @@ const withAuth =
         isLoggedIn = true
       } catch (err) {
         // implement toast alerting "not logged in" using global ui state (context)
-        console.log(err)
+        console.log({ err })
         Router.replace(route)
       }
     }
