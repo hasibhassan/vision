@@ -1,5 +1,6 @@
 import styles from './SignIn.module.css'
 import Link from 'next/link'
+import { Auth } from 'aws-amplify'
 
 export default function SignIn() {
   return (
@@ -67,6 +68,15 @@ export default function SignIn() {
           <div>
             <button type="submit" className={styles.submitButton}>
               Sign In
+            </button>
+          </div>
+          <div>
+            <button
+              type="button"
+              className={styles.googleButton}
+              onClick={() => Auth.federatedSignIn({ provider: 'Google' })}
+            >
+              <p>Sign In With Google</p>
             </button>
           </div>
         </form>

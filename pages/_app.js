@@ -6,9 +6,9 @@ import { AppContextWrapper } from '@utils/Context/AppContext'
 import { ToastContainer, Zoom } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-  require('../mocks')
-}
+// if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+//   require('../mocks')
+// }
 
 Amplify.configure({ ...config })
 
