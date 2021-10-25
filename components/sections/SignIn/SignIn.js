@@ -20,19 +20,20 @@ export default function SignIn() {
 
   async function checkUser() {
     try {
-      let user = await Auth.currentAuthenticatedUser()
-      if (user) {
-        Router.replace('/profile')
-      }
+      await Auth.currentAuthenticatedUser()
+
+      Router.replace('/profile')
     } catch (err) {
       console.log({ err })
     }
   }
 
-  async function signIn() {
+  async function signIn(e) {
+    e.preventDefault()
     try {
       await Auth.signIn(email, password)
       console.log('signed in')
+      Router.replace('/profile')
     } catch (e) {
       console.log({ e })
       switch (e.code) {
@@ -72,7 +73,7 @@ export default function SignIn() {
             </Link>
           </p>
         </div>
-        <form className={styles.form} action="/profile" method="POST">
+        <form className={styles.form}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className={styles.inputGroup}>
             <div>
@@ -125,11 +126,7 @@ export default function SignIn() {
             </div>
           </div>
           <div>
-            <button
-              type="submit"
-              className={styles.submitButton}
-              onClick={() => signIn()}
-            >
+            <button className={styles.submitButton} onClick={signIn}>
               Sign In
             </button>
           </div>

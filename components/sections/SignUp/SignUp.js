@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 export default function SignUp() {
   const [formState, setFormState] = useState({ email: '', password: '' })
   const Router = useRouter()
+  const { email, password } = formState
 
   function onChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -19,20 +20,25 @@ export default function SignUp() {
 
   async function checkUser() {
     try {
-      let user = await Auth.currentAuthenticatedUser()
-      if (user) {
-        Router.replace('/profile')
-      }
+      await Auth.currentAuthenticatedUser()
+      Router.replace('/profile')
     } catch (err) {
       console.log({ err })
     }
   }
 
-  async function signUp() {
+  async function signUp(e) {
+    e.preventDefault()
     try {
       console.log(formState)
-      await Auth.signUp({ username: email, password: password })
+      await Auth.signUp({
+        username: email,
+        password: password,
+        attributes: { email },
+      })
       await Auth.signIn(email, password)
+
+      Router.replace('/profile')
     } catch (e) {
       console.log({ e })
       switch (e.code) {
@@ -72,7 +78,7 @@ export default function SignUp() {
             </Link>
           </p>
         </div>
-        <form className={styles.form} action="/profile" method="POST">
+        <form className={styles.form}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className={styles.inputGroup}>
             <div>
@@ -107,11 +113,7 @@ export default function SignUp() {
             </div>
           </div>
           <div>
-            <button
-              type="submit"
-              className={styles.submitButton}
-              onClick={() => signUp()}
-            >
+            <button className={styles.submitButton} onClick={signUp}>
               Sign Up
             </button>
           </div>

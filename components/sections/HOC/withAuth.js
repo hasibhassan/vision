@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Auth } from 'aws-amplify'
 import Spinner from '@ui/Spinner/Spinner'
@@ -6,13 +6,15 @@ import Spinner from '@ui/Spinner/Spinner'
 const withAuth =
   (ProtectedComponent, route = '/login') =>
   (props) => {
+    const [isLoading, setIsLoading] = useState()
     const Router = useRouter()
-    let isLoggedIn = false
 
     async function checkIfLoggedIn() {
       try {
+        setIsLoading(true)
         await Auth.currentAuthenticatedUser()
-        isLoggedIn = true
+        console.log('user found')
+        setIsLoading(false)
       } catch (err) {
         // implement toast alerting "not logged in" using global ui state (context)
         console.log({ err })
@@ -22,13 +24,13 @@ const withAuth =
 
     useEffect(() => {
       checkIfLoggedIn()
-    })
+    }, [])
 
-    if (!isLoggedIn) {
+    if (isLoading) {
       return <Spinner />
+    } else {
+      return <ProtectedComponent {...props} />
     }
-
-    return <ProtectedComponent {...props} />
   }
 
 export default withAuth
