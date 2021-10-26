@@ -106,7 +106,7 @@ export default function LiveChartPage() {
           {currencies.map((cur, idx) => {
             return (
               <option key={idx} value={cur.id}>
-                {cur.display_name}
+                {cur.base_currency}
               </option>
             )
           })}
