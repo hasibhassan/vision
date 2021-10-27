@@ -407,6 +407,7 @@
 
   .mainSection {
     order: 9999;
+    overflow-y: auto;
   }
 }
 

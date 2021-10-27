@@ -1,29 +1,28 @@
 import React, { useState } from 'react'
-import useGetCardData from '@utils/useGetCardData'
 import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
 import ChartData from './ChartData'
-import Spinner from '@ui/Spinner/Spinner'
 import styles from './Home.module.css'
 import cx from 'classnames'
+import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 
-export default function CryptoCardBase({ cryptoName }) {
+export default function CryptoCardBase({
+  symbol,
+  name,
+  image,
+  currentPrice,
+  marketCap,
+  volume,
+  priceChangePercentageDaily,
+  id,
+}) {
   const [isExpanded, setIsExpanded] = useState(false)
-
-  const { data, isLoading } = useGetCardData(cryptoName, {
-    refetchInterval: 1000 * 60,
-    staleTime: 1000 * 60,
-  })
-
-  if (isLoading) return <Spinner />
 
   const onCardClick = () => {
     if (!isExpanded) {
       setIsExpanded(true)
     }
   }
-
-  const { image, name, market_data: marketData } = data
 
   return (
     <div
@@ -43,18 +42,23 @@ export default function CryptoCardBase({ cryptoName }) {
           </button>
         )}
         <div className={styles.topData}>
-          <img
-            src={image?.large}
-            alt={`${name} logo`}
-            className={styles.cardImg}
-          />
-          <h3 className={styles.cryptoName}>{name}</h3>
+          <img src={image} alt={`${name}`} className={styles.cardImg} />
+          <div className={styles.cryptoNameWrap}>
+            <h1 className={styles.cryptoName}>{name}</h1>
+            <p className={styles.cryptoSymbol}>{symbol}</p>
+          </div>
           <h4 className={styles.cryptoPrice}>
-            {formatPrice(marketData?.current_price?.usd)}
-            {formatPlusMinus(marketData?.price_change_percentage_24h)}
+            {formatPrice(currentPrice)}
+            {formatPlusMinus(priceChangePercentageDaily)}
           </h4>
+          <p className={styles.cryptoMarketcap}>
+            Market Cap: ${largeCurrencyFormatter(marketCap)}
+          </p>
+          <p className={styles.cryptoVolume}>
+            Volume: ${largeCurrencyFormatter(volume)}
+          </p>
         </div>
-        <ChartData isExpanded={isExpanded} cryptoName={cryptoName} />
+        <ChartData isExpanded={isExpanded} cryptoName={id} />
       </div>
     </div>
   )

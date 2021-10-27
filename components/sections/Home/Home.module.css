@@ -12,7 +12,7 @@
   text-align: center;
   color: #fff;
   margin: auto;
-  max-width: 300px;
+  width: 300px;
   background: linear-gradient(
     135deg,
     rgb(19, 102, 160) 0%,
@@ -47,10 +47,43 @@
   border-radius: 50px;
 }
 
-.cryptoName {
+/* .cryptoName {
   font-size: 26px;
   font-weight: 300;
   margin: 12px 0;
+} */
+
+.cryptoNameWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  font-weight: 700;
+}
+
+.cryptoName {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.cryptoSymbol {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+.cryptoMarketcap {
+  width: auto;
+  padding-top: 8px;
+  background-color: transparent;
+}
+
+.cryptoVolume {
+  width: auto;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  background-color: transparent;
 }
 
 .cryptoPrice {
