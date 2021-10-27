@@ -2,9 +2,8 @@
   margin: 0 auto;
   max-width: 1000px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: auto;
-  gap: 20px;
-  font-family: sans-serif;
+  gap: 3%;
   padding-top: 30px;
 }
