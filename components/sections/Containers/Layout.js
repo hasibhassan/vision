@@ -7,7 +7,7 @@ import { RiLiveLine } from 'react-icons/ri'
 
 const navigation = [
   { name: 'Home', href: '/', icon: BiHome },
-  { name: 'Trending', href: '/news', icon: AiOutlineFire },
+  { name: 'Trending News', href: '/news', icon: AiOutlineFire },
   { name: 'Saved', href: '/profile', icon: BiBookmarks },
   { name: 'Live Price Chart', href: '/live', icon: RiLiveLine },
 ]

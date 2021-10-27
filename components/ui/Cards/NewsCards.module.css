@@ -1,7 +1,7 @@
 .swiper {
   margin: 1rem;
-  width: 95vw;
-  height: 95vh;
+  max-width: 95vw;
+  max-height: 85vh;
 }
 
 .swiperSlide {
@@ -22,10 +22,19 @@
   );
 }
 
+.descriptionBox {
+  display: inline-block;
+  max-width: 95vw;
+  overflow-x: scroll;
+  padding: 1.5rem;
+  overflow-wrap: break-word;
+}
+
 .description {
   margin: auto;
   font-weight: lighter;
   font-size: 18px;
+  overflow: auto;
 }
 
 .time {
@@ -33,7 +42,4 @@
   margin-bottom: 1rem;
   font-weight: normal;
   font-size: smaller;
-}
-
-.link {
 }
