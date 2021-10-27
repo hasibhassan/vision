@@ -1,6 +1,6 @@
 import styles from '../components/sections/Home/Home.module.css'
 
-export const formatPlusMinus = (priceChange) => {
+const formatPlusMinus = (priceChange) => {
   const isPositive = Math.sign(priceChange) >= 0
 
   return (
@@ -9,3 +9,5 @@ export const formatPlusMinus = (priceChange) => {
     </span>
   )
 }
+
+export default formatPlusMinus

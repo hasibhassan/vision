@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useGetCardData from '@utils/useGetCardData'
 import formatPrice from '@utils/formatPrice'
-import { formatPlusMinus } from '@utils/formatPlusMinus'
+import formatPlusMinus from '@utils/formatPlusMinus'
 import ChartData from './ChartData'
 import Spinner from '@ui/Spinner/Spinner'
 import styles from './Home.module.css'
@@ -11,8 +11,8 @@ export default function CryptoCardBase({ cryptoName }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const { data, isLoading } = useGetCardData(cryptoName, {
-    refetchInterval: 60000,
-    staleTime: 60000,
+    refetchInterval: 1000 * 60,
+    staleTime: 1000 * 60,
   })
 
   if (isLoading) return <Spinner />

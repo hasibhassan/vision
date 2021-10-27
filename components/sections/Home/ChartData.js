@@ -34,8 +34,8 @@ export default function ChartData({ cryptoName, isExpanded }) {
   const [dataInterval, setDataInterval] = useState(intervals[0].value)
 
   const { data, isLoading } = useGetChartData(cryptoName, dataInterval, {
-    refetchInterval: 60000,
-    staleTime: 60000,
+    refetchInterval: 1000 * 60,
+    staleTime: 1000 * 60,
     select: (data) =>
       data?.prices?.map((item) => ({
         x: item[0],

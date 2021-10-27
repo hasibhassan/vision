@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import useGetNewsStories from '@utils/useGetNewsStories'
 import { useMediaQuery } from 'react-responsive'
-import NewsCards from '@ui/Cards/NewsCards'
 import Spinner from '@ui/Spinner/Spinner'
+import NewsCards from '@ui/Cards/NewsCards'
 
 export default function NewsPage() {
-  const [dataArray, setDataArray] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-
+  const { data, isLoading } = useGetNewsStories({
+    refetchInterval: 1000 * 60,
+    staleTime: 1000 * 60,
+  })
   const isMobile = useMediaQuery({
     maxWidth: 1024,
   })
-  const isDesktop = useMediaQuery({
-    minWidth: 1024,
-  })
 
-  const url = 'https://api.blockchair.com/news?q=language(en)'
-
-  useEffect(() => {
-    const fetchNewsArticles = async () => {
-      setIsLoading(true)
-      await fetch(url)
-        .then((res) => res.json())
-        .then((jsonData) => {
-          setDataArray(Object.values(jsonData.data))
-        })
-      setIsLoading(false)
-    }
-
-    fetchNewsArticles()
-  }, [])
-
-  return (
-    <div>
-      {isLoading && <Spinner />}
-      {isMobile && <NewsCards dataArray={dataArray} />}
-      {isDesktop &&
-        dataArray.map((el) => (
+  if (isLoading) {
+    return <Spinner />
+  } else if (isMobile && !isLoading) {
+    return <NewsCards dataArray={data} />
+  } else {
+    return (
+      <div>
+        {data?.map((el) => (
           <ul>
-            <li>{el.title}</li>
+            <li>{el?.title}</li>
           </ul>
         ))}
-    </div>
-  )
+      </div>
+    )
+  }
 }

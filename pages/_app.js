@@ -34,9 +34,9 @@ function MyApp({ Component, pageProps }) {
               pauseOnHover
               transition={Zoom}
             />
+            <ReactQueryDevtools />
           </Layout>
         </AppContextWrapper>
-        <ReactQueryDevtools />
       </QueryClientProvider>
     </>
   )
