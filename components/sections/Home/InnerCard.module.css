@@ -1,0 +1,117 @@
+.hitzone {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+.card {
+  text-align: center;
+  color: #fff;
+  margin: auto;
+  width: 300px;
+  background: linear-gradient(
+    135deg,
+    rgb(19, 102, 160) 0%,
+    rgb(14, 73, 114) 100%
+  );
+  border-radius: 8px;
+  position: relative;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+  z-index: 1;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+}
+
+.card .cardInner {
+  position: relative;
+}
+
+.topData {
+  padding: 40px 25px 0;
+}
+
+.cardImg {
+  display: inline;
+  width: 75px;
+  height: 75px;
+  background: #fff;
+  padding: 2px;
+  border-radius: 50px;
+}
+
+.cryptoNameWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  font-weight: 700;
+}
+
+.cryptoName {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.cryptoSymbol {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+.cryptoMarketcap {
+  width: auto;
+  padding-top: 8px;
+  background-color: transparent;
+}
+
+.cryptoVolume {
+  width: auto;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  background-color: transparent;
+}
+
+.cryptoPrice {
+  font-size: 20px;
+  margin: 12px 0 0;
+  font-weight: 300;
+}
+
+.cryptoPrice span {
+  font-size: 12px;
+  font-weight: 700;
+  position: relative;
+  top: -6px;
+  left: 6px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.cryptoPrice svg {
+  margin-right: 4px;
+}
+
+.positive {
+  background: #41e041;
+}
+
+.negative {
+  background: #ff5b5b;
+}
+
+.chart {
+  position: relative;
+}
+
+.chart svg {
+  vertical-align: middle;
+}
