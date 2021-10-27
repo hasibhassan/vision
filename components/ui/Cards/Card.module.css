@@ -1,16 +1,39 @@
 .swiper {
-  margin-top: 2rem;
-  width: 40vh;
-  height: 85vh;
+  margin: 1rem;
+  width: 95vw;
+  height: 95vh;
 }
 
 .swiperSlide {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 2rem;
   border-radius: 18px;
-  font-size: 22px;
+  font-size: 20px;
+  text-align: center;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: rgb(133, 147, 190);
+  background: linear-gradient(
+    135deg,
+    rgb(19, 102, 160) 0%,
+    rgb(14, 73, 114) 100%
+  );
+}
+
+.description {
+  margin: auto;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+.time {
+  margin-top: auto;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  font-size: smaller;
+}
+
+.link {
 }
