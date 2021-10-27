@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ExpandedCard from './ExpandedCard'
 import InnerCard from './InnerCard'
-import { AnimateSharedLayout, AnimatePresence } from 'framer-motion'
 
 export default function CryptoCardBase({
   symbol,
@@ -16,7 +15,7 @@ export default function CryptoCardBase({
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
-    <AnimateSharedLayout>
+    <div>
       {!isExpanded ? (
         <InnerCard
           setIsExpanded={setIsExpanded}
@@ -29,7 +28,6 @@ export default function CryptoCardBase({
           priceChangePercentageDaily={priceChangePercentageDaily}
           id={id}
           isExpanded={isExpanded}
-          key="innercard"
         />
       ) : (
         <ExpandedCard
@@ -43,9 +41,8 @@ export default function CryptoCardBase({
           priceChangePercentageDaily={priceChangePercentageDaily}
           id={id}
           isExpanded={isExpanded}
-          key="expandedcard"
         />
       )}
-    </AnimateSharedLayout>
+    </div>
   )
 }
