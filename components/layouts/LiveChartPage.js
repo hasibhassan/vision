@@ -2,19 +2,20 @@ import React, { useState, useEffect, useRef } from 'react'
 import LiveChart from '@sections/LiveChart/LiveChart'
 import { liveChartFormatter } from '@utils/liveChartFormatter'
 import styles from '@sections/LiveChart/LiveChart.module.css'
+import Select from 'react-select'
 
 export default function LiveChartPage() {
-  const [currencies, setcurrencies] = useState([])
-  const [pair, setpair] = useState('')
-  const [price, setprice] = useState('0.00')
-  const [pastData, setpastData] = useState({})
+  const [currencies, setCurrencies] = useState([])
+  const [pair, setPair] = useState('')
+  const [price, setPrice] = useState('0.00')
+  const [pastData, setPastData] = useState({})
   const ws = useRef(null)
 
   let first = useRef(false)
-  const url = 'https://api.pro.coinbase.com'
+  const url = 'https://api.exchange.coinbase.com'
 
   useEffect(() => {
-    ws.current = new WebSocket('wss://ws-feed.pro.coinbase.com')
+    ws.current = new WebSocket('wss://ws-feed.exchange.coinbase.com')
 
     let pairs = []
 
@@ -41,11 +42,14 @@ export default function LiveChartPage() {
         return 0
       })
 
-      setcurrencies(filtered)
+      let options = filtered.map((currency) => {
+        return { label: currency.base_currency, value: currency.id }
+      })
+
+      setCurrencies(options)
 
       first.current = true
     }
-
     fetchCurrencyPairs()
   }, [])
 
@@ -53,7 +57,7 @@ export default function LiveChartPage() {
     if (!first.current) {
       return
     }
-
+    console.log(currencies)
     let msg = {
       type: 'subscribe',
       product_ids: [pair],
@@ -70,7 +74,7 @@ export default function LiveChartPage() {
         .then((data) => (dataArr = data))
 
       let formattedData = liveChartFormatter(dataArr)
-      setpastData(formattedData)
+      setPastData(formattedData)
     }
 
     fetchChartData()
@@ -82,12 +86,12 @@ export default function LiveChartPage() {
       }
 
       if (data.product_id === pair) {
-        setprice(data.price)
+        setPrice(data.price)
       }
     }
   }, [pair])
 
-  const handleSelect = (e) => {
+  const handleSelect = ({ value }) => {
     let unsubMsg = {
       type: 'unsubscribe',
       product_ids: [pair],
@@ -97,11 +101,11 @@ export default function LiveChartPage() {
 
     ws.current.send(unsub)
 
-    setpair(e.target.value)
+    setPair(value)
   }
   return (
     <div className={styles.dashboard}>
-      {
+      {/* {
         <select name="currency" value={pair} onChange={handleSelect}>
           {currencies.map((cur, idx) => {
             return (
@@ -111,7 +115,10 @@ export default function LiveChartPage() {
             )
           })}
         </select>
-      }
+      } */}
+      <div className={styles.selectContainer}>
+        <Select options={currencies} onChange={handleSelect} />
+      </div>
       <LiveChart price={price} data={pastData} />
     </div>
   )
