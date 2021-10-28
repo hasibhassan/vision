@@ -1,14 +1,4 @@
-import React, { useState } from 'react'
-import {
-  VictoryLine,
-  VictoryChart,
-  VictoryAxis,
-  VictoryTooltip,
-  VictoryVoronoiContainer,
-} from 'victory'
-import format from 'date-fns/format'
-import formatPrice from '@utils/formatPrice'
-import useGetChartData from '@utils/useGetChartData'
+import { VictoryLine } from 'victory'
 import styles from './InnerCard.module.css'
 
 export default function InnerChart({ data, isLoading }) {

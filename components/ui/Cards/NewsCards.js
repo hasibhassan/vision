@@ -9,7 +9,7 @@ export default function NewsCards({ dataArray }) {
   return (
     <Swiper modules={[EffectCards]} effect="cards" className={styles.swiper}>
       {dataArray.map((el) => (
-        <SwiperSlide className={styles.swiperSlide}>
+        <SwiperSlide key={el.hash} className={styles.swiperSlide}>
           <p>{el.title}</p>
           <div className={styles.descriptionBox}>
             <p className={styles.description}>{el.description}</p>

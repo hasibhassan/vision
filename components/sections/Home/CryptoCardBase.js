@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import ExpandedCard from './ExpandedCard'
 import InnerCard from './InnerCard'
-import Modal from 'react-modal'
+import ReactModal from 'react-modal'
 import styles from './ExpandedCard.module.css'
 import useGetChartData from '@utils/useGetChartData'
 
-Modal.setAppElement('#__next')
+ReactModal.setAppElement('#__next')
 
 export default function CryptoCardBase({
   symbol,
@@ -30,10 +30,6 @@ export default function CryptoCardBase({
       })),
   })
 
-  const toggleModal = () => {
-    setIsExpanded(!isExpanded)
-  }
-
   return (
     <div>
       <InnerCard
@@ -50,10 +46,10 @@ export default function CryptoCardBase({
         data={data}
         isLoading={isLoading}
       />
-      <Modal
+      <ReactModal
         isOpen={isExpanded}
-        overlayClassName={styles.myoverlay}
-        className={styles.mymodal}
+        overlayClassName={styles.modalOverlay}
+        className={styles.modal}
       >
         <ExpandedCard
           setIsExpanded={setIsExpanded}
@@ -69,8 +65,9 @@ export default function CryptoCardBase({
           dataInterval={dataInterval}
           setDataInterval={setDataInterval}
           data={data}
+          isLoading={isLoading}
         />
-      </Modal>
+      </ReactModal>
     </div>
   )
 }

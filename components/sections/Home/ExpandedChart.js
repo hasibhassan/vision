@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
   VictoryLine,
   VictoryChart,
@@ -8,7 +7,6 @@ import {
 } from 'victory'
 import format from 'date-fns/format'
 import formatPrice from '@utils/formatPrice'
-import useGetChartData from '@utils/useGetChartData'
 import styles from './ExpandedCard.module.css'
 
 const intervals = [
@@ -32,7 +30,6 @@ const intervals = [
 
 export default function ExpandedChart({
   cryptoName,
-  isExpanded,
   dataInterval,
   setDataInterval,
   isLoading,

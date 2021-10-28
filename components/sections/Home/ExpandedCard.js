@@ -1,7 +1,6 @@
 import styles from './ExpandedCard.module.css'
 import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
-import ChartData from './ChartData'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 import ExpandedChart from './ExpandedChart'
 
@@ -14,7 +13,6 @@ export default function ExpandedCard({
   volume,
   id,
   marketCap,
-  isExpanded,
   image,
   data,
   isLoading,
@@ -45,12 +43,11 @@ export default function ExpandedCard({
           </p>
         </div>
         <ExpandedChart
-          isExpanded={isExpanded}
           cryptoName={id}
-          data={data}
-          isLoading={isLoading}
           dataInterval={dataInterval}
           setDataInterval={setDataInterval}
+          isLoading={isLoading}
+          data={data}
         />
       </div>
     </div>

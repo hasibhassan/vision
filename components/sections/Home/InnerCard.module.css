@@ -115,3 +115,16 @@
 .chart svg {
   vertical-align: middle;
 }
+
+.loadingContainer {
+  height: 0;
+  padding-bottom: 50%;
+  width: 100%;
+}
+
+.loadingContainer span {
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  top: 30%;
+}
