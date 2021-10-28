@@ -3,6 +3,28 @@ import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
 import ChartData from './ChartData'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
+import React, { useState } from 'react'
+import useGetChartData from '@utils/useGetChartData'
+import InnerChart from './InnerChart'
+
+const intervals = [
+  {
+    label: 'Today',
+    value: 1,
+  },
+  {
+    label: 'This Week',
+    value: 7,
+  },
+  {
+    label: 'This Month',
+    value: 30,
+  },
+  {
+    label: 'This Quarter',
+    value: 90,
+  },
+]
 
 export default function InnerCard({
   setIsExpanded,
@@ -15,6 +37,8 @@ export default function InnerCard({
   marketCap,
   isExpanded,
   image,
+  data,
+  isLoading,
 }) {
   return (
     <div className={styles.card}>
@@ -37,7 +61,7 @@ export default function InnerCard({
             Volume: ${largeCurrencyFormatter(volume)}
           </p>
         </div>
-        <ChartData isExpanded={isExpanded} cryptoName={id} />
+        <InnerChart isLoading={isLoading} data={data} />
       </div>
     </div>
   )

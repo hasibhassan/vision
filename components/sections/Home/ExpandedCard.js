@@ -3,6 +3,7 @@ import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
 import ChartData from './ChartData'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
+import ExpandedChart from './ExpandedChart'
 
 export default function ExpandedCard({
   setIsExpanded,
@@ -15,9 +16,13 @@ export default function ExpandedCard({
   marketCap,
   isExpanded,
   image,
+  data,
+  isLoading,
+  dataInterval,
+  setDataInterval,
 }) {
   return (
-    <div className={styles.card}>
+    <div>
       <div className={styles.cardInner}>
         <button className={styles.close} onClick={() => setIsExpanded(false)}>
           Close
@@ -39,7 +44,14 @@ export default function ExpandedCard({
             Volume: ${largeCurrencyFormatter(volume)}
           </p>
         </div>
-        <ChartData isExpanded={isExpanded} cryptoName={id} />
+        <ExpandedChart
+          isExpanded={isExpanded}
+          cryptoName={id}
+          data={data}
+          isLoading={isLoading}
+          dataInterval={dataInterval}
+          setDataInterval={setDataInterval}
+        />
       </div>
     </div>
   )

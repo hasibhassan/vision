@@ -152,3 +152,42 @@
   margin-left: -35px;
   top: 30%;
 }
+
+.mymodal {
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: #fff;
+  overflow: auto;
+  border-radius: 8px;
+  outline: none;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgb(19, 102, 160) 0%,
+    rgb(14, 73, 114) 100%
+  );
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+
+  /* 
+  color: #fff;
+  width: 500px;
+
+  
+  position: relative;
+  /* transition: transform 0.5s ease, box-shadow 0.5s ease; */
+}
+
+.myoverlay {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
