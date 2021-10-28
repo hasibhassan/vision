@@ -16,6 +16,7 @@ export default function DesktopGrid() {
       {data.map((crypto) => {
         return (
           <CryptoCardBase
+            key={crypto.id}
             symbol={crypto.symbol}
             name={crypto.name}
             image={crypto.image}

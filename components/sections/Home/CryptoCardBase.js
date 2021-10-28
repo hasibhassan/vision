@@ -50,6 +50,8 @@ export default function CryptoCardBase({
         isOpen={isExpanded}
         overlayClassName={styles.modalOverlay}
         className={styles.modal}
+        contentLabel={'Expanded card'}
+        onRequestClose={() => setIsExpanded(false)}
       >
         <ExpandedCard
           setIsExpanded={setIsExpanded}
