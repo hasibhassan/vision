@@ -18,7 +18,7 @@
       "function": {
         "userlambdafunc": {
           "deploymentBucketName": "amplify-vision-prod-223837-deployment",
-          "s3Key": "amplify-builds/userlambdafunc-4b4a4675675359756130-build.zip"
+          "s3Key": "amplify-builds/userlambdafunc-685846687546444d4e6f-build.zip"
         }
       }
     }

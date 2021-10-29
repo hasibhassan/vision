@@ -3,11 +3,9 @@ import withAuth from '@sections/HOC/withAuth'
 import { Auth } from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
 import useGetProfile from '@utils/useGetUser'
-import React, { useEffect, useState } from 'react'
 import Spinner from '@ui/Spinner/Spinner'
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState()
   const Router = useRouter()
 
   const isMobile = useMediaQuery({
@@ -25,17 +23,6 @@ const ProfilePage = () => {
       console.log({ err })
     }
   }
-
-  useEffect(() => {
-    async function getUserSub() {
-      const response = await Auth.currentAuthenticatedUser()
-      const { attributes } = await response.json()
-
-      setUserData(attributes.sub)
-    }
-
-    getUserSub()
-  }, [])
 
   const { data, isLoading } = useGetProfile()
 
