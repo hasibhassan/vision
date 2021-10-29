@@ -22,12 +22,17 @@ exports.handler = (event, context) => {
     }
   }
 
-  try {
-    const data = await getItem(id)
-    return { body: JSON.stringify(data) }
-  } catch (err) {
-    return { error: err }
+  const data = await getItem(id)
+
+  let res = {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+    },
+    body: JSON.stringify(data),
   }
+  return res
 
   // return awsServerlessExpress.proxy(server, event, context, 'PROMISE').promise
 }

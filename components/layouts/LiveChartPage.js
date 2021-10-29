@@ -12,10 +12,10 @@ export default function LiveChartPage() {
   const ws = useRef(null)
 
   let first = useRef(false)
-  const url = 'https://api.exchange.coinbase.com'
+  const url = 'https://api.pro.coinbase.com'
 
   useEffect(() => {
-    ws.current = new WebSocket('wss://ws-feed.exchange.coinbase.com')
+    ws.current = new WebSocket('wss://ws-feed.pro.coinbase.com')
 
     let pairs = []
 
@@ -42,11 +42,11 @@ export default function LiveChartPage() {
         return 0
       })
 
-      // let options = filtered.map((currency) => {
-      //   return { label: currency.base_currency, value: currency.id }
-      // })
+      let options = filtered.map((currency) => {
+        return { label: currency.base_currency, value: currency.id }
+      })
 
-      setCurrencies(filtered)
+      setCurrencies(options)
 
       first.current = true
     }

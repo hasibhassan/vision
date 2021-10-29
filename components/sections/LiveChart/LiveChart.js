@@ -18,7 +18,7 @@ export default function LiveChart({ price, data }) {
     <div className={styles.dashboard}>
       <h2>{`$${price}`}</h2>
       <div className={styles.chartContainer}>
-        <Line data={data} options={opts} />
+        {/* <Line data={data} options={opts} /> */}
       </div>
     </div>
   )
