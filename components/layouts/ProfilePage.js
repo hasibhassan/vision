@@ -4,6 +4,7 @@ import { Auth } from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
 import useGetProfile from '@utils/useGetUser'
 import React, { useEffect, useState } from 'react'
+import Spinner from '@ui/Spinner/Spinner'
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState()
