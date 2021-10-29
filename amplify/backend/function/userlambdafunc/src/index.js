@@ -1,8 +1,3 @@
-// const awsServerlessExpress = require('aws-serverless-express');
-// const app = require('./app');
-
-// const server = awsServerlessExpress.createServer(app);
-
 const AWS = require('aws-sdk')
 const db = new AWS.DynamoDB.DocumentClient()
 
