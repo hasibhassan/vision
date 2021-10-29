@@ -42,11 +42,11 @@ export default function LiveChartPage() {
         return 0
       })
 
-      let options = filtered.map((currency) => {
-        return { label: currency.base_currency, value: currency.id }
-      })
+      // let options = filtered.map((currency) => {
+      //   return { label: currency.base_currency, value: currency.id }
+      // })
 
-      setCurrencies(options)
+      setCurrencies(filtered)
 
       first.current = true
     }
