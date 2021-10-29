@@ -95,10 +95,10 @@ export default function LiveChartPage() {
 
       if (data.product_id === pair) {
         setPrice(data.price)
-        if (pastData.datasets) {
-          setPastData((oldData) => oldData.datasets[0].data.push(data.price))
-          setPastData((oldData) => oldData.datasets[0].data.unshift())
-        }
+        // if (pastData.datasets) {
+        //   setPastData((oldData) => oldData.datasets[0].data.push(data.price))
+        //   setPastData((oldData) => oldData.datasets[0].data.unshift())
+        // }
       }
     }
   }, [pair])
