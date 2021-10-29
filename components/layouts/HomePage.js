@@ -1,4 +1,4 @@
-import CryptoCardBase from '@sections/Home/CryptoCardBase'
+import DesktopGrid from '@sections/Home/DesktopGrid'
 import { useMediaQuery } from 'react-responsive'
 
 export default function HomePage() {
@@ -8,10 +8,11 @@ export default function HomePage() {
   const isDesktop = useMediaQuery({
     minWidth: 1024,
   })
+
   return (
     <div>
-      {isMobile && <CryptoCardBase cryptoName={'bitcoin'} />}
-      {isDesktop && <CryptoCardBase cryptoName={'bitcoin'} />}
+      {isMobile && <p>todo</p>}
+      {isDesktop && <DesktopGrid />}
     </div>
   )
 }

@@ -19,11 +19,11 @@ export default function NewsPage() {
   } else {
     return (
       <div>
-        {data?.map((el) => (
-          <ul>
-            <li>{el?.title}</li>
-          </ul>
-        ))}
+        <ul>
+          {data?.map((el) => (
+            <li key={el.hash}>{el?.title}</li>
+          ))}
+        </ul>
       </div>
     )
   }

@@ -6,7 +6,11 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
 export default function SignIn() {
-  const [formState, setFormState] = useState({ email: '', password: '' })
+  const [formState, setFormState] = useState({
+    email: '',
+    password: '',
+  })
+  const [isChecked, setIsChecked] = useState(false)
   const Router = useRouter()
   const { email, password } = formState
 
@@ -33,6 +37,9 @@ export default function SignIn() {
     try {
       await Auth.signIn(email, password)
       console.log('signed in')
+      if (isChecked) {
+        Auth.rememberDevice()
+      }
       Router.replace('/profile')
     } catch (e) {
       console.log({ e })
@@ -113,6 +120,7 @@ export default function SignIn() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
+                onChange={() => setIsChecked(!isChecked)}
                 className={styles.rememberMe}
               />
               <label htmlFor="remember-me" className={styles.rememberMeLabel}>
@@ -120,7 +128,7 @@ export default function SignIn() {
               </label>
             </div>
             <div className={styles.forgotPasswordContainer}>
-              <a href="#" className={styles.forgotPasswordLink}>
+              <a href="/resetpassword" className={styles.forgotPasswordLink}>
                 Forgot your password?
               </a>
             </div>

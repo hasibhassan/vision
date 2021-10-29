@@ -1,18 +1,8 @@
-.hitzone {
-  cursor: pointer;
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-}
-
 .card {
   text-align: center;
   color: #fff;
   margin: auto;
-  width: 300px;
+  width: 500px;
   background: linear-gradient(
     135deg,
     rgb(19, 102, 160) 0%,
@@ -22,12 +12,7 @@
   position: relative;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
-  z-index: 1;
-}
-
-.card:not(.expanded):hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+  z-index: 2;
 }
 
 .card .cardInner {
@@ -35,7 +20,7 @@
 }
 
 .topData {
-  padding: 40px 25px 0;
+  padding: 40px 25px 20px;
 }
 
 .cardImg {
@@ -46,12 +31,6 @@
   padding: 2px;
   border-radius: 50px;
 }
-
-/* .cryptoName {
-  font-size: 26px;
-  font-weight: 300;
-  margin: 12px 0;
-} */
 
 .cryptoNameWrap {
   display: flex;
@@ -114,14 +93,6 @@
   background: #ff5b5b;
 }
 
-.expanded.card {
-  max-width: 800px;
-}
-
-.expanded .topData {
-  padding: 40px 25px 20px;
-}
-
 .close {
   position: absolute;
   color: #fff;
@@ -140,10 +111,6 @@
 }
 
 .chartActions {
-  display: none;
-}
-
-.expanded .chartActions {
   display: block;
   margin-bottom: 20px;
 }
@@ -183,4 +150,41 @@
   left: 50%;
   margin-left: -35px;
   top: 30%;
+}
+
+.modal {
+  position: fixed;
+  text-align: center;
+  margin: auto;
+  width: 95vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  overflow: auto;
+  border-radius: 8px;
+  outline: none;
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgb(19, 102, 160) 0%,
+    rgb(14, 73, 114) 100%
+  );
+  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+
+  /* 
+  color: #fff;
+  width: 500px;
+  position: relative;
+  /* transition: transform 0.5s ease, box-shadow 0.5s ease; */
+}
+
+.modalOverlay {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
 }

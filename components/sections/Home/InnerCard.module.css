@@ -20,12 +20,12 @@
   );
   border-radius: 8px;
   position: relative;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  /* transition: transform 0.5s ease, box-shadow 0.5s ease; */
   box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
   z-index: 1;
 }
 
-.card:not(.expanded):hover {
+.card:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
 }
@@ -46,12 +46,6 @@
   padding: 2px;
   border-radius: 50px;
 }
-
-/* .cryptoName {
-  font-size: 26px;
-  font-weight: 300;
-  margin: 12px 0;
-} */
 
 .cryptoNameWrap {
   display: flex;
@@ -114,62 +108,12 @@
   background: #ff5b5b;
 }
 
-.expanded.card {
-  max-width: 800px;
-}
-
-.expanded .topData {
-  padding: 40px 25px 20px;
-}
-
-.close {
-  position: absolute;
-  color: #fff;
-  right: 10px;
-  top: 10px;
-  padding: 5px;
-  z-index: 1;
-}
-
 .chart {
   position: relative;
 }
 
 .chart svg {
   vertical-align: middle;
-}
-
-.chartActions {
-  display: none;
-}
-
-.expanded .chartActions {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.chartActions button {
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  margin: 0 10px;
-  padding: 6px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  outline: none;
-}
-
-.chartActions button:hover {
-  border: 1px solid #fff;
-}
-
-.chartActions button:focus {
-  border: 1px solid #fff;
-}
-
-.chartActions .active {
-  background: #fff;
-  color: rgb(14, 73, 114);
 }
 
 .loadingContainer {
