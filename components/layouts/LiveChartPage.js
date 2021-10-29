@@ -8,7 +8,7 @@ export default function LiveChartPage() {
   const [currencies, setCurrencies] = useState([])
   const [pair, setPair] = useState('')
   const [price, setPrice] = useState('0.00')
-  const [pastData, setPastData] = useState({})
+  const [pastData, setPastData] = useState({ label: '', datasets: '' })
   const ws = useRef(null)
 
   let first = useRef(false)
@@ -57,7 +57,7 @@ export default function LiveChartPage() {
     if (!first.current) {
       return
     }
-    console.log(currencies)
+
     let msg = {
       type: 'subscribe',
       product_ids: [pair],
@@ -75,18 +75,30 @@ export default function LiveChartPage() {
 
       let formattedData = liveChartFormatter(dataArr)
       setPastData(formattedData)
+      console.log(formattedData)
     }
+
+    // const addNewPriceToChart = async (newPrice) => {
+    //   setPastData(() => {
+    //     pastData?.datasets[0]?.data[299] = newPrice
+    //   })
+    // }
 
     fetchChartData()
 
     ws.current.onmessage = (e) => {
       let data = JSON.parse(e.data)
+
       if (data.type !== 'ticker') {
         return
       }
 
       if (data.product_id === pair) {
         setPrice(data.price)
+        if (pastData.datasets) {
+          setPastData((oldData) => oldData.datasets[0].data.push(data.price))
+          setPastData((oldData) => oldData.datasets[0].data.unshift())
+        }
       }
     }
   }, [pair])

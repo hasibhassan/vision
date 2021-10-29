@@ -11,10 +11,9 @@
   height: 80vh;
 }
 
-.chart-container {
-  width: 80%;
-  height: 100%;
-}
+/* .chartContainer {
+ 
+} */
 
 .selectContainer {
   margin: 0.75rem;
@@ -22,4 +21,8 @@
 }
 
 @media (min-width: 640px) {
+  .chartContainer {
+    width: 85vw;
+    height: 85vh;
+  }
 }
