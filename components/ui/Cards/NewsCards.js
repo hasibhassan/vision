@@ -15,7 +15,7 @@ export default function NewsCards({ dataArray }) {
             <p className={styles.description}>{el.description}</p>
           </div>
           <p className={styles.time}>
-            Posted: {format(new Date(el.time).getTime(), 'p')}
+            Posted: {format(new Date(parseInt(el.time, 10)).getTime(), 'p')}
           </p>
           <a href={el.link}>Read at {el.source}</a>
         </SwiperSlide>
