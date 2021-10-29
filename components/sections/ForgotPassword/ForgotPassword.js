@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './ForgotPassword.module.css'
 import Auth from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 export default function ForgotPassword() {
   const [formState, setFormState] = useState('')
@@ -13,11 +14,17 @@ export default function ForgotPassword() {
 
   async function sendPasswordReset(e) {
     e.preventDefault()
-    try {
-      await Auth.forgotPassword(formState)
-      Router.replace('/confirmpasswordreset')
-    } catch (err) {
-      console.log({ err })
+
+    if (!formState) {
+      toast('Please enter an email', { type: 'error' })
+    } else {
+      try {
+        await Auth.forgotPassword(formState)
+        toast('Check email for confirmation code', { type: 'info' })
+        Router.replace('/confirmpasswordreset')
+      } catch (err) {
+        console.log({ err })
+      }
     }
   }
 
