@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk')
 const db = new AWS.DynamoDB.DocumentClient()
 
-exports.handler = (event, context) => {
+exports.handler = async (event, context) => {
   console.log(`EVENT: ${JSON.stringify(event)}`)
   const {
     requestContext: {
