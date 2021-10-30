@@ -6,7 +6,8 @@ const useGetProfile = (options) => {
     'user',
     async () => {
       const response = await API.get('visionapi', '/users/', {})
-      return await JSON.parse(response.body)
+      console.log(response)
+      return await response.body
     },
     options
   )
