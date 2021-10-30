@@ -26,7 +26,10 @@ const ProfilePage = () => {
     }
   }
 
-  const { data, isLoading } = useGetProfile(state?.user?.email)
+  const { email } = state
+
+  console.log(`context state value is: ${email}`)
+  const { data, isLoading } = useGetProfile(email)
 
   return (
     <div>

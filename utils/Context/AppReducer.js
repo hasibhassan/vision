@@ -1,6 +1,6 @@
 export const initialState = {
   // TODO #16 fix reducer and context
-  user: {},
+  email: '',
 }
 
 export const AppReducer = (state, action) => {
@@ -19,7 +19,7 @@ export const AppReducer = (state, action) => {
     case 'update_user_email': {
       return {
         ...state,
-        user: { email: action.value },
+        email: action.value,
       }
     }
   }

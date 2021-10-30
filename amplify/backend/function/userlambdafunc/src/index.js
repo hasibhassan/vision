@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   async function getItem(cognitoIdentityId) {
     var params = {
       TableName: 'visiontable-prod',
-      Key: { cognitoIdentityId },
+      Key: { user: cognitoIdentityId },
     }
     try {
       const data = await db.get(params).promise()
@@ -17,20 +17,33 @@ exports.handler = async (event, context) => {
     }
   }
 
-  const {
-    pathParameters: { proxy: email },
-  } = event
+  try {
+    const {
+      pathParameters: { proxy: email },
+    } = event
 
-  const data = await getItem(email)
+    const data = await getItem(email)
 
-  let res = {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
-    },
-    body: JSON.stringify(data),
+    let res = {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+      },
+      body: JSON.stringify(data),
+    }
+
+    return res
+  } catch (err) {
+    let res = {
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+      },
+      body: JSON.stringify(err),
+    }
+
+    return res
   }
-
-  return res
 }
