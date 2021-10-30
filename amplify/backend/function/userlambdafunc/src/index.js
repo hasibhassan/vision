@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   async function getItem(cognitoIdentityId) {
     var params = {
       TableName: 'visiontable-prod',
-      Key: { user: cognitoIdentityId },
+      Key: { 'user': cognitoIdentityId },
     }
     try {
       const data = await db.get(params).promise()
