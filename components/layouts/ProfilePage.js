@@ -28,7 +28,6 @@ const ProfilePage = () => {
 
   const { email } = state
 
-  console.log(`context state value is: ${email}`)
   const { data, isLoading } = useGetProfile(email)
 
   return (
@@ -38,7 +37,7 @@ const ProfilePage = () => {
           <Spinner />
         ) : (
           <p>
-            Mobile profile content here: {data}
+            Mobile profile content here: {data.createdAt}
             <button onClick={signOut}>Sign Out</button>
           </p>
         ))}
@@ -47,7 +46,7 @@ const ProfilePage = () => {
           <Spinner />
         ) : (
           <p>
-            Desktop profile content here : {data}
+            Desktop profile content here : {data.sub}
             <button onClick={signOut}>Sign Out</button>
           </p>
         ))}
