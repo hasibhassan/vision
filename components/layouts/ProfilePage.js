@@ -4,10 +4,10 @@ import { Auth } from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
 import useGetProfile from '@utils/useGetProfile'
 import Spinner from '@ui/Spinner/Spinner'
-import React, { useState, useEffect } from 'react'
+import { useAppContext } from '@utils/Context/AppContext'
 
 const ProfilePage = () => {
-  const [userEmail, setUserEmail] = useState()
+  const { state, dispatch } = useAppContext()
   const Router = useRouter()
 
   const isMobile = useMediaQuery({
@@ -26,20 +26,7 @@ const ProfilePage = () => {
     }
   }
 
-  useEffect(() => {
-    const getUserEmail = async () => {
-      try {
-        const { username } = await Auth.currentAuthenticatedUser()
-        setUserEmail(username)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    getUserEmail()
-  }, [])
-
-  const { data, isLoading } = useGetProfile(userEmail)
+  const { data, isLoading } = useGetProfile(state?.user?.email)
 
   return (
     <div>

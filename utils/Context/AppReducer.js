@@ -1,6 +1,6 @@
 export const initialState = {
   // TODO #16 fix reducer and context
-  number: 0,
+  user: {},
 }
 
 export const AppReducer = (state, action) => {
@@ -13,6 +13,13 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         number: action.value + state.number,
+      }
+    }
+
+    case 'update_user_email': {
+      return {
+        ...state,
+        user: { email: action.value },
       }
     }
   }
