@@ -36,6 +36,7 @@ export default function SignUp() {
         password: password,
         attributes: { email },
       })
+      toast('Account created! Logging in...', { type: 'success' })
       await Auth.signIn(email, password)
 
       Router.replace('/profile')

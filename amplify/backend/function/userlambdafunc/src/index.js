@@ -17,7 +17,9 @@ exports.handler = async (event, context) => {
     }
   }
 
-  const { pathParameters: email } = event
+  const {
+    pathParameters: { proxy: email },
+  } = event
 
   const data = await getItem(email)
 
