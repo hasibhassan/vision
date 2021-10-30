@@ -1,13 +1,13 @@
 import { useMediaQuery } from 'react-responsive'
 import withAuth from '@sections/HOC/withAuth'
-import { Auth } from '@aws-amplify/auth'
+import { Auth, API } from 'aws-amplify'
 import { useRouter } from 'next/router'
-import useGetProfile from '@utils/useGetProfile'
 import Spinner from '@ui/Spinner/Spinner'
-import { useAppContext } from '@utils/Context/AppContext'
+import React, { useState, useEffect } from 'react'
 
 const ProfilePage = () => {
-  const { state, dispatch } = useAppContext()
+  const [userData, setUserData] = useState()
+  const [isLoaded, setIsLoaded] = useState()
   const Router = useRouter()
 
   const isMobile = useMediaQuery({
@@ -26,27 +26,39 @@ const ProfilePage = () => {
     }
   }
 
-  const { email } = state
+  useEffect(() => {
+    const getUserNameAndProfile = async () => {
+      try {
+        setIsLoaded(false)
+        const { username: email } = await Auth.currentAuthenticatedUser()
+        const response = await API.get('visionapi', `/users/${email}`, {})
+        setUserData(response.Item)
+        setIsLoaded(true)
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
-  const { data, isLoading } = useGetProfile(email)
+    getUserNameAndProfile()
+  }, [])
 
   return (
     <div>
       {isMobile &&
-        (isLoading ? (
+        (!isLoaded ? (
           <Spinner />
         ) : (
           <p>
-            Mobile profile content here: {data.createdAt}
+            Mobile profile content here: {userData.createdAt}
             <button onClick={signOut}>Sign Out</button>
           </p>
         ))}
       {isDesktop &&
-        (isLoading ? (
+        (!isLoaded ? (
           <Spinner />
         ) : (
           <p>
-            Desktop profile content here : {data.sub}
+            Desktop profile content here : {userData.sub}
             <button onClick={signOut}>Sign Out</button>
           </p>
         ))}
