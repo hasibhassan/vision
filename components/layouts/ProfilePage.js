@@ -2,10 +2,12 @@ import { useMediaQuery } from 'react-responsive'
 import withAuth from '@sections/HOC/withAuth'
 import { Auth } from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
-import useGetProfile from '@utils/useGetUser'
+import useGetProfile from '@utils/useGetProfile'
 import Spinner from '@ui/Spinner/Spinner'
+import React, { useState, useEffect } from 'react'
 
 const ProfilePage = () => {
+  const [userEmail, setUserEmail] = useState()
   const Router = useRouter()
 
   const isMobile = useMediaQuery({
@@ -24,7 +26,20 @@ const ProfilePage = () => {
     }
   }
 
-  const { data, isLoading } = useGetProfile()
+  useEffect(() => {
+    const getUserEmail = async () => {
+      try {
+        const { username } = await Auth.currentAuthenticatedUser()
+        setUserEmail(username)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    getUserEmail()
+  }, [])
+
+  const { data, isLoading } = useGetProfile(userEmail)
 
   return (
     <div>
