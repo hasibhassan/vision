@@ -3,6 +3,7 @@ import LiveChart from '@sections/LiveChart/LiveChart'
 import { liveChartFormatter } from '@utils/liveChartFormatter'
 import styles from '@sections/LiveChart/LiveChart.module.css'
 import Select from 'react-select'
+import Head from 'next/head'
 
 export default function LiveChartPage() {
   const [currencies, setCurrencies] = useState([])
@@ -117,6 +118,9 @@ export default function LiveChartPage() {
   }
   return (
     <div className={styles.dashboard}>
+      <Head>
+        <title>Live Price</title>
+      </Head>
       {/* {
         <select name="currency" value={pair} onChange={handleSelect}>
           {currencies.map((cur, idx) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './SignIn.module.css'
 import Link from 'next/link'
+import Head from 'next/head'
 import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
@@ -71,6 +72,9 @@ export default function SignIn() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Login</title>
+      </Head>
       <div className={styles.formContainer}>
         <div>
           <img className={styles.logo} src="logo.svg" alt="Vision" />
