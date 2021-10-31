@@ -17,17 +17,16 @@ export default function DesktopNewsCard({
       <div className={styles.descriptionBox}>
         <p className={styles.description}>{description}</p>
       </div>
-      <p className={styles.time}>
-        Posted: {format(new Date(time).getTime(), 'p')}
-      </p>
-      <a
-        className={styles.time}
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Read at {source}
-      </a>
+      <div className={styles.bottomBox}>
+        <div className={styles.time}>
+          <p>Posted: {format(new Date(time).getTime(), 'p')}</p>
+        </div>
+        <div className={styles.link}>
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            Read at {source}
+          </a>
+        </div>
+      </div>
     </div>
   )
 }

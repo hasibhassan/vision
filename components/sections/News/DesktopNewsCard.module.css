@@ -35,10 +35,13 @@
 }
 
 .descriptionBox {
+  /* position: absolute;
+  top: 6rem;
   display: inline-block;
-  height: 30vh;
+  bottom: 5rem; */
   overflow-x: scroll;
-  padding: 1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   overflow-wrap: break-word;
 }
 
@@ -50,7 +53,19 @@
 }
 
 .time {
-  margin-bottom: 1rem;
   font-weight: normal;
   font-size: smaller;
+}
+
+.link {
+  font-weight: normal;
+  font-size: smaller;
+}
+
+.link:hover {
+  color: gainsboro;
+}
+
+.bottomBox {
+  margin-bottom: 1rem;
 }
