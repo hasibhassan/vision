@@ -2,6 +2,7 @@ import useGetNewsStories from '@utils/useGetNewsStories'
 import { useMediaQuery } from 'react-responsive'
 import Spinner from '@ui/Spinner/Spinner'
 import NewsCards from '@ui/Cards/NewsCards'
+import Head from 'next/head'
 
 export default function NewsPage() {
   const { data, isLoading } = useGetNewsStories({
@@ -19,6 +20,9 @@ export default function NewsPage() {
   } else {
     return (
       <div>
+        <Head>
+          <title>News</title>
+        </Head>
         <ul>
           {data?.map((el) => (
             <li key={el.hash}>{el?.title}</li>

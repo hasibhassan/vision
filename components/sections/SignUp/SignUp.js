@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Auth from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+import Head from 'next/head'
 
 export default function SignUp() {
   const [formState, setFormState] = useState({ email: '', password: '' })
@@ -69,6 +70,9 @@ export default function SignUp() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Create Account</title>
+      </Head>
       <div className={styles.formContainer}>
         <div>
           <img className={styles.logo} src="logo.svg" alt="Vision" />

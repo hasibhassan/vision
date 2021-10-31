@@ -1,5 +1,6 @@
 import DesktopGrid from '@sections/Home/DesktopGrid'
 import { useMediaQuery } from 'react-responsive'
+import Head from 'next/head'
 
 export default function HomePage() {
   const isMobile = useMediaQuery({
@@ -11,6 +12,9 @@ export default function HomePage() {
 
   return (
     <div>
+      <Head>
+        <title>Vision</title>
+      </Head>
       {isMobile && <p>todo</p>}
       {isDesktop && <DesktopGrid />}
     </div>

@@ -4,6 +4,7 @@ import { Auth, API } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import Spinner from '@ui/Spinner/Spinner'
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState()
@@ -46,6 +47,9 @@ const ProfilePage = () => {
 
   return (
     <div>
+      <Head>
+        <title>Profile</title>
+      </Head>
       {isMobile &&
         (!isLoaded ? (
           <Spinner />

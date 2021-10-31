@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './ConfirmPasswordReset.module.css'
 import Auth from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export default function ConfirmPasswordReset() {
   const [formState, setFormState] = useState({
@@ -28,6 +29,9 @@ export default function ConfirmPasswordReset() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Vision</title>
+      </Head>
       <div className={styles.formContainer}>
         <div>
           <img className={styles.logo} src="logo.svg" alt="Vision" />
