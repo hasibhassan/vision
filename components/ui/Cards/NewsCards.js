@@ -1,7 +1,7 @@
 import styles from './NewsCards.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 
@@ -15,7 +15,7 @@ export default function NewsCards({ dataArray }) {
             <p className={styles.description}>{el.description}</p>
           </div>
           <p className={styles.time}>
-            Posted: {format(new Date(parseInt(el.time, 10)).getTime(), 'p')}
+            Posted: {format(new Date(el.time).getTime(), 'p')}
           </p>
           <a href={el.link}>Read at {el.source}</a>
         </SwiperSlide>

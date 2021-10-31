@@ -3,6 +3,8 @@ import { useMediaQuery } from 'react-responsive'
 import Spinner from '@ui/Spinner/Spinner'
 import NewsCards from '@ui/Cards/NewsCards'
 import Head from 'next/head'
+import styles from '@sections/News/DesktopNewsGrid.module.css'
+import DesktopNewsCard from '@sections/News/DesktopNewsCard'
 
 export default function NewsPage() {
   const { data, isLoading } = useGetNewsStories({
@@ -16,18 +18,29 @@ export default function NewsPage() {
   if (isLoading) {
     return <Spinner />
   } else if (isMobile && !isLoading) {
-    return <NewsCards dataArray={data} />
-  } else {
     return (
       <div>
         <Head>
           <title>News</title>
         </Head>
-        <ul>
-          {data?.map((el) => (
-            <li key={el.hash}>{el?.title}</li>
-          ))}
-        </ul>
+        <NewsCards dataArray={data} />
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.desktopNewsCardGrid}>
+        <Head>
+          <title>News</title>
+        </Head>
+        {data?.map((newsStory) => (
+          <DesktopNewsCard
+            title={newsStory.title}
+            time={newsStory.time}
+            description={newsStory.description}
+            link={newsStory.link}
+            source={newsStory.source}
+          />
+        ))}
       </div>
     )
   }

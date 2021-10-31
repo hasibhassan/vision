@@ -5,7 +5,7 @@ import {
   VictoryTooltip,
   VictoryVoronoiContainer,
 } from 'victory'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import formatPrice from '@utils/formatPrice'
 import styles from './ExpandedCard.module.css'
 

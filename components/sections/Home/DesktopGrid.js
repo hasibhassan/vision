@@ -13,7 +13,7 @@ export default function DesktopGrid() {
 
   return (
     <div className={styles.cardGrid}>
-      {data.map((crypto) => {
+      {data?.map((crypto) => {
         return (
           <CryptoCardBase
             key={crypto.id}
