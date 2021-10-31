@@ -3,6 +3,7 @@ import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 import ExpandedChart from './ExpandedChart'
+import Head from 'next/head'
 
 export default function ExpandedCard({
   setIsExpanded,
@@ -21,6 +22,9 @@ export default function ExpandedCard({
 }) {
   return (
     <div>
+      <Head>
+        <title>{name}</title>
+      </Head>
       <div className={styles.cardInner}>
         <button className={styles.close} onClick={() => setIsExpanded(false)}>
           Close
