@@ -6,7 +6,7 @@ import {
   VictoryTooltip,
   VictoryVoronoiContainer,
 } from 'victory'
-import format from 'date-fns/format'
+import { format } from 'date-fns'
 import formatPrice from '@utils/formatPrice'
 import useGetChartData from '@utils/useGetChartData'
 import styles from './Home.module.css'
