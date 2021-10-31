@@ -27,22 +27,22 @@ const ProfilePage = () => {
   }
 
   useEffect(() => {
-    const getUserNameAndProfile = async () => {
-      try {
-        setIsLoaded(false)
-        const {
-          attributes: { email },
-        } = await Auth.currentAuthenticatedUser()
-        const response = await API.get('visionapi', `/users/${email}`, {})
-        setUserData(response.Item)
-        setIsLoaded(true)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
     getUserNameAndProfile()
   }, [])
+
+  async function getUserNameAndProfile() {
+    try {
+      setIsLoaded(false)
+      const {
+        attributes: { email },
+      } = await Auth.currentAuthenticatedUser()
+      const response = await API.get('visionapi', `/users/${email}`, {})
+      setUserData(response.Item)
+      setIsLoaded(true)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div>
