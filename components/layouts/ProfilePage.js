@@ -30,7 +30,9 @@ const ProfilePage = () => {
     const getUserNameAndProfile = async () => {
       try {
         setIsLoaded(false)
-        const { username: email } = await Auth.currentAuthenticatedUser()
+        const {
+          attributes: { email },
+        } = await Auth.currentAuthenticatedUser()
         const response = await API.get('visionapi', `/users/${email}`, {})
         setUserData(response.Item)
         setIsLoaded(true)
