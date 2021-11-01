@@ -1,14 +1,14 @@
 import styles from './Tabs.module.css'
 import cx from 'classnames'
 
-const tabs = [
-  { name: 'Saved', href: '#', current: false },
-  { name: 'Portfolio', href: '#', current: false },
-  { name: 'Notes', href: '#', current: true },
-  { name: 'Settings', href: '#', current: false },
-]
-
-export default function Tabs() {
+export default function Tabs({
+  tabs = [
+    { name: 'Saved', href: '#', current: false },
+    { name: 'Portfolio', href: '#', current: false },
+    { name: 'Notes', href: '#', current: true },
+    { name: 'Settings', href: '#', current: false },
+  ],
+}) {
   return (
     <div>
       <div className={styles.selectContainer}>
