@@ -1,6 +1,4 @@
 import styles from './DesktopNewsCard.module.css'
-import { format } from 'date-fns'
-import { toast } from 'react-toastify'
 
 export default function DesktopNewsCard({
   title,
@@ -19,7 +17,7 @@ export default function DesktopNewsCard({
       </div>
       <div className={styles.bottomBox}>
         <div className={styles.time}>
-          <p>Posted: {format(new Date(time).getTime(), 'p')}</p>
+          <p>Posted: {time}</p>
         </div>
         <div className={styles.link}>
           <a href={link} target="_blank" rel="noopener noreferrer">

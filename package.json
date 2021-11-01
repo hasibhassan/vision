@@ -32,6 +32,7 @@
     "react-select": "^5.1.0",
     "react-toastify": "^8.0.3",
     "react-use": "^17.3.1",
+    "react-useanimations": "^2.0.6",
     "swiper": "^7.0.8",
     "victory": "^36.0.1"
   },
