@@ -73,18 +73,18 @@
 }
 
 .current {
-  border-color: rgba(99, 102, 241, 1);
-  color: rgba(79, 70, 229, 1);
+  border-color: rgba(19, 102, 160, 1);
+  color: rgba(19, 102, 160, 1);
 }
 
 .notCurrent {
   border-color: transparent;
-  color: rgba(107, 114, 128, 1);
+  color: rgba(25, 131, 205, 0.75);
 }
 
 .notCurrent:hover {
-  color: rgba(55, 65, 81, 1);
-  border-color: rgba(209, 213, 219, 1);
+  color: rgba(25, 131, 205, 1);
+  border-color: rgba(25, 131, 205, 0.65);
 }
 
 @media (min-width: 640px) {

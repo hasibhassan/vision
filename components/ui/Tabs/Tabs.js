@@ -2,10 +2,10 @@ import styles from './Tabs.module.css'
 import cx from 'classnames'
 
 const tabs = [
-  { name: 'My Account', href: '#', current: false },
-  { name: 'Company', href: '#', current: false },
-  { name: 'Team Members', href: '#', current: true },
-  { name: 'Billing', href: '#', current: false },
+  { name: 'Saved', href: '#', current: false },
+  { name: 'Portfolio', href: '#', current: false },
+  { name: 'Notes', href: '#', current: true },
+  { name: 'Settings', href: '#', current: false },
 ]
 
 export default function Tabs() {
