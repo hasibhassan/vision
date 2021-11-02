@@ -21,11 +21,11 @@ exports.handler = async (event, context) => {
     let params = {
       TableName: 'visiontable-prod',
       Key: { 'user': userEmail },
-      UpdateExpression: 'set state = :newstate',
+      UpdateExpression: 'SET state = :newstate',
       ExpressionAttributeValues: { ':newstate': itemData },
     }
     try {
-      await docClient.update(params).promise()
+      await db.update(params).promise()
     } catch (err) {
       return err
     }
