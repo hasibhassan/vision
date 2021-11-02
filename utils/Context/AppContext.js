@@ -6,7 +6,7 @@ import React, {
   useReducer,
 } from 'react'
 import { AppReducer, initialState } from './AppReducer'
-import { useLocalStorage } from 'react-use'
+import { useSessionStorage } from 'react-use'
 
 const AppContext = createContext()
 
@@ -17,22 +17,22 @@ export function AppContextWrapper({ children }) {
     return { state, dispatch }
   }, [state, dispatch])
 
-  const [localStorageValue, setLocalStorageValue] = useLocalStorage(
-    'state',
+  const [sessionStorageValue, setSessionStorageValue] = useSessionStorage(
+    'visionState',
     state
   )
 
   useEffect(() => {
-    // If there's already state in localStorage update the app state store w/ the localStorage state
-    if (localStorageValue) {
-      dispatch({ type: 'init_stored', value: localStorageValue })
+    // If there's already state in sessionStorage update the app state store w/ the sessionStorage state
+    if (sessionStorageValue) {
+      dispatch({ type: 'init_stored', value: sessionStorageValue })
     }
   }, [])
 
   useEffect(() => {
-    // Create and/or set a new localStorage key named 'state'
+    // Create and/or set a new sessionStorage key named 'state'
     if (state !== initialState) {
-      setLocalStorageValue(state)
+      setSessionStorageValue(state)
     }
   }, [state])
 
