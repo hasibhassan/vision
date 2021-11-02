@@ -67,10 +67,10 @@ exports.handler = async (event, context) => {
     try {
       const {
         pathParameters: { proxy: email },
-        body,
+        body: { contextState },
       } = event
 
-      await updateItem(email, body)
+      await updateItem(email, contextState)
 
       let res = {
         statusCode: 200,

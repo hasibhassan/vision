@@ -46,11 +46,11 @@ export function AppContextWrapper({ children }) {
         const userItem = response.Item
         if (!userItem.state) {
           API.post('visionapi', `/users/${email}`, {
-            body: JSON.stringify(state),
+            body: { contextState: JSON.stringify(state) },
           })
         } else if (userItem.state !== state) {
           API.post('visionapi', `/users/${email}`, {
-            body: JSON.stringify(state),
+            body: { contextState: JSON.stringify(state) },
           })
         }
       } catch (err) {
