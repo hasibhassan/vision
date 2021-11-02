@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCards } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
+import LikeButton from '@ui/Buttons/LikeButton'
 
 export default function NewsCards({ dataArray }) {
   return (
@@ -12,6 +13,9 @@ export default function NewsCards({ dataArray }) {
           <p>{el.title}</p>
           <div className={styles.descriptionBox}>
             <p className={styles.description}>{el.description}</p>
+          </div>
+          <div className={styles.likeContainer}>
+            <LikeButton size={48} newsHash={el.hash} />
           </div>
           <p className={styles.time}>Posted: {el.time}</p>
           <a href={el.link}>Read at {el.source}</a>

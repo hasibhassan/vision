@@ -30,6 +30,10 @@
   overflow-wrap: break-word;
 }
 
+.likeContainer {
+  margin: auto;
+}
+
 .description {
   margin: auto;
   font-weight: lighter;
