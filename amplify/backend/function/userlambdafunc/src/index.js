@@ -3,6 +3,7 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 exports.handler = async (event, context) => {
   console.log(`EVENT is: ${JSON.stringify(event)}`)
+  console.log('state is', event.body.contextState)
 
   async function getItem(userEmail) {
     let params = {
