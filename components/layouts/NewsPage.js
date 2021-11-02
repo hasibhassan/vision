@@ -34,6 +34,7 @@ export default function NewsPage() {
         </Head>
         {data?.map((newsStory) => (
           <DesktopNewsCard
+            key={newsStory.link}
             title={newsStory.title}
             time={newsStory.time}
             description={newsStory.description}

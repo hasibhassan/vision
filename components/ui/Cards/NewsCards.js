@@ -15,7 +15,7 @@ export default function NewsCards({ dataArray }) {
             <p className={styles.description}>{el.description}</p>
           </div>
           <div className={styles.likeContainer}>
-            <LikeButton size={48} newsHash={el.hash} />
+            <LikeButton size={40} newsHash={el.link} />
           </div>
           <p className={styles.time}>Posted: {el.time}</p>
           <a href={el.link}>Read at {el.source}</a>

@@ -1,3 +1,4 @@
+import LikeButton from '@ui/Buttons/LikeButton'
 import styles from './DesktopNewsCard.module.css'
 
 export default function DesktopNewsCard({
@@ -16,6 +17,9 @@ export default function DesktopNewsCard({
         <p className={styles.description}>{description}</p>
       </div>
       <div className={styles.bottomBox}>
+        <button>
+          <LikeButton size={30} newsHash={link} />
+        </button>
         <div className={styles.time}>
           <p>Posted: {time}</p>
         </div>
