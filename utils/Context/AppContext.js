@@ -44,8 +44,7 @@ export function AppContextWrapper({ children }) {
         } = await Auth.currentAuthenticatedUser()
         const response = await API.get('visionapi', `/users/${email}`, {})
         const userItem = response.Item
-        const jsonState = JSON.stringify(state)
-        const myInit = { body: { contextState: 'jsonState' } }
+        const myInit = { body: { contextState: state } }
 
         if (!userItem.state || userItem.state !== state) {
           await API.post('visionapi', `/users/${email}`, myInit)
@@ -55,7 +54,7 @@ export function AppContextWrapper({ children }) {
       }
     }
 
-    updateDB()
+    updateDB(state)
   }, [state])
 
   return (
