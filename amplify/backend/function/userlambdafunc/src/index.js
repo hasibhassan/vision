@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
     let params = {
       TableName: 'visiontable-prod',
       Key: { 'user': userEmail },
-      UpdateExpression: 'SET state = :newstate',
+      UpdateExpression: 'set contextstate = :newstate',
       ExpressionAttributeValues: { ':newstate': itemData },
     }
     try {
@@ -66,14 +66,15 @@ exports.handler = async (event, context) => {
   if (event.httpMethod === 'POST') {
     const jsonBody = JSON.parse(event.body)
     const contextState = jsonBody.contextState
-    console.log('state is', event.body.contextState)
+    console.log('state is', contextState)
+    const stateString = JSON.stringify(contextState)
 
     try {
       const {
         pathParameters: { proxy: email },
       } = event
 
-      await updateItem(email, contextState)
+      await updateItem(email, stateString)
 
       let res = {
         statusCode: 200,
