@@ -4,10 +4,10 @@ const db = new AWS.DynamoDB.DocumentClient()
 exports.handler = async (event, context) => {
   console.log(`EVENT is: ${JSON.stringify(event)}`)
 
-  async function getItem(cognitoIdentityId) {
-    var params = {
+  async function getItem(userEmail) {
+    let params = {
       TableName: 'visiontable-prod',
-      Key: { 'user': cognitoIdentityId },
+      Key: { 'user': userEmail },
     }
     try {
       const data = await db.get(params).promise()
@@ -17,33 +17,80 @@ exports.handler = async (event, context) => {
     }
   }
 
-  try {
-    const {
-      pathParameters: { proxy: email },
-    } = event
-
-    const data = await getItem(email)
-
-    let res = {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
-      },
-      body: JSON.stringify(data),
+  async function updateItem(userEmail, itemData) {
+    let params = {
+      TableName: 'visiontable-prod',
+      Key: { 'user': userEmail },
+      UpdateExpression: 'set state = :newstate',
+      ExpressionAttributeValues: { ':newstate': itemData },
     }
-
-    return res
-  } catch (err) {
-    let res = {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
-      },
-      body: JSON.stringify(err),
+    try {
+      await docClient.update(params).promise()
+    } catch (err) {
+      return err
     }
+  }
 
-    return res
+  if (event.httpMethod === 'GET') {
+    try {
+      const {
+        pathParameters: { proxy: email },
+      } = event
+
+      const data = await getItem(email)
+
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+        body: JSON.stringify(data),
+      }
+
+      return res
+    } catch (err) {
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+        body: JSON.stringify(err),
+      }
+
+      return res
+    }
+  }
+
+  if (event.httpMethod === 'POST') {
+    try {
+      const {
+        pathParameters: { proxy: email },
+        body,
+      } = event
+
+      await updateItem(email, body)
+
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+      }
+
+      return res
+    } catch (err) {
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+      }
+
+      return res
+    }
   }
 }

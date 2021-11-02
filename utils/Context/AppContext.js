@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { AppReducer, initialState } from './AppReducer'
 import { useSessionStorage } from 'react-use'
+import { Auth, API } from 'aws-amplify'
 
 const AppContext = createContext()
 
@@ -34,6 +35,26 @@ export function AppContextWrapper({ children }) {
     if (state !== initialState) {
       setSessionStorageValue(state)
     }
+
+    // Update DynamoDB user item with the current state object
+    const updateDB = async (state) => {
+      try {
+        const {
+          attributes: { email },
+        } = await Auth.currentAuthenticatedUser()
+        const response = await API.get('visionapi', `/users/${email}`, {})
+        const userItem = response.Item
+        if (!userItem.state) {
+          API.post('visionapi', `/users/${email}`, { body: state })
+        } else if (userItem.state !== state) {
+          API.post('visionapi', `/users/${email}`, { body: state })
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    updateDB()
   }, [state])
 
   return (

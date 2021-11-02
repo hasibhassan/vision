@@ -2,6 +2,7 @@ export const initialState = {
   // TODO #16 fix reducer and context
   email: '',
   currentTab: 'Saved',
+  likedNews: [],
 }
 
 export const AppReducer = (state, action) => {
@@ -21,6 +22,17 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         currentTab: action.value,
+      }
+    }
+
+    case 'like_news': {
+      return { ...state, likedNews: [...state.likedNews, action.value] }
+    }
+
+    case 'unlike_news': {
+      return {
+        ...state,
+        likedNews: state.likedNews.filter((e) => e !== action.value),
       }
     }
   }
