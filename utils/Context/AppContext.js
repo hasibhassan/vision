@@ -45,7 +45,7 @@ export function AppContextWrapper({ children }) {
         const response = await API.get('visionapi', `/users/${email}`, {})
         const userItem = response.Item
         const jsonState = JSON.stringify(state)
-        const myInit = { body: { contextState: jsonState } }
+        const myInit = { body: { contextState: 'jsonState' } }
 
         if (!userItem.state || userItem.state !== state) {
           await API.post('visionapi', `/users/${email}`, myInit)
