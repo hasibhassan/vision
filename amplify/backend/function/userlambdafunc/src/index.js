@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
   }
 
   if (event.httpMethod === 'POST') {
-    const jsonBody = event.body.json()
+    const jsonBody = JSON.parse(event.body)
     const contextState = jsonBody.contextState
     console.log('state is', contextState)
 
