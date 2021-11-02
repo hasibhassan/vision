@@ -3,8 +3,6 @@ const db = new AWS.DynamoDB.DocumentClient()
 
 exports.handler = async (event, context) => {
   console.log(`EVENT is: ${JSON.stringify(event)}`)
-  const jsonBody = event.body.json()
-  console.log('state is', jsonBody.contextState)
 
   async function getItem(userEmail) {
     let params = {
@@ -66,10 +64,13 @@ exports.handler = async (event, context) => {
   }
 
   if (event.httpMethod === 'POST') {
+    const jsonBody = event.body.json()
+    const contextState = jsonBody.contextState
+    console.log('state is', contextState)
+
     try {
       const {
         pathParameters: { proxy: email },
-        body: { contextState },
       } = event
 
       await updateItem(email, contextState)
