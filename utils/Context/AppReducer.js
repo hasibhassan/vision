@@ -1,6 +1,7 @@
 export const initialState = {
   // TODO #16 fix reducer and context
   email: '',
+  currentTab: 'Saved',
 }
 
 export const AppReducer = (state, action) => {
@@ -9,17 +10,17 @@ export const AppReducer = (state, action) => {
       return action.value
     }
 
-    case 'add_number': {
-      return {
-        ...state,
-        number: action.value + state.number,
-      }
-    }
-
     case 'update_user_email': {
       return {
         ...state,
         email: action.value,
+      }
+    }
+
+    case 'switch_tab': {
+      return {
+        ...state,
+        currentTab: action.value,
       }
     }
   }

@@ -1,14 +1,33 @@
 import styles from './Tabs.module.css'
 import cx from 'classnames'
+import { useAppContext } from '@utils/Context/AppContext'
+import { Auth } from 'aws-amplify'
+import { useRouter } from 'next/router'
+import Saved from '@sections/Profile/Saved'
+import Portfolio from '@sections/Profile/Portfolio'
+import Notes from '@sections/Profile/Notes'
 
-export default function Tabs({
-  tabs = [
-    { name: 'Saved', href: '#', current: false },
-    { name: 'Portfolio', href: '#', current: false },
-    { name: 'Notes', href: '#', current: true },
-    { name: 'Settings', href: '#', current: false },
-  ],
-}) {
+const tabs = [
+  { name: 'Saved' },
+  { name: 'Portfolio' },
+  { name: 'Notes' },
+  { name: 'Settings' },
+]
+
+export default function Tabs({ userData }) {
+  const { state, dispatch } = useAppContext()
+  const { currentTab } = state
+  const Router = useRouter()
+
+  async function signOut() {
+    try {
+      await Auth.signOut()
+      Router.replace('/')
+    } catch (err) {
+      console.log({ err })
+    }
+  }
+
   return (
     <div>
       <div className={styles.selectContainer}>
@@ -20,7 +39,10 @@ export default function Tabs({
           id="tabs"
           name="tabs"
           className={styles.select}
-          defaultValue={tabs.find((tab) => tab.current).name}
+          defaultValue={tabs.find((tab) => tab.name === currentTab).name}
+          onChange={(e) =>
+            dispatch({ type: 'switch_tab', value: e.target.value })
+          }
         >
           {tabs.map((tab) => (
             <option key={tab.name}>{tab.name}</option>
@@ -33,15 +55,18 @@ export default function Tabs({
             {tabs.map((tab) => (
               <a
                 key={tab.name}
-                href={tab.href}
+                onClick={() =>
+                  dispatch({ type: 'switch_tab', value: tab.name })
+                }
                 className={cx(
                   styles.defaultTabs,
                   {
-                    [styles.current]: tab.current,
+                    [styles.current]: currentTab === tab.name,
                   },
-                  { [styles.notCurrent]: !tab.current }
+                  {
+                    [styles.notCurrent]: currentTab !== tab.name,
+                  }
                 )}
-                aria-current={tab.current ? 'page' : undefined}
               >
                 {tab.name}
               </a>
@@ -49,6 +74,12 @@ export default function Tabs({
           </nav>
         </div>
       </div>
+      {currentTab === 'Saved' && <Saved userData={userData} />}
+      {currentTab === 'Portfolio' && <Portfolio userData={userData} />}
+      {currentTab === 'Notes' && <Notes userData={userData} />}
+      {currentTab === 'Settings' && (
+        <button onClick={() => signOut()}>Sign Out</button>
+      )}
     </div>
   )
 }
