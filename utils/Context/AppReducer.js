@@ -3,6 +3,7 @@ export const initialState = {
   email: '',
   currentTab: 'Saved',
   likedNews: [],
+  portfolio: [],
 }
 
 export const AppReducer = (state, action) => {

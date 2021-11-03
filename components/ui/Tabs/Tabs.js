@@ -5,14 +5,8 @@ import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import Saved from '@sections/Profile/Saved'
 import Portfolio from '@sections/Profile/Portfolio'
-import Notes from '@sections/Profile/Notes'
 
-const tabs = [
-  { name: 'Saved' },
-  { name: 'Portfolio' },
-  { name: 'Notes' },
-  { name: 'Settings' },
-]
+const tabs = [{ name: 'Saved' }, { name: 'Portfolio' }, { name: 'Settings' }]
 
 export default function Tabs({ userData }) {
   const { state, dispatch } = useAppContext()
