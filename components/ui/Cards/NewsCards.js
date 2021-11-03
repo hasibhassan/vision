@@ -18,7 +18,9 @@ export default function NewsCards({ dataArray }) {
             <LikeButton size={40} newsHash={el.link} />
           </div>
           <p className={styles.time}>Posted: {el.time}</p>
-          <a href={el.link}>Read at {el.source}</a>
+          <a href={el.link} target="_blank" rel="noopener noreferrer">
+            Read at {el.source}
+          </a>
         </SwiperSlide>
       ))}
     </Swiper>
