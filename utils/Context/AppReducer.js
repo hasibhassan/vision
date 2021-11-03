@@ -36,5 +36,7 @@ export const AppReducer = (state, action) => {
         likedNews: state.likedNews.filter((e) => e !== action.value),
       }
     }
+
+    // TODO add portfolio switch cases
   }
 }
