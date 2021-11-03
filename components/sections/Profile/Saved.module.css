@@ -9,6 +9,10 @@
   display: flow-root;
 }
 
+.emptyState {
+  color: rgba(107, 114, 128, 1);
+}
+
 .ul {
   margin-bottom: -2rem;
 }

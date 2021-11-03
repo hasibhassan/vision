@@ -8,6 +8,11 @@ export default function Saved() {
   return (
     <div className={styles.outsideContainer}>
       <div className={styles.rootContainer}>
+        {likedNews.length === 0 && (
+          <p className={styles.emptyState}>
+            You haven't liked any news articles
+          </p>
+        )}
         <ul role="list" className={styles.ul}>
           {likedNews.map((newsLink, idx) => (
             <li key={idx}>
