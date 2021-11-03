@@ -19,10 +19,8 @@ export function AppContextWrapper({ children }) {
 
   const checkIsAuth = async () => {
     try {
-      const { username } = await Auth.currentAuthenticatedUser()
-      if (username) {
-        return true
-      }
+      await Auth.currentAuthenticatedUser()
+      return true
     } catch (err) {
       return false
     }
@@ -31,24 +29,27 @@ export function AppContextWrapper({ children }) {
   useEffect(() => {
     // Get the server state and initialize the local state store with that if the user is signed in
     const initServerState = async () => {
-      const { username: email } = await Auth.currentAuthenticatedUser()
-      const response = await API.get('visionapi', `/users/${email}`, {})
-      const userItem = response.Item.contextstate
-      const serverState = JSON.parse(userItem)
-      console.log('the state retreived from the server is:', serverState)
-      dispatch({ type: 'init_stored', value: serverState })
-    }
-    const isAuth = checkIsAuth()
+      const isAuth = await checkIsAuth()
 
-    if (isAuth) {
-      initServerState()
+      if (isAuth) {
+        const { username: email } = await Auth.currentAuthenticatedUser()
+        const response = await API.get('visionapi', `/users/${email}`, {})
+        const userItem = response.Item.contextstate
+        const serverState = JSON.parse(userItem)
+        console.log('the state retreived from the server is:', serverState)
+        dispatch({ type: 'init_stored', value: serverState })
+      }
     }
+
+    initServerState()
   }, [])
 
   useEffect(() => {
-    // Update DynamoDB user item with the current state object
+    // Update DynamoDB user item with the current state object on every state change if user is logged in
     const updateDB = async (state) => {
-      try {
+      const isAuth = await checkIsAuth()
+
+      if (isAuth) {
         const {
           attributes: { email },
         } = await Auth.currentAuthenticatedUser()
@@ -63,17 +64,10 @@ export function AppContextWrapper({ children }) {
         if ((!serverState || serverState !== state) && state !== initialState) {
           await API.post('visionapi', `/users/${email}`, myInit)
         }
-      } catch (err) {
-        console.log(err)
       }
     }
 
-    // If the user is signed in then update the server state on every state change
-    const isAuth = checkIsAuth()
-
-    if (isAuth) {
-      updateDB(state)
-    }
+    updateDB(state)
   }, [state])
 
   return (
