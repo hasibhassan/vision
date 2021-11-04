@@ -11,13 +11,10 @@ import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 import useGetCardData from '@utils/useGetCardData'
 
 export default function CoinCard() {
-  const { data, isLoading } = useGetCardData(
-    {
-      refetchInterval: 60000,
-      staleTime: 60000,
-    },
-    10
-  )
+  const { data, isLoading } = useGetCardData({
+    refetchInterval: 60000,
+    staleTime: 60000,
+  })
 
   if (isLoading) return <Spinner />
 
