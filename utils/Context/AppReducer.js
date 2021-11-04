@@ -1,6 +1,4 @@
 export const initialState = {
-  // TODO #16 fix reducer and context
-  email: '',
   currentTab: 'Saved',
   likedNews: [],
   portfolio: [],
@@ -37,6 +35,15 @@ export const AppReducer = (state, action) => {
       }
     }
 
-    // TODO add portfolio switch cases
+    case 'like_coin': {
+      return { ...state, portfolio: [...state.portfolio, action.value] }
+    }
+
+    case 'unlike_coin': {
+      return {
+        ...state,
+        portfolio: state.portfolio.filter((e) => e !== action.value),
+      }
+    }
   }
 }

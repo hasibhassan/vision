@@ -4,6 +4,7 @@ import formatPlusMinus from '@utils/formatPlusMinus'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 import ExpandedChart from './ExpandedChart'
 import Head from 'next/head'
+import PortfolioLikeButton from '@ui/Buttons/PortfolioLikeButton'
 
 export default function ExpandedCard({
   setIsExpanded,
@@ -34,6 +35,9 @@ export default function ExpandedCard({
           <div className={styles.cryptoNameWrap}>
             <h1 className={styles.cryptoName}>{name}</h1>
             <p className={styles.cryptoSymbol}>{symbol}</p>
+            <span className={styles.likeContainer}>
+              <PortfolioLikeButton size={30} coinId={id} />
+            </span>
           </div>
           <h4 className={styles.cryptoPrice}>
             {formatPrice(currentPrice)}
