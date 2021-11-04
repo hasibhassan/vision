@@ -32,7 +32,9 @@ export function AppContextWrapper({ children }) {
       const isAuth = await checkIsAuth()
 
       if (isAuth) {
-        const { username: email } = await Auth.currentAuthenticatedUser()
+        const {
+          attributes: { email },
+        } = await Auth.currentAuthenticatedUser()
         const response = await API.get('visionapi', `/users/${email}`, {})
         const userItem = response.Item.contextstate
         const serverState = JSON.parse(userItem)
