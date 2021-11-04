@@ -15,14 +15,12 @@
   "dependencies": {
     "@commercetools-uikit/loading-spinner": "^12.2.4",
     "@headlessui/react": "^1.4.1",
-    "@heroicons/react": "^1.0.4",
     "aws-amplify": "^4.3.2",
     "chart.js": "^3.5.1",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "next": "^12.0.2",
     "react": "17.0.2",
-    "react-chartjs-2": "^3.0.5",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
     "react-intl": "^5.20.13",
@@ -31,7 +29,6 @@
     "react-responsive": "^9.0.0-beta.4",
     "react-select": "^5.1.0",
     "react-toastify": "^8.0.3",
-    "react-use": "^17.3.1",
     "react-useanimations": "^2.0.6",
     "swiper": "^7.0.8",
     "victory": "^36.0.1"
