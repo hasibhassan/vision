@@ -9,6 +9,7 @@ import formatPrice from '@utils/formatPrice'
 import formatPlusMinus from '@utils/formatPlusMinus'
 import largeCurrencyFormatter from '@utils/largeCurrencyFormatter'
 import useGetCardData from '@utils/useGetCardData'
+import InnerCoinChart from '@sections/Home/CoinCards/InnerCoinChart'
 
 export default function CoinCard() {
   const { data, isLoading } = useGetCardData({
@@ -33,6 +34,9 @@ export default function CoinCard() {
                 <div className={styles.cryptoNameWrap}>
                   <h1 className={styles.cryptoName}>{crypto.name}</h1>
                   <p className={styles.cryptoSymbol}>{crypto.symbol}</p>
+                  <div className={styles.likeContainer}>
+                    <PortfolioLikeButton size={42} coinId={crypto.id} />
+                  </div>
                 </div>
                 <h4 className={styles.cryptoPrice}>
                   {formatPrice(crypto.current_price)}
@@ -45,6 +49,7 @@ export default function CoinCard() {
                   Volume: ${largeCurrencyFormatter(crypto.total_volume)}
                 </p>
               </div>
+              <InnerCoinChart id={crypto.id} />
             </div>
           </div>
         </SwiperSlide>
