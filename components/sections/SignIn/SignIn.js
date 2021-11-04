@@ -36,12 +36,13 @@ export default function SignIn() {
   async function signIn(e) {
     e.preventDefault()
     try {
+      toast('Signin In...', { type: 'info' })
       await Auth.signIn(email, password)
       if (isChecked) {
         Auth.rememberDevice()
       }
       console.log('signed in')
-      toast('Signing In...', { type: 'success' })
+      toast('Signed In', { type: 'success' })
       Router.replace('/profile')
     } catch (e) {
       console.log({ e })
