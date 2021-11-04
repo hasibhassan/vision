@@ -20,6 +20,12 @@
   width: 10rem;
 }
 
+.price {
+  color: rgba(107, 114, 128, 1);
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 @media (min-width: 640px) {
   .chartContainer {
     width: 85vw;

@@ -1,7 +1,6 @@
-import { Line } from 'react-chartjs-2'
 import styles from './LiveChart.module.css'
 
-export default function LiveChart({ price, data }) {
+export default function LiveChart({ price }) {
   const opts = {
     tooltips: {
       intersect: false,
@@ -16,9 +15,10 @@ export default function LiveChart({ price, data }) {
 
   return (
     <div className={styles.dashboard}>
-      <h2>{`$${price}`}</h2>
-      <div className={styles.chartContainer}>
-        {/* <Line data={data} options={opts} /> */}
+      <div className={styles.priceContainer}>
+        <div className={styles.priceContainerInner}>
+          <h2 className={styles.price}>{`$${price}`}</h2>
+        </div>
       </div>
     </div>
   )
