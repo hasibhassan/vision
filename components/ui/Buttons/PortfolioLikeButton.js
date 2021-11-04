@@ -10,8 +10,8 @@ export default function PortfolioLikeButton({
   coinId,
 }) {
   const { state, dispatch } = useAppContext()
-  const { likedNews } = state
-  const isLiked = likedNews.includes(coinId)
+  const { portfolio } = state
+  const isLiked = portfolio.includes(coinId)
 
   const checkIsAuth = async () => {
     try {
@@ -26,10 +26,10 @@ export default function PortfolioLikeButton({
     const isAuth = await checkIsAuth()
 
     if (isAuth) {
-      if (likedNews.includes(hash)) {
-        dispatch({ type: 'unlike_news', value: hash })
+      if (portfolio.includes(hash)) {
+        dispatch({ type: 'unlike_coin', value: hash })
       } else {
-        dispatch({ type: 'like_news', value: hash })
+        dispatch({ type: 'like_coin', value: hash })
       }
     } else {
       toast('You must be logged in to do that', { type: 'error' })
