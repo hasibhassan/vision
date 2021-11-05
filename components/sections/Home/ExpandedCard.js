@@ -36,7 +36,7 @@ export default function ExpandedCard({
             <h1 className={styles.cryptoName}>{name}</h1>
             <p className={styles.cryptoSymbol}>{symbol}</p>
             <span className={styles.likeContainer}>
-              <PortfolioLikeButton size={30} coinId={id} />
+              <PortfolioLikeButton size={30} cryptoId={id} />
             </span>
           </div>
           <h4 className={styles.cryptoPrice}>
