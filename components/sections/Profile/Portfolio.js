@@ -1,13 +1,16 @@
 import { useAppContext } from '@utils/Context/AppContext'
 import styles from './Portfolio.module.css'
 
-export default function Portfolio({ userData }) {
+export default function Portfolio() {
   const { state } = useAppContext()
   const { portfolio } = state
   return (
-    <div>
-      {portfolio.length === 0 && <p>You have no coins in your portfolio</p>}
-      <h1 className={styles.header}>Account Email is: {userData.user}</h1>
+    <div className={styles.outsideContainer}>
+      {portfolio.length === 0 && (
+        <p className={styles.emptyState}>
+          You haven't liked any coins for your portfolio
+        </p>
+      )}
     </div>
   )
 }

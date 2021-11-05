@@ -15,15 +15,15 @@ const intervals = [
     value: 1,
   },
   {
-    label: 'This Week',
+    label: 'Last Week',
     value: 7,
   },
   {
-    label: 'This Month',
+    label: 'Last Month',
     value: 30,
   },
   {
-    label: 'This Quarter',
+    label: 'Last 3 Months',
     value: 90,
   },
 ]
