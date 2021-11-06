@@ -5,11 +5,13 @@ import Auth from '@aws-amplify/auth'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import Head from 'next/head'
+import { useAuthContext } from '@utils/Context/AuthContext'
 
 export default function SignUp() {
   const [formState, setFormState] = useState({ email: '', password: '' })
   const Router = useRouter()
   const { email, password } = formState
+  const { isAuth, setIsAuth } = useAuthContext()
 
   function onChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value })
@@ -40,6 +42,7 @@ export default function SignUp() {
       })
       toast('Account created! Logging in...', { type: 'success' })
       await Auth.signIn(email, password)
+      setIsAuth(true)
 
       Router.replace('/profile')
     } catch (e) {

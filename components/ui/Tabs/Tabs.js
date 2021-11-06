@@ -8,6 +8,7 @@ import Portfolio from '@sections/Profile/Portfolio'
 import Button from '@ui/Buttons/Button'
 import { format } from 'date-fns'
 import { toast } from 'react-toastify'
+import { useAuthContext } from '@utils/Context/AuthContext'
 
 const tabs = [{ name: 'Saved' }, { name: 'Portfolio' }, { name: 'Settings' }]
 
@@ -15,12 +16,14 @@ export default function Tabs({ userData }) {
   const { state, dispatch } = useAppContext()
   const { currentTab } = state
   const Router = useRouter()
+  const { isAuth, setIsAuth } = useAuthContext()
 
   async function signOut() {
     try {
       toast('Signing Out...', { type: 'info' })
       await Auth.signOut()
       toast('Signed Out! Returning to Home Page', { type: 'success' })
+      setIsAuth(false)
       Router.replace('/')
     } catch (err) {
       console.log({ err })
