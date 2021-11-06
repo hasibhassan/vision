@@ -35,7 +35,7 @@ export default function CoinCard() {
                   <h1 className={styles.cryptoName}>{crypto.name}</h1>
                   <p className={styles.cryptoSymbol}>{crypto.symbol}</p>
                   <div className={styles.likeContainer}>
-                    <PortfolioLikeButton size={42} coinId={crypto.id} />
+                    <PortfolioLikeButton size={42} cryptoId={crypto.id} />
                   </div>
                 </div>
                 <h4 className={styles.cryptoPrice}>

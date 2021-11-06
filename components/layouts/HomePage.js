@@ -7,9 +7,6 @@ export default function HomePage() {
   const isMobile = useMediaQuery({
     maxWidth: 1024,
   })
-  const isDesktop = useMediaQuery({
-    minWidth: 1024,
-  })
 
   return (
     <div>
@@ -17,7 +14,7 @@ export default function HomePage() {
         <title>Vision</title>
       </Head>
       {isMobile && <CoinCard />}
-      {isDesktop && <DesktopGrid />}
+      <DesktopGrid />
     </div>
   )
 }
