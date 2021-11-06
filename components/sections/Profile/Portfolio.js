@@ -2,7 +2,6 @@ import Spinner from '@ui/Spinner/Spinner'
 import { useAppContext } from '@utils/Context/AppContext'
 import useGetPortfolioData from '@utils/useGetPortfolioData'
 import styles from './Portfolio.module.css'
-import PortfolioListItem from './PortfolioListItem'
 
 export default function Portfolio() {
   const { state } = useAppContext()
