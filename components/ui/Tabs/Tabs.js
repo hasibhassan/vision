@@ -83,6 +83,24 @@ export default function Tabs({ userData }) {
           <p className={styles.settingsInfo}>
             Account created on {format(new Date(userData.createdAt), 'PPPPpp')}
           </p>
+          <p className={styles.settingsInfo}>Data provided by:</p>
+          <a
+            href="https://www.coingecko.com/en/api"
+            className={styles.settingsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CoinGecko API
+          </a>
+          <a
+            href="https://blockchair.com/api"
+            className={styles.settingsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Blockchair API
+          </a>
+
           <div className={styles.signOutButton}>
             <Button onClick={() => signOut()} label={'Sign Out'} />
           </div>

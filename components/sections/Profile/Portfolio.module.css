@@ -53,3 +53,17 @@
 .link {
   color: rgba(17, 24, 39, 1);
 } */
+
+.header {
+  color: rgba(107, 114, 128, 1);
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.items {
+  color: rgba(107, 114, 128, 1);
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}

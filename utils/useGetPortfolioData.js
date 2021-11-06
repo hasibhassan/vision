@@ -1,14 +1,11 @@
 import { useQuery } from 'react-query'
 
-const useGetPortfolioData = (cryptoId, options) => {
+const useGetPortfolioData = (url, options) => {
   return useQuery(
-    `${cryptoId}-portfolio-item`,
+    'portfolio-items',
     async () => {
-      const response = await fetch(
-        `https://api.coincap.io/v2/assets/${cryptoId}`
-      )
-      const jsonData = await response.json()
-      return await jsonData.data
+      const response = await fetch(url)
+      return await response.json()
     },
     options
   )
