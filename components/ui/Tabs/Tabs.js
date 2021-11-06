@@ -5,6 +5,9 @@ import { Auth } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import Saved from '@sections/Profile/Saved'
 import Portfolio from '@sections/Profile/Portfolio'
+import Button from '@ui/Buttons/Button'
+import { format } from 'date-fns'
+import { toast } from 'react-toastify'
 
 const tabs = [{ name: 'Saved' }, { name: 'Portfolio' }, { name: 'Settings' }]
 
@@ -15,7 +18,9 @@ export default function Tabs({ userData }) {
 
   async function signOut() {
     try {
+      toast('Signing Out...', { type: 'info' })
       await Auth.signOut()
+      toast('Signed Out! Returning to Home Page', { type: 'success' })
       Router.replace('/')
     } catch (err) {
       console.log({ err })
@@ -68,11 +73,20 @@ export default function Tabs({ userData }) {
           </nav>
         </div>
       </div>
-      {currentTab === 'Saved' && <Saved userData={userData} />}
-      {currentTab === 'Portfolio' && <Portfolio userData={userData} />}
-      {currentTab === 'Notes' && <Notes userData={userData} />}
+      {currentTab === 'Saved' && <Saved />}
+      {currentTab === 'Portfolio' && <Portfolio />}
       {currentTab === 'Settings' && (
-        <button onClick={() => signOut()}>Sign Out</button>
+        <div className={styles.settingsContainer}>
+          <p className={styles.settingsInfo}>
+            Account email is: {userData.user}
+          </p>
+          <p className={styles.settingsInfo}>
+            Account created on {format(new Date(userData.createdAt), 'PPPPpp')}
+          </p>
+          <div className={styles.signOutButton}>
+            <Button onClick={() => signOut()} label={'Sign Out'} />
+          </div>
+        </div>
       )}
     </div>
   )

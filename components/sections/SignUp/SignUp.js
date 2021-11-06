@@ -31,6 +31,7 @@ export default function SignUp() {
   async function signUp(e) {
     e.preventDefault()
     try {
+      toast('Creating Account...', { type: 'info' })
       console.log(formState)
       await Auth.signUp({
         username: email,

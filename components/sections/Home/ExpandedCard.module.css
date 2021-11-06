@@ -191,4 +191,5 @@
 
 .likeContainer {
   margin-left: 0.75rem;
+  cursor: pointer;
 }

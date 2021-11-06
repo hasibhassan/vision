@@ -7,11 +7,11 @@ import { toast } from 'react-toastify'
 export default function PortfolioLikeButton({
   size = 24,
   color = 'red',
-  coinId,
+  cryptoId,
 }) {
   const { state, dispatch } = useAppContext()
   const { portfolio } = state
-  const isLiked = portfolio.includes(coinId)
+  const isLiked = portfolio.includes(cryptoId)
 
   const checkIsAuth = async () => {
     try {
@@ -40,7 +40,7 @@ export default function PortfolioLikeButton({
     <UseAnimations
       animation={heart}
       size={size}
-      onClick={() => setIsLiked(coinId)}
+      onClick={() => setIsLiked(cryptoId)}
       reverse={isLiked}
       strokeColor={color}
       pathCss={`fill:${color}`}
