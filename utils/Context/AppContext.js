@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { AppReducer, initialState } from './AppReducer'
 import { Auth, API } from 'aws-amplify'
+import { isEqual } from 'lodash-es'
 
 const AppContext = createContext()
 
@@ -38,6 +39,7 @@ export function AppContextWrapper({ children }) {
         const response = await API.get('visionapi', `/users/${email}`, {})
         const userItem = response.Item.contextstate
         const serverState = JSON.parse(userItem)
+
         console.log('the state retreived from the server is:', serverState)
         dispatch({ type: 'init_stored', value: serverState })
       }
@@ -56,14 +58,13 @@ export function AppContextWrapper({ children }) {
           attributes: { email },
         } = await Auth.currentAuthenticatedUser()
         const response = await API.get('visionapi', `/users/${email}`, {})
-        const userItem = response.Item?.contextstate
-        let serverState
-        if (userItem) {
-          serverState = JSON.parse(userItem)
-        }
+        const userItem = response.Item.contextstate
+        const serverState = JSON.parse(userItem)
         const myInit = { body: { contextState: state } }
+        const isServerStateEqual = isEqual(state, serverState)
+        const isInitialStateEqual = isEqual(state, initialState)
 
-        if ((!serverState || serverState !== state) && state !== initialState) {
+        if (!isServerStateEqual && !isInitialStateEqual) {
           await API.post('visionapi', `/users/${email}`, myInit)
         }
       }
