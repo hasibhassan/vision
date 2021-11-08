@@ -125,7 +125,7 @@ export default function Tabs({ userData }) {
           <div className={styles.signOutButton}>
             <Button onClick={() => signOut()} label={'Sign Out'} />
           </div>
-          <DeleteButton onClick={() => deleteUser()} label={'Delete User'} />
+          <DeleteButton onClick={() => deleteUser()} label={'Delete Account'} />
         </div>
       )}
     </div>
