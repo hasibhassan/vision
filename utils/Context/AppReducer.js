@@ -1,5 +1,5 @@
 export const initialState = {
-  currentTab: 'Saved',
+  currentTab: 'Saved News',
   likedNews: [],
   portfolio: [],
 }
@@ -48,7 +48,7 @@ export const AppReducer = (state, action) => {
 
     case 'flush_state': {
       return {
-        currentTab: 'Saved',
+        currentTab: 'Saved News',
         likedNews: [],
         portfolio: [],
       }

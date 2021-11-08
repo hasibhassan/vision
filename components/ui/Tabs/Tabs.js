@@ -11,7 +11,11 @@ import { format } from 'date-fns'
 import { toast } from 'react-toastify'
 import { useAuthContext } from '@utils/Context/AuthContext'
 
-const tabs = [{ name: 'Saved' }, { name: 'Portfolio' }, { name: 'Settings' }]
+const tabs = [
+  { name: 'Saved News' },
+  { name: 'Portfolio' },
+  { name: 'Settings' },
+]
 
 export default function Tabs({ userData }) {
   const { state, dispatch } = useAppContext()
@@ -91,7 +95,7 @@ export default function Tabs({ userData }) {
           </nav>
         </div>
       </div>
-      {currentTab === 'Saved' && <Saved />}
+      {currentTab === 'Saved News' && <Saved />}
       {currentTab === 'Portfolio' && <Portfolio />}
       {currentTab === 'Settings' && (
         <div className={styles.settingsContainer}>
