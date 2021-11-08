@@ -1,11 +1,12 @@
 import styles from './Tabs.module.css'
 import cx from 'classnames'
 import { useAppContext } from '@utils/Context/AppContext'
-import { Auth } from 'aws-amplify'
+import { Auth, API } from 'aws-amplify'
 import { useRouter } from 'next/router'
 import Saved from '@sections/Profile/Saved'
 import Portfolio from '@sections/Profile/Portfolio'
 import Button from '@ui/Buttons/Button'
+import DeleteButton from '@ui/Buttons/DeleteButton'
 import { format } from 'date-fns'
 import { toast } from 'react-toastify'
 import { useAuthContext } from '@utils/Context/AuthContext'
@@ -22,6 +23,7 @@ export default function Tabs({ userData }) {
     try {
       toast('Signing Out...', { type: 'info' })
       await Auth.signOut()
+      dispatch({ type: 'flush_state' })
       toast('Signed Out! Returning to Home Page', { type: 'success' })
       setIsAuth(false)
       Router.replace('/')
@@ -30,13 +32,26 @@ export default function Tabs({ userData }) {
     }
   }
 
+  async function deleteUser() {
+    toast('Deleting User...', { type: 'warning' })
+    const user = await Auth.currentAuthenticatedUser()
+    user.deleteUser((error, data) => {
+      if (error) {
+        throw error
+      }
+      // do stuff after deletion
+    })
+
+    await API.put('visionapi', `/delete/${userData.user}`)
+    await signOut()
+  }
+
   return (
     <div>
       <div className={styles.selectContainer}>
         <label htmlFor="tabs" className={styles.srOnly}>
           Select a tab
         </label>
-        {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
         <select
           id="tabs"
           name="tabs"
@@ -103,10 +118,10 @@ export default function Tabs({ userData }) {
           >
             Blockchair API
           </a>
-
           <div className={styles.signOutButton}>
             <Button onClick={() => signOut()} label={'Sign Out'} />
           </div>
+          <DeleteButton onClick={() => deleteUser()} label={'Delete User'} />
         </div>
       )}
     </div>

@@ -31,6 +31,18 @@ exports.handler = async (event, context) => {
     }
   }
 
+  async function deleteItem(userEmail) {
+    let params = {
+      TableName: 'visiontable-prod',
+      Key: { 'user': userEmail },
+    }
+    try {
+      await db.delete(params).promise()
+    } catch (err) {
+      return err
+    }
+  }
+
   if (event.httpMethod === 'GET') {
     try {
       const {
@@ -75,6 +87,36 @@ exports.handler = async (event, context) => {
       } = event
 
       await updateItem(email, stateString)
+
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+      }
+
+      return res
+    } catch (err) {
+      let res = {
+        statusCode: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*', // replace with hostname of frontend (CloudFront)
+        },
+      }
+
+      return res
+    }
+  }
+
+  if (event.httpMethod === 'PUT') {
+    try {
+      const {
+        pathParameters: { user },
+      } = event
+
+      await deleteItem(user)
 
       let res = {
         statusCode: 200,

@@ -45,5 +45,16 @@ export const AppReducer = (state, action) => {
         portfolio: state.portfolio.filter((e) => e !== action.value),
       }
     }
+
+    case 'flush_state': {
+      return {
+        currentTab: 'Saved',
+        likedNews: [],
+        portfolio: [],
+      }
+    }
+
+    default:
+      return state
   }
 }
