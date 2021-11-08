@@ -28,7 +28,7 @@ export default function Portfolio() {
       {portfolio.length > 0 && (
         <div>
           <div>
-            <p className={styles.header}>My Saved Coins</p>
+            <p className={styles.header}>My Saved Cryptocurrencies</p>
             <ul className={styles.items}>
               {portfolio.map((cryptoId, idx) => (
                 <li key={idx}>

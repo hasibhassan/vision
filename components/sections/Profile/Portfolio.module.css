@@ -37,33 +37,18 @@
   height: 1.5rem;
   width: 1.5rem;
 }
-/* 
-.linkContainer {
-  min-width: 0px;
-  flex: 1 1 0%;
-  padding-top: 0.375rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.linkContainer > * + * {
-  margin-left: 1rem;
-}
-
-.link {
-  color: rgba(17, 24, 39, 1);
-} */
 
 .header {
   color: rgba(107, 114, 128, 1);
   text-align: center;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
 .items {
   color: rgba(107, 114, 128, 1);
   text-align: center;
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-top: 0.5rem;
 }
