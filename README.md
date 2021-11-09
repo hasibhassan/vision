@@ -1,10 +1,26 @@
-# [Vision](https://master.d2ad3ugmq3rllx.amplifyapp.com/) - A cryptocurrency dashboard
+<h1 align="center">
+  <br>
+  <a href="https://master.d2ad3ugmq3rllx.amplifyapp.com/"><img src="https://raw.githubusercontent.com/hasibhassan/vision/master/public/logo.svg" alt="Vision logo" width="100"></a>
+  <br>
+  Vision
+  <br>
+</h1>
 
-![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub license](https://img.shields.io/badge/Demo-online-brightgreen)](https://master.d2ad3ugmq3rllx.amplifyapp.com/)
+<h4 align="center">A cryptocurrency dashboard</h4>
+
+<p align="center">
+  <a>
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg"
+         alt="Gitter">
+  </a>
+  <a href="https://master.d2ad3ugmq3rllx.amplifyapp.com"><img src="https://img.shields.io/badge/Demo-online-brightgreen"></a>
+</p>
 
 Vision is a cryptocurrency dashboard built with React and hosted on AWS using S3 and CloudFront. The backend consists of API Gateway, AWS Lambda for the compute layer, and DynamoDB.
 
 This project's aim to let users view live and historical prices of cryptocurrencies and trending news about crypto and blockchain technologies. Users can also create an account to like and save their favorite cryptocurrencies and news articles which they can access from anywhere.
+
+https://user-images.githubusercontent.com/67892792/141010697-0ba42d19-cc3c-4561-bfd4-8231ea4f080a.mp4
 
 ## Technologies used
 
