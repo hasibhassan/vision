@@ -6,6 +6,8 @@ Vision is a cryptocurrency dashboard built with React and hosted on AWS using S3
 
 This project's aim to let users view live and historical prices of cryptocurrencies and trending news about crypto and blockchain technologies. Users can also create an account to like and save their favorite cryptocurrencies and news articles which they can access from anywhere.
 
+https://user-images.githubusercontent.com/67892792/141010697-0ba42d19-cc3c-4561-bfd4-8231ea4f080a.mp4
+
 ## Technologies used
 
 - [Next.js](https://github.com/vercel/next.js/) as the React framework
