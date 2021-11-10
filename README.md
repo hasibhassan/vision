@@ -72,5 +72,4 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
 ## Backend Architecture
 
 ![Vision_backend](https://user-images.githubusercontent.com/67892792/141128065-8aaa0d05-31d2-497f-9f12-117934a27286.png)
-
 [Live link](https://lucid.app/documents/view/b8302259-4f8a-4bb4-b2e0-55d26e69322d)
