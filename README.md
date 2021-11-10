@@ -68,3 +68,7 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
   - Saves the current state of the profile (e.g which tab you were on last) to the database for the client to load server on subsequent visits
 
 - Uses WebSocket feeds for the real-time crypto ticker price updates from the [Coinbase Pro API](https://docs.cloud.coinbase.com/exchange/docs/overview) - [Example](./components/layouts/LiveChartPage.js)
+
+## Backend Architecture
+
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embeddedchart/b8302259-4f8a-4bb4-b2e0-55d26e69322d" id="Q7CqOeMuwPGI"></iframe></div>
