@@ -16,7 +16,7 @@
   <a href="https://master.d2ad3ugmq3rllx.amplifyapp.com"><img src="https://img.shields.io/badge/Demo-online-brightgreen"></a>
 </p>
 
-Vision is a cryptocurrency dashboard built with React and hosted on AWS using S3 and CloudFront. The backend consists of API Gateway, AWS Lambda, and DynamoDB.
+Vision is a cryptocurrency dashboard built with React and hosted on AWS using S3 and CloudFront. The backend consists of API Gateway, Amazon Cognito, AWS Lambda, and DynamoDB.
 
 This project's aim is to let users view live and historical prices of cryptocurrencies and trending news about crypto and blockchain technologies. Users can also create an account to like and save their favorite cryptocurrencies and news articles which they can access from anywhere.
 
@@ -62,7 +62,7 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
   - Forgot password confirmation code submit
   - Delete account and user data
 
-- Implements CRUD functionality with authenticated Amazon API Gateway REST API calls to AWS Lambda to spin up an ephemeral function container to handle the request. AWS Lambda makes calls to the DynamoDB NoSQL database and formats the data to send back to the client thru API Gateway. This highly available and redundant infrastructure ensure users can access their data anywhere, anytime. All of the backend AWS services used are serverless which makes for an on-demand, pay-per-request billing model.
+- Implements CRUD functionality with authenticated Amazon API Gateway REST API calls to AWS Lambda to spin up an ephemeral function container to handle the request. AWS Lambda makes calls to the DynamoDB NoSQL database and formats the data to send back to the client thru API Gateway. Amazon Cognito is used as the auth and user management service. This highly available and redundant infrastructure ensure users can access their data anywhere, anytime. All of the backend AWS services used are serverless which makes for an on-demand, pay-per-request billing model.
 
   - Like a news article or cryptocurrency to save it to the database and unlike it to delete
   - Syncs the current state of the profile (e.g which tab you were on last) on every state change to the database for the client to load saved state on subsequent visits
