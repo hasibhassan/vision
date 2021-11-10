@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
 - [React-query](https://github.com/tannerlinsley/react-query) for server state management
 - [AWS Amplify](https://github.com/aws-amplify/amplify-js) for interfacing with backend cloud infrastructure
 
-## How to navigate this project
+## Navigating this project
 
 - [Stateful business logic](./utils/Context)
 - [Components and co-located styles (with CSS Modules)](./components)
