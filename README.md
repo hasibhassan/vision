@@ -20,15 +20,9 @@ Vision is a cryptocurrency dashboard built with React and hosted on AWS using S3
 
 This project's aim to let users view live and historical prices of cryptocurrencies and trending news about crypto and blockchain technologies. Users can also create an account to like and save their favorite cryptocurrencies and news articles which they can access from anywhere.
 
-
-
 https://user-images.githubusercontent.com/67892792/141042824-9b6003f5-1108-4624-89ec-f9e79cad1269.mp4
 
-
-
 https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-beb7-850d42a10670.mp4
-
-
 
 ## Technologies used
 
@@ -45,7 +39,7 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
 
 - [Example API data transformation](./components/sections/Home/CryptoCardBase.js)
 
-- [E2E test sample](./cypress/integration/test.spec.js)
+- [Cypress E2E test sample](./cypress/integration/test.spec.js)
 
 ## My workflow
 
@@ -59,7 +53,7 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
 
 ## Features
 
-- Complete user Auth flow:
+- Complete user auth flow:
 
   - Create account
   - Sign in to account
@@ -69,3 +63,8 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
   - Delete account and user data
 
 - Implements CRUD functionality with authenticated Amazon API Gateway REST API calls to AWS Lambda to spin up an ephemeral function container to handle the request. AWS Lambda makes calls to the DynamoDB database and formats the data to send back to the client thru API Gateway. All of the backend infrastructure is serverless which makes for an on-demand, pay-per-request billing model.
+
+  - Like a news article or cryptocurrency to save it to the database and unlike it to delete
+  - Saves the current state of the profile (e.g which tab you were on last) to the database for the client to load server on subsequent visits
+
+- Uses WebSocket feeds for the real-time crypto ticker price updates from the [Coinbase Pro API](https://docs.cloud.coinbase.com/exchange/docs/overview) - [Example](./components/layouts/LiveChartPage.js)
