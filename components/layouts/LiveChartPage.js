@@ -121,17 +121,6 @@ export default function LiveChartPage() {
       <Head>
         <title>Live Price</title>
       </Head>
-      {/* {
-        <select name="currency" value={pair} onChange={handleSelect}>
-          {currencies.map((cur, idx) => {
-            return (
-              <option key={idx} value={cur.id}>
-                {cur.base_currency}
-              </option>
-            )
-          })}
-        </select>
-      } */}
       <div className={styles.selectContainer}>
         <Select options={currencies} onChange={handleSelect} />
       </div>
