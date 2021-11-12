@@ -35,9 +35,12 @@ https://user-images.githubusercontent.com/67892792/141042838-0e15ebb4-b235-40e6-
 ## Navigating this project
 
 - [Stateful business logic](./utils/Context)
+
 - [Components and co-located styles (with CSS Modules)](./components)
 
 - [Example API data transformation](./components/sections/Home/CryptoCardBase.js)
+
+- [API request handler AWS Lambda function](./amplify/backend/function/userlambdafunc/src/index.js)
 
 - [Cypress E2E test sample](./cypress/integration/test.spec.js)
 
